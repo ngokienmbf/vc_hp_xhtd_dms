@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../../../Service/Account/account.service';
 import { Item } from '../../../Model/multidropdown';
-import { CustomerService } from 'src/app/Service/Customer/customer.service';
+import { AccountService } from '../../../Service/Account/account.service';
 
 @Component({
   selector: 'app-example',
@@ -27,7 +26,7 @@ export class ExampleComponent implements OnInit {
     pageSize: 10
   }
 
-  constructor(private accountservice : AccountService,private customerService: CustomerService ) { }
+  constructor(private accountservice : AccountService) { }
 
   showLoading : boolean = false;
 
@@ -35,11 +34,12 @@ export class ExampleComponent implements OnInit {
     this.accountservice.getListSelectMulti().subscribe(res => {
        this.items = res;
     })
-    this.customerService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize)
-      .subscribe(
-        data => {
-          console.log('data',data);
-        });
+
+    // this.customerService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize)
+    //   .subscribe(
+    //     data => {
+    //       console.log('data',data);
+    //     });
   }
 
   onItemChange(item: Item): void {

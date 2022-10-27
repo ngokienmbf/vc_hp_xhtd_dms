@@ -1,11 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { MatDialogRef } from '@angular/material/dialog';
-import { ProductGroupService } from 'src/app/Service/Product-group/product-group.service';
-import { ProductService } from 'src/app/Service/Product/product.service';
-import { UnitService } from 'src/app/Service/Unit/unit.service';
 import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
-import { CustomerService } from '../../../../Service/Customer/customer.service'
 
 @Component({
   selector: 'app-vehicle-create',

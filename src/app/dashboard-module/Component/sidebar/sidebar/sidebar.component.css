@@ -1,6 +1,6 @@
 .example-tree{
     padding-top: 20px;
-    background-color: #0277bd !important;
+    background-color: #9e7b4c !important;
     color: #fff;
     border-top: 1px solid white;
 }
@@ -33,7 +33,7 @@
 }
 
 .mat-tree-node:hover {
-    background-color: #1e9fed;
+    background-color: #c49d6b;
     /* border-radius: 5px; */
     color: white !important;
 }

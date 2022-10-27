@@ -1,15 +1,14 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // import { lstCutomer,productCreate } from '../../../../Model/Customer';
 import { Pagination } from '../../../../Model/Table';
 // import { VehicleService } from '../../../../Service/Customer/customer.service';
-import {MatDialog} from '@angular/material/dialog';
-import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
-import { lstProduct, ProductCreate } from 'src/app/Model/Product';
-import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { MatDialog } from '@angular/material/dialog';
 import { lstVehicle, VehicleCreate } from 'src/app/Model/Vehicle';
+import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { convertHelper } from 'src/app/utils/helper/convertHelper';
+import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { VehicleCreateComponent } from '../vehicle-create/vehicle-create.component';
 import { VehicleDeleteComponent } from '../vehicle-delete/vehicle-delete.component';
-import { convertHelper } from 'src/app/utils/helper/convertHelper';
 
 @Component({
   selector: 'app-vehicle-index',

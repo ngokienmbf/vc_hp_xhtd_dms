@@ -1,13 +1,10 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { CustomerCreate, lstCutomer } from '../../../../Model/Customer';
-import { Pagination } from '../../../../Model/Table';
-import { CustomerService } from '../../../../Service/Customer/customer.service';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { AccountCreate } from 'src/app/Model/Account';
+import { AccountService } from 'src/app/Service/Account/account.service';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { QLTaiKhoanCreateComponent } from '../tai-khoan-create/tai-khoan-create.component';
 import { QLTaiKhoanDeleteComponent } from '../tai-khoan-delete/tai-khoan-delete.component';
-import { AccountService } from 'src/app/Service/Account/account.service';
-import { AccountCreate, lstAccount } from 'src/app/Model/Account';
 import { UserAuthorizationComponent } from '../user-authorization/user-authorization.component';
 
 @Component({
