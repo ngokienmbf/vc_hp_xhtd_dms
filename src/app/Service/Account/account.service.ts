@@ -15,7 +15,7 @@ export class AccountService {
   constructor(private httpService: CommonserviceService) { }
 
   Login(User: UserLogin) {
-    return this.httpService.postRequest('Account/Login', User)
+    return this.httpService.postRequest('token', User)
     .pipe(map((data : UserReponse) => {
         if(data) {
           localStorage.setItem('UserInfo', JSON.stringify(data));
@@ -75,7 +75,7 @@ export class AccountService {
   }
 
 
-  
+
   Paging(page:number, searchText:string,numberDis:number) {
     return this.httpService.getRequest('admin/ManageAccount' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
       .pipe(map((data : lstAccount) => {

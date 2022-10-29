@@ -43,7 +43,7 @@ export class SidebarComponent implements OnInit {
 
   categoryParent() {
     var userInfo = this.AccountService.getUserInfo();
-    var listRole = userInfo.listRole;
+    var listRole = userInfo.listRole || [];
     var arr: any = [];
     for (let i = 0; i < listRole.length; i++) {
       for (let j = 0; j < ROUTE_DATA.length; j++) {

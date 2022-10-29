@@ -5,7 +5,7 @@ export class UserModel {
         totalRow?: number,
         rowNumber?: number,
         id?: string,
-        userName?: string,
+        username?: string,
         fullName?: string,
         email?: string,
         phoneNumber?: string,
@@ -52,7 +52,7 @@ export class UserModel {
         totalRow = totalRow;
         rowNumber = rowNumber;
         id = id;
-        userName = userName;
+        username = username;
         fullName = fullName;
         email = email;
         phoneNumber = phoneNumber;
@@ -102,7 +102,7 @@ export class UserModel {
     public totalRow!: number;
     public rowNumber!: number;
     public id!: string;
-    public userName!: string;
+    public username!: string;
     public fullName!: string;
     public email!: string;
     public phoneNumber!: string;

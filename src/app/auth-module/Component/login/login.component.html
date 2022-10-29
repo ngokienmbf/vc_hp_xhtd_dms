@@ -10,7 +10,7 @@
             <div class="form-input">
                 <mat-form-field class="example-full-width">
                   <mat-label>Tên đăng nhập</mat-label>
-                  <input matInput [(ngModel)]= "User.userName">
+                  <input matInput [(ngModel)]= "User.username">
                 </mat-form-field>
             </div>
             <div class="form-input">
@@ -19,7 +19,7 @@
                   <input matInput type="password" [(ngModel)]= "User.password"/>
                 </mat-form-field>
             </div>
-       
+
             <div class="form-action mt-2">
                 <button (click)="onLogin(User)" mat-raised-button color="primary" >Đăng Nhập</button>
                 <!-- <button (click)="onLogin(User)">Đăng Nhập</button> -->
@@ -28,7 +28,7 @@
                 <a routerLink="forgotPassword">Quên mật khẩu</a>
             </div>
         </div>
-        
+
     </div>
     <div class="form" *ngIf="isLoading">
         <div class="d-flex justify-content-center align-items-center"  *ngIf="isLoading">

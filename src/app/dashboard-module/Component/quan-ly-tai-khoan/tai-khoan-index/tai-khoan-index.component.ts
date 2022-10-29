@@ -16,7 +16,7 @@ export class QLTaiKhoanIndexComponent implements OnInit {
   customerId: number = 0;
   loadding: boolean = false;
 
-  
+
   lstdata: any = [];
 
   PageInfo = {
@@ -58,7 +58,7 @@ export class QLTaiKhoanIndexComponent implements OnInit {
 
   //Create
   AccountCreate: AccountCreate = {
-    userName: '',
+    username: '',
     fullName: '',
     email: '',
     phoneNumber: '',

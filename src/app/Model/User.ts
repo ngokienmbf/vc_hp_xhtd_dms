@@ -1,5 +1,5 @@
 export interface UserLogin {
-    userName: string ,
+    username: string ,
     password : string
 }
 
@@ -14,5 +14,5 @@ export interface UserReponse {
     refreshTokenExpiryTime: string,
     errorCode: string,
     message: string,
-    userId :string
+    userId :string,
 }

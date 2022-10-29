@@ -18,12 +18,12 @@ export class QLTaiKhoanCreateComponent implements OnInit {
   @Input() isCreate: boolean = true;
   constructor(private AccountService: AccountService, public dialogRef: MatDialogRef<QLTaiKhoanCreateComponent>) {
     this.CreateEditForm = new FormGroup({
-      userName: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       fullName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       phoneNumber: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-      
+
     })
   }
 
@@ -36,19 +36,19 @@ export class QLTaiKhoanCreateComponent implements OnInit {
       this.AccountService.GetDetail(this.customerId).subscribe(response => {
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
-          userName: new FormControl(response.userName),
+          // username: new FormControl(response.username),
           fullName: new FormControl(response.fullName),
           email: new FormControl(response.email),
           phoneNumber: new FormControl(response.phoneNumber),
           password: new FormControl(response.password),
-         
+
         })
       })
     }
   }
 
   get fullName() { return this.CreateEditForm.get('fullName'); }
-  get userName() { return this.CreateEditForm.get('userName') }
+  get username() { return this.CreateEditForm.get('username') }
   get email() { return this.CreateEditForm.get('email') }
   get phoneNumber() { return this.CreateEditForm.get('phoneNumber') }
   get password() { return this.CreateEditForm.get('password') }
@@ -57,8 +57,8 @@ export class QLTaiKhoanCreateComponent implements OnInit {
 
   onSubmit() {
     this.submited = true;
-   
-    
+
+
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.AccountService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);

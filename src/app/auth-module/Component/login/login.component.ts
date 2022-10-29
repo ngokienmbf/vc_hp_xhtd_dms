@@ -11,7 +11,7 @@ import { ToastrcustomService } from '../../../Interceptor/toastrcustom'
 export class LoginComponent implements OnInit {
   loadding: boolean = false;
    User : UserLogin = {
-      userName : '',
+      username : '',
       password : '',
    }
 
@@ -20,12 +20,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   onLogin(UserInfo : UserLogin) {
     this.loadding = true;
     this.AccountService.Login(UserInfo).subscribe(response => {
+      console.log(response)
       this.loadding = false;
-        if(response.errorCode == "00"){
+        if(response.errorCode == "200"){
           this.toatr.showSuccess("Đăng nhập thành công")
           this.router.navigate(['/Home']);
         }
