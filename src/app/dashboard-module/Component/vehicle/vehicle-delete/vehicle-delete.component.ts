@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { VehicleService } from 'src/app/Service/Vehicle/vehicle.service';
+import { VehicleService } from 'src/app/Service/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-delete',

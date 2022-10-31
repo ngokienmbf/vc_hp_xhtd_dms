@@ -6,6 +6,7 @@ import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 import { ExampleComponent } from './Component/example/example.component'
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
+import { DriverIndexComponent } from './Component/driver/driver-index/driver-index.component';
 import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
 
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
@@ -23,13 +24,22 @@ const routes: Routes = [
         component: ExampleComponent,
       },
 
+
+      // quan ly
+
+      { path: 'lai-xe', component: DriverIndexComponent },
       { path: 'phuong-tien', component: VehicleIndexComponent },
+
+      // danh muc
       { path: 'setting', component: SettingIndexComponent },
       { path: '404-not-found', component: NotfoundComponent },
 
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
+
+
+      
       // {
       //   path: 'plan-packing', component: PackingBoardComponent,
       //   children: [

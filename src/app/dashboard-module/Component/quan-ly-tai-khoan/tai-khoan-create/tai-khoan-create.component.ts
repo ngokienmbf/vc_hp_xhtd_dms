@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AccountService } from 'src/app/Service/Account/account.service';
+import { AccountService } from 'src/app/Service/account.service';
 
 @Component({
   selector: 'app-tai-khoan-create',
@@ -18,7 +18,7 @@ export class QLTaiKhoanCreateComponent implements OnInit {
   @Input() isCreate: boolean = true;
   constructor(private AccountService: AccountService, public dialogRef: MatDialogRef<QLTaiKhoanCreateComponent>) {
     this.CreateEditForm = new FormGroup({
-      username: new FormControl('', Validators.required),
+      userName: new FormControl('', Validators.required),
       fullName: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       phoneNumber: new FormControl('', Validators.required),
@@ -36,7 +36,7 @@ export class QLTaiKhoanCreateComponent implements OnInit {
       this.AccountService.GetDetail(this.customerId).subscribe(response => {
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
-          // username: new FormControl(response.username),
+          userName: new FormControl(response.userName),
           fullName: new FormControl(response.fullName),
           email: new FormControl(response.email),
           phoneNumber: new FormControl(response.phoneNumber),
@@ -48,7 +48,7 @@ export class QLTaiKhoanCreateComponent implements OnInit {
   }
 
   get fullName() { return this.CreateEditForm.get('fullName'); }
-  get username() { return this.CreateEditForm.get('username') }
+  get userName() { return this.CreateEditForm.get('userName') }
   get email() { return this.CreateEditForm.get('email') }
   get phoneNumber() { return this.CreateEditForm.get('phoneNumber') }
   get password() { return this.CreateEditForm.get('password') }

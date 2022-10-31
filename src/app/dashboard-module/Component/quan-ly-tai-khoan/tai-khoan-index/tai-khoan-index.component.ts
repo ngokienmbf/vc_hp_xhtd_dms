@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountCreate } from 'src/app/Model/Account';
-import { AccountService } from 'src/app/Service/Account/account.service';
+import { AccountService } from 'src/app/Service/account.service';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 import { QLTaiKhoanCreateComponent } from '../tai-khoan-create/tai-khoan-create.component';
 import { QLTaiKhoanDeleteComponent } from '../tai-khoan-delete/tai-khoan-delete.component';
@@ -58,7 +58,7 @@ export class QLTaiKhoanIndexComponent implements OnInit {
 
   //Create
   AccountCreate: AccountCreate = {
-    username: '',
+    userName: '',
     fullName: '',
     email: '',
     phoneNumber: '',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  '../CommonService/commonservice.service';
-import { lstVehicle,VehicleCreate,Vehicle,VehicleEdit } from '../../Model/Vehicle'
+import  { CommonserviceService } from  './commonservice.service';
+import { lstVehicle,VehicleCreate,Vehicle,VehicleEdit } from '../Model/Vehicle'
 import { map } from 'rxjs';
 
 @Injectable({

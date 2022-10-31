@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AccountService } from '../../../Service/Account/account.service'
+import { AccountService } from '../../../Service/account.service'
 import { ToastrcustomService } from '../../../Interceptor/toastrcustom';
 
 @Component({

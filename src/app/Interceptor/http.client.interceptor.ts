@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AccountService } from '../Service/Account/account.service'
+import { AccountService } from '../Service/account.service'
 import { ToastrcustomService } from './toastrcustom'
 
 @Injectable()

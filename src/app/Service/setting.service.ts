@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  '../CommonService/commonservice.service';
+import  { CommonserviceService } from  './commonservice.service';
 import { map } from 'rxjs';
 import { Setting, SettingEdit } from 'src/app/Model/Setting';
 

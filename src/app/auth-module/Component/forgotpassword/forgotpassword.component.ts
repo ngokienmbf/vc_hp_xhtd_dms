@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../../../Service/Account/account.service'
+import { AccountService } from '../../../Service/account.service'
 import { Router } from '@angular/router';
 import { ToastrcustomService } from '../../../Interceptor/toastrcustom';
 

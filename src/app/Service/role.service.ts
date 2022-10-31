@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { PermissionDetail } from 'src/app/Model/Account';
-import  { CommonserviceService } from  '../CommonService/commonservice.service';
+import  { CommonserviceService } from  './commonservice.service';
 
 @Injectable({
   providedIn: 'root'

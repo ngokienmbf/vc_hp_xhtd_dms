@@ -1,7 +1,7 @@
 export interface Account
 {
     id: number,
-    username: string,
+    userName: string,
     fullName: string,
     email: string,
     phoneNumber : string,
@@ -22,7 +22,7 @@ export interface lstAccount
 export interface AccountCreate
 {
 
-    username: string,
+    userName: string,
     fullName: string,
     email: string,
     phoneNumber : string,
@@ -34,7 +34,7 @@ export interface AccountCreate
 export interface AccountEdit
 {
     id: number,
-    username: string,
+    userName: string,
     fullName: string,
     email: string,
     phoneNumber : string,

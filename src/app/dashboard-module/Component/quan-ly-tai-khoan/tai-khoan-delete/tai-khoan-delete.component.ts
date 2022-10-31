@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { AccountService } from 'src/app/Service/Account/account.service';
+import { AccountService } from 'src/app/Service/account.service';
 
 @Component({
   selector: 'app-tai-khoan-delete',

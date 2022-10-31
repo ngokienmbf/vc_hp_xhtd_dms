@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../../../Model/multidropdown';
-import { AccountService } from '../../../Service/Account/account.service';
+import { AccountService } from '../../../Service/account.service';
 
 @Component({
   selector: 'app-example',

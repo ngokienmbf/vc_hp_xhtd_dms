@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  '../CommonService/commonservice.service';
-import { UserLogin,UserReponse } from '../../Model/User'
+import  { CommonserviceService } from  './commonservice.service';
+import { UserLogin,UserReponse } from '../Model/User'
 import { map, Observable } from 'rxjs';
-import {Item} from '../../Model/multidropdown'
+import {Item} from '../Model/multidropdown'
 import { Account, lstAccount, AccountEdit, AccountCreate } from 'src/app/Model/Account';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class AccountService {
   constructor(private httpService: CommonserviceService) { }
 
   Login(User: UserLogin) {
-    return this.httpService.postRequest('token', User)
+    return this.httpService.postRequest('Account/Login', User)
     .pipe(map((data : UserReponse) => {
         if(data) {
           localStorage.setItem('UserInfo', JSON.stringify(data));
@@ -44,7 +44,7 @@ export class AccountService {
 
 
   getUserInfo() {
-    const UserInfo =  JSON.parse(localStorage.getItem('UserInfo')|| 'null');
+    const UserInfo =  JSON.parse(localStorage.getItem('UserInfo') || 'null');
     return UserInfo;
   }
 

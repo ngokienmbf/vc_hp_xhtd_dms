@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RoleService } from '../../../Service/Roles/role.service';
+import { RoleService } from '../../../Service/role.service';
 import { RolePermissionComponent } from './role-permission/role-permission.component';
 @Component({
   selector: 'app-quan-tri-he-thong',

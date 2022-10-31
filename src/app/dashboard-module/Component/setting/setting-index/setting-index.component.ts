@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { SettingService } from 'src/app/Service/Setting/setting.service';
+import { SettingService } from 'src/app/Service/setting.service';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom'
 
 // C:\Users\VINH PC\Documents\baitap\CUALO_PORT_V1\src\app\Interceptor\Interceptor.ts
