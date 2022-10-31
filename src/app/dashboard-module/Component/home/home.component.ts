@@ -1,7 +1,7 @@
 
 import { Component, OnInit, ViewChild,  ChangeDetectorRef, AfterViewInit   } from '@angular/core';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../Service/Account/account.service';
+import { AccountService } from '../../../Service/account.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -28,9 +28,11 @@ export class HomeComponent implements OnInit    {
     if(UserInfo == null){
       this.router.navigate(['/Login']);    
     }
-    this.accountService.getAccountInfo().subscribe(response => {
-      this.urlAvartar = "https://45.124.94.191:5001"+response.avatar;
-    });
+
+    // get info logged user
+    // this.accountService.getAccountInfo().subscribe(response => {
+    //   this.urlAvartar = "https://45.124.94.191:5001"+ response.avatar;
+    // });
 
    }
 

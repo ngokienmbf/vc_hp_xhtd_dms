@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserLogin } from '../../../Model/User';
-import { AccountService} from '../../../Service/Account/account.service';
+import { AccountService} from '../../../Service/account.service';
 import { Router } from '@angular/router';
 import { ToastrcustomService } from '../../../Interceptor/toastrcustom'
 @Component({
@@ -11,8 +11,8 @@ import { ToastrcustomService } from '../../../Interceptor/toastrcustom'
 export class LoginComponent implements OnInit {
   loadding: boolean = false;
    User : UserLogin = {
-      userName : '',
-      password : '',
+    userName : '',
+    password : '',
    }
 
   isLoading : boolean = false;
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
     this.loadding = true;
     this.AccountService.Login(UserInfo).subscribe(response => {
       this.loadding = false;
-        if(response.errorCode == "00"){
+        // if(response.errorCode == "00"){
+        if(response.errorCode == "200"){
           this.toatr.showSuccess("Đăng nhập thành công")
           this.router.navigate(['/Home']);
         }

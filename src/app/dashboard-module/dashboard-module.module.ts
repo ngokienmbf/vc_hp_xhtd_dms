@@ -35,18 +35,25 @@ import { HomeComponent } from './Component/home/home.component';
 import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component';
 import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 
-// danh muc
-import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
-import { QLTaiKhoanDeleteComponent } from './Component/quan-ly-tai-khoan/tai-khoan-delete/tai-khoan-delete.component';
-import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
+// Quan ly
+import { DriverCreateComponent } from './Component/driver/driver-create/driver-create.component';
+import { DriverDeleteComponent } from './Component/driver/driver-delete/driver-delete.component';
+import { DriverIndexComponent } from './Component/driver/driver-index/driver-index.component';
+
 import { VehicleCreateComponent } from './Component/vehicle/vehicle-create/vehicle-create.component';
 import { VehicleDeleteComponent } from './Component/vehicle/vehicle-delete/vehicle-delete.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
+
+//Danh muc
+
+// Quan ly he thong 
+import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
+import { QLTaiKhoanDeleteComponent } from './Component/quan-ly-tai-khoan/tai-khoan-delete/tai-khoan-delete.component';
+import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
 import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
 import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
-//nghiep vu
 
 
 @NgModule({
@@ -61,18 +68,23 @@ import { SettingIndexComponent } from './Component/setting/setting-index/setting
     NotfoundComponent,
     ExampleComponent,
 
-    TaikhoanComponent ,
+    DriverCreateComponent,
+    DriverDeleteComponent,
+    DriverIndexComponent,
     VehicleCreateComponent,
     VehicleDeleteComponent,
     VehicleIndexComponent,
-    SettingIndexComponent,
-    UserAuthorizationComponent,
 
+    SettingIndexComponent,
+
+    UserAuthorizationComponent,
     QLTaiKhoanCreateComponent,
     QLTaiKhoanDeleteComponent,
     QLTaiKhoanIndexComponent,
     QuanTriHeThongComponent,
     RolePermissionComponent,
+    TaikhoanComponent ,
+
 
   ],
   imports: [

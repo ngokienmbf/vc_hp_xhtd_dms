@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Permission } from 'src/app/Model/Account';
 import { unescapeLeadingUnderscores } from 'typescript';
-import {AccountService} from '../../../../Service/Account/account.service'
+import {AccountService} from '../../../../Service/account.service'
 
 @Component({
   selector: 'app-user-authorization',

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AccountService } from '../../../../Service/Account/account.service';
-import { RoleService } from '../../../../Service/Roles/role.service';
+import { AccountService } from '../../../../Service/account.service';
+import { RoleService } from '../../../../Service/role.service';
 import { Permission } from 'src/app/Model/Account';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
 
