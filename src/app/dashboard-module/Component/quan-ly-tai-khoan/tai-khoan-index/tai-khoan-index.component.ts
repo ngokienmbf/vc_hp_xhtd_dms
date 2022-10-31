@@ -16,7 +16,7 @@ export class QLTaiKhoanIndexComponent implements OnInit {
   customerId: number = 0;
   loadding: boolean = false;
 
-  
+
   lstdata: any = [];
 
   PageInfo = {

@@ -75,7 +75,7 @@ export class AccountService {
   }
 
 
-  
+
   Paging(page:number, searchText:string,numberDis:number) {
     return this.httpService.getRequest('admin/ManageAccount' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
       .pipe(map((data : lstAccount) => {

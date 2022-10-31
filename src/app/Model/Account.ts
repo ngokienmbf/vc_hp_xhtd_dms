@@ -6,7 +6,7 @@ export interface Account
     email: string,
     phoneNumber : string,
     password : string,
-   
+
 }
 
 export interface lstAccount
@@ -21,7 +21,7 @@ export interface lstAccount
 
 export interface AccountCreate
 {
-   
+
     userName: string,
     fullName: string,
     email: string,

@@ -14,5 +14,5 @@ export interface UserReponse {
     refreshTokenExpiryTime: string,
     errorCode: string,
     message: string,
-    userId :string
+    userId :string,
 }
