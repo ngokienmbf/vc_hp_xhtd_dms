@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
 import { MatDialog } from '@angular/material/dialog';
-import { lstDriver, DriverCreate } from 'src/app/Model/Driver';
+import { lstDriver, Driver } from 'src/app/Model/Driver';
 import { DriverService } from 'src/app/Service/driver.service';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
@@ -49,7 +49,6 @@ export class DriverIndexComponent implements OnInit {
   Pagingdata(PageInfo : any)  {
     this.loadding = true;
      this.DriverService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-      console.log(data,'data')
       this.loadding = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
@@ -75,7 +74,6 @@ export class DriverIndexComponent implements OnInit {
 
 
   //Create
-  DriverCreate! : DriverCreate;
   
   openEdit(id: number){
     this.isCreate = false;
@@ -85,7 +83,7 @@ export class DriverIndexComponent implements OnInit {
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-          if(result.statusCode === 200){
+          if(result.succeeded === true){
             this.toastr.showSuccess(result.message);
             this.Pagingdata(this.PageInfo);
           }
@@ -102,7 +100,7 @@ export class DriverIndexComponent implements OnInit {
     const dialogRef = this.dialog.open(DriverCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
         if(result){
-          if(result.statusCode === 200){
+          if(result.succeeded === true){
             this.toastr.showSuccess(result.message);
             this.Pagingdata(this.PageInfo);
           }
@@ -122,7 +120,7 @@ export class DriverIndexComponent implements OnInit {
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        if(result.statusCode === 200){
+        if(result.succeeded === true){
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
         }

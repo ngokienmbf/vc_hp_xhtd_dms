@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  './commonservice.service';
+import  { RequestService } from  './request.service';
 import { lstVehicle,VehicleCreate,Vehicle,VehicleEdit } from '../Model/Vehicle'
 import { map } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 })
 export class VehicleService {
 
-  constructor(private httpService: CommonserviceService) { }
+  constructor(private httpService: RequestService) { }
 
 
   Paging(page:number, searchText:string,numberDis:number) {

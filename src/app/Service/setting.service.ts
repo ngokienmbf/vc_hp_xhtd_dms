@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  './commonservice.service';
+import  { RequestService } from  './request.service';
 import { map } from 'rxjs';
 import { Setting, SettingEdit } from 'src/app/Model/Setting';
 
@@ -8,7 +8,7 @@ import { Setting, SettingEdit } from 'src/app/Model/Setting';
 })
 export class SettingService {
 
-  constructor(private httpService: CommonserviceService) { }
+  constructor(private httpService: RequestService) { }
 
 
   // Paging() {

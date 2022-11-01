@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  './commonservice.service';
+import  { RequestService } from  './request.service';
 import { UserLogin,UserReponse } from '../Model/User'
 import { map, Observable } from 'rxjs';
 import {Item} from '../Model/multidropdown'
@@ -12,7 +12,7 @@ import { Account, lstAccount, AccountEdit, AccountCreate } from 'src/app/Model/A
 
 export class AccountService {
 
-  constructor(private httpService: CommonserviceService) { }
+  constructor(private httpService: RequestService) { }
 
   Login(User: UserLogin) {
     return this.httpService.postRequest('Account/Login', User)
