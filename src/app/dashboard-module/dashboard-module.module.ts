@@ -54,6 +54,7 @@ import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-a
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
 import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
+import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { SettingIndexComponent } from './Component/setting/setting-index/setting
     QLTaiKhoanIndexComponent,
     QuanTriHeThongComponent,
     RolePermissionComponent,
-    TaikhoanComponent ,
+    TaikhoanComponent,
+    OrderOperatingIndexComponent ,
 
 
   ],
