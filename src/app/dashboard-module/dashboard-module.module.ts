@@ -58,7 +58,10 @@ import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-
 import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
-
+import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-vehicle-index/driver-vehicle-index.component';
+import { DriverVehicleCreateComponent } from './Component/driver-vehicle/driver-vehicle-create/driver-vehicle-create.component';
+import { DriverVehicleDeleteComponent } from './Component/driver-vehicle/driver-vehicle-delete/driver-vehicle-delete.component';
+1
 
 @NgModule({
   declarations: [
@@ -91,7 +94,10 @@ import { OrderOperatingIndexComponent } from './Component/orderoperating/order-o
     QuanTriHeThongComponent,
     RolePermissionComponent,
     TaikhoanComponent,
-    OrderOperatingIndexComponent ,
+    OrderOperatingIndexComponent,
+    DriverVehicleIndexComponent,
+    DriverVehicleCreateComponent,
+    DriverVehicleDeleteComponent,
 
 
   ],
