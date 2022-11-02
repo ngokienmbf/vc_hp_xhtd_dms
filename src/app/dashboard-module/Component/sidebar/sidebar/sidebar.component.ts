@@ -46,7 +46,6 @@ export class SidebarComponent implements OnInit {
     var userInfo = this.AccountService.getUserInfo();
     var listRole = userInfo.listRole || [];
     var menu: any = [];
-    console.log(listRole);
     
       for (let j = 0; j < ROUTE_DATA.length; j++) {
         if (!ROUTE_DATA[j]['roles'] ||this.intersectArray(ROUTE_DATA[j]['roles'], listRole)> -1)  {

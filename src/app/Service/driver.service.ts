@@ -36,17 +36,6 @@ export class DriverService {
       }))
   }
 
-  GetAllEmpty() {
-    return this.httpService.getRequest('Driver/getAllEmpty')
-      .pipe(map((data : lstDriver) => {
-          return data;
-      }))
-  }
-
-  GetByLicensePlates(licensePlates: string) {
-    return this.httpService.getRequest(`Driver/getByLicensePlate?licensePlates=${licensePlates}`);
-  }
-
   Update(DriverEdit: Driver) {
     DriverEdit.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
     DriverEdit.updateDay = new Date();
@@ -63,4 +52,7 @@ export class DriverService {
       }))
   }
 
+  // GetByLicensePlates(licensePlates: string) {
+  //   return this.httpService.getRequest(`Vehicle/getByLicensePlate?licensePlates=${licensePlates}`);
+  // }
 }

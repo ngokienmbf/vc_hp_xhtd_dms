@@ -4,49 +4,23 @@
             <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới phương tiện</div >
                 <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
                     <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
-                        Sửa phương tiện
+                        Cập nhật phương tiện
                     </div>
-                </ng-template>        </div>
+                </ng-template>       
+        </div>
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
-                    <input type="text" class="form-control" formControlName="licensePlates">
-                    <div *ngIf="submited && licensePlates?.errors?.['required']">
-                        <span *ngIf="licensePlates?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    <input type="text" class="form-control" formControlName="vehicle">
+                    <div *ngIf="submited && vehicle?.errors?.['required']">
+                        <span *ngIf="vehicle?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Mã rfid</label>
-                    <input type="text" class="form-control" formControlName="rfidcode">
-                    <div *ngIf="submited && rfidcode?.errors?.['required']">
-                        <span *ngIf="rfidcode?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Người lái</label>
-                    <input type="text" class="form-control" formControlName="nameDriver">
-                    <div *ngIf="submited && nameDriver?.errors?.['required']">
-                        <span *ngIf="nameDriver?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Trọng tải</label>
-                    <input type="number" class="form-control" formControlName="tonnageDefault">
-                    <div *ngIf="submited && tonnageDefault?.errors?.['required']">
-                        <span *ngIf="tonnageDefault?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">idCardNumber</label>
+                    <label for="exampleFormControlInput1" class="form-label">Giấy phép</label>
                     <input type="text" class="form-control" formControlName="idCardNumber">
                     <div *ngIf="submited && idCardNumber?.errors?.['required']">
                         <span *ngIf="idCardNumber?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
@@ -55,11 +29,69 @@
             </div>
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Trọng lượng không tải trung bình</label>
-                    <input type="number" class="form-control" formControlName="mediumUnladenWeight">
-                    <div *ngIf="submited && mediumUnladenWeight?.errors?.['required']">
-                        <span *ngIf="mediumUnladenWeight?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-                    </div>
+                    <label for="exampleFormControlInput1" class="form-label">Người lái</label>
+                    <input type="text" class="form-control" formControlName="nameDriver">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Trọng tải</label>
+                    <input type="number" class="form-control" formControlName="tonnage">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Trọng tải mặc định</label>
+                    <input type="number" class="form-control" formControlName="tonnageDefault">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Cao</label>
+                    <input type="number" class="form-control" formControlName="heightVehicle">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Rộng</label>
+                    <input type="number" class="form-control" formControlName="widthVehicle">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Dài</label>
+                    <input type="number" class="form-control" formControlName="longVehicle">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 1</label>
+                    <input type="number" class="form-control" formControlName="unladenWeight1">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 2</label>
+                    <input type="number" class="form-control" formControlName="unladenWeight2">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 3</label>
+                    <input type="number" class="form-control" formControlName="unladenWeight3">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải TB?</label>
+                    <select class="form-control" formControlName="isSetMediumUnladenWeight" >
+                        <option [ngValue]="true">Yes</option>
+                        <option [ngValue]="false">No</option>
+                    </select>
                 </div>
             </div>
 

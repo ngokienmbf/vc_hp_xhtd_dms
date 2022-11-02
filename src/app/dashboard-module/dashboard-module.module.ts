@@ -45,6 +45,9 @@ import { VehicleDeleteComponent } from './Component/vehicle/vehicle-delete/vehic
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
 
 //Danh muc
+import { DeviceCreateComponent } from './Component/device/device-create/device-create.component';
+import { DeviceDeleteComponent } from './Component/device/device-delete/device-delete.component';
+import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
 
 // Quan ly he thong 
 import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
@@ -75,6 +78,9 @@ import { SettingIndexComponent } from './Component/setting/setting-index/setting
     VehicleDeleteComponent,
     VehicleIndexComponent,
 
+    DeviceCreateComponent,
+    DeviceDeleteComponent,
+    DeviceIndexComponent,
     SettingIndexComponent,
 
     UserAuthorizationComponent,
@@ -83,8 +89,7 @@ import { SettingIndexComponent } from './Component/setting/setting-index/setting
     QLTaiKhoanIndexComponent,
     QuanTriHeThongComponent,
     RolePermissionComponent,
-    TaikhoanComponent ,
-
+    TaikhoanComponent,
 
   ],
   imports: [

@@ -63,7 +63,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         },           
         {
             name :'Danh mục thiết bị',
-            url:'don-vi',
+            url:'thiet-bi',
             roles: ["Admin"],
         },          
         {

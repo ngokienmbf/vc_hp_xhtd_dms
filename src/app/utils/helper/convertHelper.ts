@@ -27,8 +27,7 @@ export class convertHelper {
     return lstStep[value]?.name;
   }
 
-  showTypeDelivery(value: number)
-  {
+  showTypeDelivery(value: number) {
     return lstTypeDelivery[value]?.name;
   }
   

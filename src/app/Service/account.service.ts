@@ -42,7 +42,6 @@ export class AccountService {
     return this.httpService.postRequest('Account/updateAvatar',data);
   }
 
-
   getUserInfo() {
     const UserInfo =  JSON.parse(localStorage.getItem('UserInfo') || 'null');
     return UserInfo;
