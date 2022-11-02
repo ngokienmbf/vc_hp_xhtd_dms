@@ -14,6 +14,7 @@ export class OrderOperatingIndexComponent implements OnInit {
 
   isCreate: boolean = true;
   loadding: boolean = false;
+  options = ['BOOKED', 'RECEIVING']
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -33,7 +34,9 @@ export class OrderOperatingIndexComponent implements OnInit {
   PageInfo = {
     page: 1,
     Keyword: '',
-    pageSize: 10
+    pageSize: 10,
+    deliveryCode: '',
+    state: ''
   }
   constructor(private orderOperatingService: OrderOperatingService,
     public dialog: MatDialog,
@@ -45,15 +48,13 @@ export class OrderOperatingIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-      console.log(data.data, 'data')
-      this.lstdata.data = data.data;
+    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode,this.PageInfo.state).subscribe(data => {
+      this.lstdata = data;
       this.loadding = false;
       this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
-      // console.log('this.Pagination',this.Pagination);
     })
   }
 
@@ -66,8 +67,32 @@ export class OrderOperatingIndexComponent implements OnInit {
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
   }
+  searchVehicle(e: any) {
+    this.PageInfo.Keyword = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
 
+  searchDeliverCode(e: any) {
+    this.PageInfo.deliveryCode = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
 
+  searchState(e: any) {
+    this.PageInfo.state = e;
+    this.PageInfo.page = 1;
+    this.Pagingdata(this.PageInfo);
+  }
 
-
+  resetFilter() {
+    this.PageInfo = {
+      page: 1,
+      Keyword: '',
+      pageSize: 10,
+      deliveryCode: '',
+      state: ''
+    }
+    this.Pagingdata(this.PageInfo);
+  }
 }

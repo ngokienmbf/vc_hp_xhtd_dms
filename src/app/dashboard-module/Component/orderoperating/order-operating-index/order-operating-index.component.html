@@ -7,9 +7,25 @@
   </div>
 
   <div class="row" style=" margin-bottom: 25px;">
-    <div class="col-sm-4">
-      <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username"
-        aria-describedby="button-addon2">
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="Biển số xe" aria-label="Recipient's username"
+        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="searchVehicle($event)">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" class="form-control" placeholder="MSGH" aria-label="Recipient's username"
+        aria-describedby="button-addon2" [(ngModel)]="PageInfo.deliveryCode"
+        (ngModelChange)="searchDeliverCode($event)">
+    </div>
+    <div class="col-sm-3">
+      <select class="form-control" [(ngModel)]="PageInfo.state" (ngModelChange)="searchState($event)">
+        <option value="" disabled selected hidden>Trạng thái</option>
+        <option *ngFor="let op of options" [value]="op" >
+          {{op}}
+        </option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <button type="button" class="btn btn-primary" (click)="resetFilter()"><i class="bi bi-arrow-clockwise"></i></button>
     </div>
   </div>
   <div class="row">
@@ -19,8 +35,12 @@
           <tr>
             <th style="text-align: center;">STT</th>
             <th>Vehicle</th>
+            <th>MSGH</th>
             <th>Tên lái xe</th>
             <th>Tên nhà phân phối</th>
+            <th>Hàng hóa</th>
+            <th>SL</th>
+            <th>Trạng thái</th>
             <th style="text-align: center;">Hành động</th>
           </tr>
         </thead>
@@ -28,8 +48,12 @@
           <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
             <td style="text-align: center;">{{i + 1}}</td>
             <td>{{item.vehicle}}</td>
+            <td>{{item.deliveryCode}}</td>
             <td>{{item.driverName}}</td>
             <td>{{item.nameDistributor}}</td>
+            <td>{{item.nameProduct}}</td>
+            <td>{{item.sumNumber}}</td>
+            <td>{{item.state}}</td>
             <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                 (click)="openEdit(item.id)"></i></td>
           </tr>
