@@ -9,6 +9,7 @@ import { SettingIndexComponent } from './Component/setting/setting-index/setting
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
 import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
 import { DriverIndexComponent } from './Component/driver/driver-index/driver-index.component';
+import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-vehicle-index/driver-vehicle-index.component';
 import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
 
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
@@ -25,7 +26,8 @@ const routes: Routes = [
 
       // quan ly
       { path: 'lai-xe', component: DriverIndexComponent },
-      { path: 'phuong-tien', component: VehicleIndexComponent },
+      { path: 'phuong-tien', component: VehicleIndexComponent },     
+       { path: 'lai-xe-phuong-tien', component: DriverVehicleIndexComponent },
 
       // danh muc
       { path: 'thiet-bi', component: DeviceIndexComponent },
