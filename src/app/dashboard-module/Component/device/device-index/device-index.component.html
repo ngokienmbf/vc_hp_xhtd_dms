@@ -3,7 +3,7 @@
 </div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
     <div class="row">
-        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách phương tiện</h2>
+        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách thiết bị</h2>
     </div>
 
     <div class="row" style=" margin-bottom: 25px;">
@@ -20,30 +20,36 @@
             <table class="table table-striped table-hover">
                 <thead >
                   <tr >
-                    <th  style="text-align: center;">STT</th>
-                    <th>Xe</th>
-                    <th>Lái xe</th>
-                    <th>Giấy phép</th>
-                    <th>Trọng tải</th>
-                    <th>Trọng tải mặc định</th>
-                    <th>Cao</th>
-                    <th>Rộng</th>
-                    <th>Dài</th>
+                    <th style="text-align: center;">STT</th>
+                    <th>Code</th>
+                    <th>Tên</th>
+                    <th>Code cha</th>
+                    <th>Port</th>
+                    <th>IP address</th>
+                    <th>Input Port</th>
+                    <th>Output Address Type</th>
+                    <th>Output Port</th>
+                    <th>operID</th>
+                    <th>Door Action</th>
+                    <th>Door/Auxout ID</th>
                     <th  style="text-align: center;">Hành động</th>
                   </tr>
                 </thead>
                 <tbody style="border-top: none;">
                   <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
                     <td style="text-align: center;">{{i + 1}}</td>
-                    <td>{{item.vehicle}}</td>
-                    <td>{{item.nameDriver}}</td>
-                    <td>{{item.idCardNumber}}</td>
-                    <td>{{item.tonnage}}</td>
-                    <td>{{item.tonnageDefault}}</td>
-                    <td>{{item.heightVehicle}}</td>
-                    <td>{{item.widthVehicle}}</td>
-                    <td>{{item.longVehicle}}</td>
-                    <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.idVehicle)"></i><i class="bi bi-trash3" (click)="openDelete(item.idVehicle)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
+                    <td>{{item.code}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.codeParent}}</td>
+                    <td>{{item.port}}</td>
+                    <td>{{item.ipaddress}}</td>
+                    <td>{{item.inputPort}}</td>
+                    <td>{{item.outputAddrType}}</td>
+                    <td>{{item.outputPort}}</td>
+                    <td>{{item.operID}}</td>
+                    <td>{{item.doorAction}}</td>
+                    <td>{{item.doorOrAuxoutID}}</td>
+                    <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i><i class="bi bi-trash3" (click)="openDelete(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
                   </tr>
                 </tbody>
               </table>

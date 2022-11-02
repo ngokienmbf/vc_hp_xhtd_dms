@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { lstCutomer,productCreate } from '../../../../Model/Customer';
 import { Pagination } from '../../../../Model/Table';
-// import { VehicleService } from '../../../../Service/Customer/customer.service';
 import { MatDialog } from '@angular/material/dialog';
-import { lstVehicle, VehicleCreate } from 'src/app/Model/Vehicle';
+import { lstVehicle, Vehicle } from 'src/app/Model/Vehicle';
 import { VehicleService } from 'src/app/Service/vehicle.service';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
@@ -39,6 +37,7 @@ export class VehicleIndexComponent implements OnInit {
     Keyword : '',
     pageSize : 10
   }
+  
   constructor(private VehicleService : VehicleService,
     public dialog: MatDialog,
     private toastr : ToastrcustomService,
@@ -51,14 +50,13 @@ export class VehicleIndexComponent implements OnInit {
   Pagingdata(PageInfo : any)  {
     this.loadding = true;
      this.VehicleService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-      console.log(data,'data')
       this.loadding = false;
       this.lstdata = data;
-        this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
-        // console.log('this.Pagination',this.Pagination);
+      this.Pagination.currentPage = data.currentPage,
+      this.Pagination.pageSize = data.pageSize,
+      this.Pagination.totalPage = data.totalPage,
+      this.Pagination.totalRecord = data.totalRecord
+      console.log('this.lstdata',this.lstdata);
      })
   }
 
@@ -72,32 +70,23 @@ export class VehicleIndexComponent implements OnInit {
   {
     this.PageInfo.Keyword = e;
     this.PageInfo.page = 1;
-
     this.Pagingdata(this.PageInfo);
   }
 
 
   //Create
-  VehicleCreate : VehicleCreate = {
-    licensePlates: '',
-    rfidcode: '',
-    nameDriver: '',
-    customer: '',
-    phoneNumber: '',
-    tonnageDefault : '',
-    idCardNumber: '',
-    mediumUnladenWeight: '',
-  }
-
+  
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
+    console.log(this.isCreate);
+    console.log(this.customerId);
     const dialogRef = this.dialog.open(VehicleCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-          if(result.statusCode === 200){
+          if(result.succeeded === true){
             this.toastr.showSuccess(result.message);
             this.Pagingdata(this.PageInfo);
           }
@@ -114,7 +103,7 @@ export class VehicleIndexComponent implements OnInit {
     const dialogRef = this.dialog.open(VehicleCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
         if(result){
-          if(result.statusCode === 200){
+          if(result.succeeded === true){
             this.toastr.showSuccess(result.message);
             this.Pagingdata(this.PageInfo);
           }
@@ -134,7 +123,7 @@ export class VehicleIndexComponent implements OnInit {
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        if(result.statusCode === 200){
+        if(result.succeeded === true){
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
         }

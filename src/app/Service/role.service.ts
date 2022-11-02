@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { PermissionDetail } from 'src/app/Model/Account';
-import  { CommonserviceService } from  './commonservice.service';
+import  { RequestService } from  './request.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleService {
 
-  constructor(private httpService: CommonserviceService) { }
+  constructor(private httpService: RequestService) { }
 
   Paging(page:number, searchText:string,numberDis:number) {
     return this.httpService.getRequest('admin/ManageRole/' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)

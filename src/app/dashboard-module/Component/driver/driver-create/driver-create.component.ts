@@ -32,8 +32,8 @@ export class DriverCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.customerId && this.isCreate === false) { 
     //Edit
-    if (this.customerId && this.isCreate === false) {
       this.DriverService.GetDetail(this.customerId).subscribe(response => {
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
@@ -46,17 +46,13 @@ export class DriverCreateComponent implements OnInit {
           birthday: new FormControl(response.birthday),
           email: new FormControl(response.email),
           gender: new FormControl(response.gender),
+          createDay: new FormControl(response.createDay),
+          createBy: new FormControl(response.createBy),
+          updateDay: new FormControl(response.updateDay),
+          updateBy: new FormControl(response.updateBy),
         })
       })
     }
-  
-  }
-
-  getGroupId(event: any) {
-    this.CreateEditForm.value.groupId = event.target.value;
-  }
-  getUnitId(event: any) {
-    this.CreateEditForm.value.unitId = event.target.value;
   }
 
   get userName() { return this.CreateEditForm.get('userName'); }
@@ -68,6 +64,18 @@ export class DriverCreateComponent implements OnInit {
   get birthday() { return this.CreateEditForm.get('birthday') }
   get email() { return this.CreateEditForm.get('phonemaile') }
   get gender() { return this.CreateEditForm.get('gender') }
+  get createDay() { return this.CreateEditForm.get('createDay') }
+  get createBy() { return this.CreateEditForm.get('createBy') }
+  get updateDay() { return this.CreateEditForm.get('updateDay') }
+  get updateBy() { return this.CreateEditForm.get('updateBy') }
+
+
+  getGroupId(event: any) {
+    this.CreateEditForm.value.groupId = event.target.value;
+  }
+  getUnitId(event: any) {
+    this.CreateEditForm.value.unitId = event.target.value;
+  }
 
   onSubmit() {
     this.submited = true;
@@ -84,8 +92,5 @@ export class DriverCreateComponent implements OnInit {
     }
 
   }
-
-
-
 
 }

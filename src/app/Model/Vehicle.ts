@@ -1,20 +1,24 @@
 export interface Vehicle {
-  id: number,
-  licensePlates: string,
-  rfidcode: string,
+  idVehicle: number,
+  vehicle: string,
   nameDriver: string,
-  phoneNumber: string,
-  customer: string,
-  tonnageDefault: string,
   idCardNumber: string,
-  mediumUnladenWeight: string,
-  lastContainer: string,
-  lastContainerDateTime: Date,
-  type: number,
-  createdOn: Date,
-  modifiedOn: Date,
-  createdBy: string,
-  modifiedBy: string,
+
+  tonnage: number,
+  tonnageDefault: number,
+  heightVehicle:	number,
+  widthVehicle:	number,
+  longVehicle:	number,
+
+  unladenWeight1:	number,
+  unladenWeight2:	number,
+  unladenWeight3:	number,
+  isSetMediumUnladenWeight:	boolean,
+
+  createDay: Date,
+  updateDay: Date,
+  createBy: string,
+  updateBy: string,
 }
 
 export interface lstVehicle {
@@ -25,29 +29,4 @@ export interface lstVehicle {
   data: Vehicle[]
 }
 
-
-export interface VehicleCreate {
-  licensePlates: string,
-  rfidcode: string,
-  nameDriver: string,
-  phoneNumber: string,
-  customer: string,
-  tonnageDefault: string,
-  idCardNumber: string,
-  mediumUnladenWeight: string,
-}
-
-
-
-export interface VehicleEdit {
-  id: number,
-  licensePlates: string,
-  rfidcode: string,
-  nameDriver: string,
-  phoneNumber: string,
-  customer: string,
-  tonnageDefault: string,
-  idCardNumber: string,
-  mediumUnladenWeight: string,
-}``
 
