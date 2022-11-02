@@ -45,6 +45,11 @@ export const ROUTE_DATA: TypeRoute[] = [
                 url:'phuong-tien',
                 roles: ["Admin","ds"],
             },
+            {
+                name: 'Đơn hàng',
+                url: 'don-hang',
+                roles: ["Admin", "ds"]
+            }
         ]
     },
     {
@@ -55,22 +60,22 @@ export const ROUTE_DATA: TypeRoute[] = [
             name :'Danh mục máng xuất',
             url:'404-not-found',
             roles: ["ds","Admin"],
-        },         
+        },
         {
             name :'Danh mục RFID',
             url:'404-not-found',
             roles: ["Admin"],
-        },           
+        },
         {
             name :'Danh mục thiết bị',
             url:'don-vi',
             roles: ["Admin"],
-        },          
+        },
         {
             name :'Danh mục khác',
             url:'404-not-found',
             roles: ["Admin"],
-        },         
+        },
       ]
     },
     {
@@ -98,5 +103,5 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin"],
             },
         ]
-    },    
+    },
 ]

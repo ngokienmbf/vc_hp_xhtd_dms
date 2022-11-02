@@ -12,7 +12,7 @@ interface PageData  {
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent {
-  
+
 
   pagedata : PageData = {
     page : 1,
@@ -21,22 +21,18 @@ export class PaginationComponent {
 
   isDisablePlus : boolean = false;
   isDisableMinus : boolean = true;
-  
+
   @Output() changePage = new EventEmitter();
   @Input() Pagination!: any;
 
   size: number = 10;
   formItem: any = {};
 
-  constructor() {
-    
-  }
-
   ChoosePage(currentPage:number){
     this.Pagination.currentPage = currentPage;
     this.sendDate();
   }
-  
+
   selectSizePage(event: any){
     this.size = event.target.value
     this.sendDate();
