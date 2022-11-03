@@ -13,51 +13,51 @@ import { VehicleDeleteComponent } from '../vehicle-delete/vehicle-delete.compone
   templateUrl: './vehicle-index.component.html',
 })
 export class VehicleIndexComponent implements OnInit {
-  isCreate : boolean = true;
-  customerId : number = 0;
+  isCreate: boolean = true;
+  customerId: number = 0;
   loadding: boolean = false;
 
   Pagination: Pagination = {
-    currentPage : 0,
-    pageSize : 0,
-    totalRecord : 0,
-    totalPage : 0,
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
   }
 
-  lstdata : lstVehicle = {
-    currentPage : 0,
-    pageSize : 0,
-    totalRecord : 0,
-    totalPage : 0,
-    data : []
+  lstdata: lstVehicle = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+    data: []
   };
 
   PageInfo = {
-    page : 1,
-    Keyword : '',
-    pageSize : 10
+    page: 1,
+    Keyword: '',
+    pageSize: 10
   }
-  
-  constructor(private VehicleService : VehicleService,
+
+  constructor(private VehicleService: VehicleService,
     public dialog: MatDialog,
-    private toastr : ToastrcustomService,
+    private toastr: ToastrcustomService,
     public convertHelper: convertHelper) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
   }
 
-  Pagingdata(PageInfo : any)  {
+  Pagingdata(PageInfo: any) {
     this.loadding = true;
-     this.VehicleService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+    this.VehicleService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
       this.loadding = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
-      this.Pagination.pageSize = data.pageSize,
-      this.Pagination.totalPage = data.totalPage,
-      this.Pagination.totalRecord = data.totalRecord
-      console.log('this.lstdata',this.lstdata);
-     })
+        this.Pagination.pageSize = data.pageSize,
+        this.Pagination.totalPage = data.totalPage,
+        this.Pagination.totalRecord = data.totalRecord
+      console.log('this.lstdata', this.lstdata);
+    })
   }
 
 
@@ -66,8 +66,7 @@ export class VehicleIndexComponent implements OnInit {
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
   }
-  onSearch(e:any)
-  {
+  onSearch(e: any) {
     this.PageInfo.Keyword = e;
     this.PageInfo.page = 1;
     this.Pagingdata(this.PageInfo);
@@ -75,64 +74,57 @@ export class VehicleIndexComponent implements OnInit {
 
 
   //Create
-  
-  openEdit(id: number){
+
+  openEdit(id: number) {
     this.isCreate = false;
     this.customerId = id;
-    console.log(this.isCreate);
-    console.log(this.customerId);
     const dialogRef = this.dialog.open(VehicleCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-          if(result.succeeded === true){
-            this.toastr.showSuccess(result.message);
-            this.Pagingdata(this.PageInfo);
-          }
-          else
-          {
-            this.toastr.showError(result.message);
-          }
+      if (result) {
+        if (result.succeeded === true) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
       }
     })
-
   }
 
   openCreate() {
     const dialogRef = this.dialog.open(VehicleCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
-        if(result){
-          if(result.succeeded === true){
-            this.toastr.showSuccess(result.message);
-            this.Pagingdata(this.PageInfo);
-          }
-          else
-          {
-            this.toastr.showError(result.message);
-          }
+      if (result) {
+        if (result.succeeded === true) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
         }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
     });
-
   }
 
 
-  openDelete(id: number){
+  openDelete(id: number) {
     this.customerId = id;
     const dialogRef = this.dialog.open(VehicleDeleteComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        if(result.succeeded === true){
+      if (result) {
+        if (result.succeeded === true) {
           this.toastr.showSuccess(result.message);
           this.Pagingdata(this.PageInfo);
         }
-        else
-        {
+        else {
           this.toastr.showError(result.message);
         }
       }
-  });
+    });
   }
 
 }
