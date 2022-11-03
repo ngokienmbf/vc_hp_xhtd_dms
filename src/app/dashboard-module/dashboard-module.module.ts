@@ -55,6 +55,9 @@ import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-
 import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
+import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
+import { RfidCreateComponent } from './Component/RFID/rfid-create/rfid-create.component';
+import { RfidDeleteComponent } from './Component/RFID/rfid-delete/rfid-delete.component';
 
 
 @NgModule({
@@ -85,7 +88,10 @@ import { OrderOperatingIndexComponent } from './Component/orderoperating/order-o
     QuanTriHeThongComponent,
     RolePermissionComponent,
     TaikhoanComponent,
-    OrderOperatingIndexComponent ,
+    OrderOperatingIndexComponent,
+    RfidIndexComponent,
+    RfidCreateComponent,
+    RfidDeleteComponent ,
 
 
   ],

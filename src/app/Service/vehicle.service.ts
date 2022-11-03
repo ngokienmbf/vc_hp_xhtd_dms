@@ -19,14 +19,14 @@ export class VehicleService {
   }
 
   Insert(VehicleCreate: VehicleCreate) {
-    return this.httpService.postRequest('Vehicle/Create',VehicleCreate)
+    return this.httpService.postRequest('Vehicle',VehicleCreate)
       .pipe(map((data: any) => {
         return data;
       }))
   }
 
   GetDetail(id: number) {
-    return this.httpService.getRequest('Vehicle/GetDetail?id='+id)
+    return this.httpService.getRequest(`Vehicle/${id}`)
       .pipe(map((data:Vehicle ) => {
           return data;
       }))
@@ -34,14 +34,14 @@ export class VehicleService {
 
   Update(VehicleEdit : VehicleEdit)
   {
-    return this.httpService.putRequest('Vehicle/Update',VehicleEdit)
+    return this.httpService.putRequest('Vehicle',VehicleEdit)
       .pipe(map((data: any) => {
         return data;
       }))
   }
 
   Delete(id: number) {
-    return this.httpService.deleteRequest('Vehicle/Delete?id='+id)
+    return this.httpService.deleteRequest(`Vehicle/${id}`)
       .pipe(map((data:any ) => {
           return data;
       }))

@@ -11,18 +11,28 @@ import { VehicleService } from 'src/app/Service/vehicle.service';
 export class VehicleCreateComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  listProductGroup: any=[];
-  listUnit: any=[];
+  listProductGroup: any = [];
+  listUnit: any = [];
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
   constructor(private VehicleService: VehicleService, public dialogRef: MatDialogRef<VehicleCreateComponent>) {
     this.CreateEditForm = new FormGroup({
-      licensePlates: new FormControl('', Validators.required),
-      rfidcode: new FormControl('', Validators.required),
-      nameDriver: new FormControl('', Validators.required),
-      tonnageDefault: new FormControl('', Validators.required),
-      idCardNumber: new FormControl('', Validators.required),
-      mediumUnladenWeight: new FormControl('',Validators.required),
+      vehicle: new FormControl(''),
+      tonnage: new FormControl(),
+      tonnageDefault: new FormControl(),
+      nameDriver: new FormControl(''),
+      idCardNumber: new FormControl(''),
+      heightVehicle: new FormControl(),
+      widthVehicle: new FormControl(),
+      longVehicle: new FormControl(),
+      unladenWeight1: new FormControl(),
+      unladenWeight2: new FormControl(),
+      unladenWeight3: new FormControl(),
+      isSetMediumUnladenWeight: new FormControl(),
+      createDay: new FormControl(),
+      createBy: new FormControl(''),
+      updateDay: new FormControl(),
+      updateBy: new FormControl(''),
     })
   }
 
@@ -31,34 +41,28 @@ export class VehicleCreateComponent implements OnInit {
     if (this.customerId && this.isCreate === false) {
       this.VehicleService.GetDetail(this.customerId).subscribe(response => {
         this.CreateEditForm = new FormGroup({
-          id: new FormControl(response.id),
-          licensePlates: new FormControl(response.licensePlates),
-          rfidcode: new FormControl(response.rfidcode),
-          nameDriver: new FormControl(response.nameDriver),
+          iDVehicle: new FormControl(response.idVehicle),
+          vehicle: new FormControl(response.vehicle),
+          tonnage: new FormControl(response.tonnage),
           tonnageDefault: new FormControl(response.tonnageDefault),
+          nameDriver: new FormControl(response.nameDriver),
           idCardNumber: new FormControl(response.idCardNumber),
-          mediumUnladenWeight: new FormControl(response.mediumUnladenWeight),
+          heightVehicle: new FormControl(response.heightVehicle),
+          widthVehicle: new FormControl(response.widthVehicle),
+          longVehicle: new FormControl(response.longVehicle),
+          unladenWeight1: new FormControl(response.unladenWeight1),
+          unladenWeight2: new FormControl(response.unladenWeight2),
+          unladenWeight3: new FormControl(response.unladenWeight3),
+          isSetMediumUnladenWeight: new FormControl(response.isSetMediumUnladenWeight),
+          createDay: new FormControl(response.createDay),
+          createBy: new FormControl(response.createBy),
+          updateDay: new FormControl(response.updateDay),
+          updateBy: new FormControl(response.updateBy),
         })
       })
     }
-  
+
   }
-
-
-
-  getGroupId(event: any) {
-    this.CreateEditForm.value.groupId = event.target.value;
-  }
-  getUnitId(event: any) {
-    this.CreateEditForm.value.unitId = event.target.value;
-  }
-
-  get licensePlates() { return this.CreateEditForm.get('licensePlates'); }
-  get rfidcode() { return this.CreateEditForm.get('rfidcode') }
-  get nameDriver() { return this.CreateEditForm.get('nameDriver') }
-  get tonnageDefault() { return this.CreateEditForm.get('tonnageDefault') }
-  get idCardNumber() { return this.CreateEditForm.get('idCardNumber') }
-  get mediumUnladenWeight() { return this.CreateEditForm.get('mediumUnladenWeight') }
 
   onSubmit() {
     this.submited = true;
@@ -73,7 +77,6 @@ export class VehicleCreateComponent implements OnInit {
         this.dialogRef.close(response);
       })
     }
-
   }
 
 

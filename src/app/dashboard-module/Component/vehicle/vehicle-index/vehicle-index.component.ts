@@ -92,6 +92,7 @@ export class VehicleIndexComponent implements OnInit {
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
+    console.log(this.customerId)
     const dialogRef = this.dialog.open(VehicleCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
@@ -107,7 +108,6 @@ export class VehicleIndexComponent implements OnInit {
           }
       }
     })
-
   }
 
   openCreate() {
@@ -124,7 +124,6 @@ export class VehicleIndexComponent implements OnInit {
           }
         }
     });
-
   }
 
 
