@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  './commonservice.service';
-import { lstDriver,DriverCreate,Driver,DriverEdit } from '../Model/Driver'
+import { RequestService } from  './request.service';
+import { AccountService } from  './account.service';
+import { lstDriver,Driver } from '../Model/Driver'
 import { map } from 'rxjs';
 
 @Injectable({
@@ -8,8 +9,18 @@ import { map } from 'rxjs';
 })
 export class DriverService {
 
-  constructor(private httpService: CommonserviceService) { }
+  constructor(private httpService: RequestService,private accountService: AccountService) { }
 
+  Insert(DriverCreate: Driver) {
+    DriverCreate.createBy = this.accountService.getUserInfo()['userName'] || 'null';
+    DriverCreate.createDay = new Date();
+    DriverCreate.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
+    DriverCreate.updateDay = new Date();
+    return this.httpService.postRequest('Driver',DriverCreate)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
 
   Paging(page:number, searchText:string,numberDis:number) {
     return this.httpService.getRequest('Driver' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
@@ -18,44 +29,30 @@ export class DriverService {
       }))
   }
 
-  Insert(DriverCreate: DriverCreate) {
-    return this.httpService.postRequest('Driver/Create',DriverCreate)
-      .pipe(map((data: any) => {
-        return data;
-      }))
-  }
-
   GetDetail(id: number) {
-    return this.httpService.getRequest('Driver/GetDetail?id='+id)
+    return this.httpService.getRequest('Driver',id)
       .pipe(map((data:Driver ) => {
           return data;
       }))
   }
 
-  Update(DriverEdit : DriverEdit)
-  {
-    return this.httpService.putRequest('Driver/Update',DriverEdit)
+  Update(DriverEdit: Driver) {
+    DriverEdit.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
+    DriverEdit.updateDay = new Date();
+    return this.httpService.putRequest('Driver',DriverEdit)
       .pipe(map((data: any) => {
         return data;
       }))
   }
 
   Delete(id: number) {
-    return this.httpService.deleteRequest('Driver/Delete?id='+id)
+    return this.httpService.deleteRequest('Driver/'+id)
       .pipe(map((data:any ) => {
           return data;
       }))
   }
 
-  GetAllEmpty() {
-    return this.httpService.getRequest('Driver/getAllEmpty')
-      .pipe(map((data : lstDriver) => {
-          return data;
-      }))
-  }
-
-  GetByLicensePlates(licensePlates: string) {
-    return this.httpService.getRequest(`Driver/getByLicensePlate?licensePlates=${licensePlates}`);
-  }
-
+  // GetByLicensePlates(licensePlates: string) {
+  //   return this.httpService.getRequest(`Vehicle/getByLicensePlate?licensePlates=${licensePlates}`);
+  // }
 }

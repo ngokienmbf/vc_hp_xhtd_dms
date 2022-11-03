@@ -27,28 +27,3 @@ export interface lstVehicle {
 }
 
 
-export interface VehicleCreate {
-  licensePlates: string,
-  rfidcode: string,
-  nameDriver: string,
-  phoneNumber: string,
-  customer: string,
-  tonnageDefault: string,
-  idCardNumber: string,
-  mediumUnladenWeight: string,
-}
-
-
-
-export interface VehicleEdit {
-  id: number,
-  licensePlates: string,
-  rfidcode: string,
-  nameDriver: string,
-  phoneNumber: string,
-  customer: string,
-  tonnageDefault: string,
-  idCardNumber: string,
-  mediumUnladenWeight: string,
-}``
-

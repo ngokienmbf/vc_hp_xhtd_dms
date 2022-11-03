@@ -1,0 +1,50 @@
+<div class="container-lg">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới lái xe</div >
+                <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                    <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                        Thông tin lái xe
+                    </div>
+                </ng-template>        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Tài khoản</label>
+                    <!-- <input type="text" class="form-control" formControlName="userName"> -->
+
+                    <app-multidropdown 
+                    [items]="userNameList" 
+                    [showSearch]=true
+                    [showAll]=false
+                    [showStatus]=true
+                    [showError]=false
+                    [name]="userNameOrigin"
+                    placeholder="Chọn tài xế" 
+                    (itemChange)="onUserNameDropDownChange($event)">
+                  </app-multidropdown>
+
+                    <div *ngIf="submited && userName?.errors?.['required']">
+                        <span *ngIf="userName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Phương tiện</label>
+                    <input type="text" class="form-control" formControlName="vehicle">
+                    <div *ngIf="submited && vehicle?.errors?.['required']">
+                        <span *ngIf="vehicle?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-success" type="submit">Lưu</button>
+            <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
+        </div>
+    </form>
+</div>

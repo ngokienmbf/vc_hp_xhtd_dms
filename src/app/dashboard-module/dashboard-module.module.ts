@@ -45,8 +45,11 @@ import { VehicleDeleteComponent } from './Component/vehicle/vehicle-delete/vehic
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
 
 //Danh muc
+import { DeviceCreateComponent } from './Component/device/device-create/device-create.component';
+import { DeviceDeleteComponent } from './Component/device/device-delete/device-delete.component';
+import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
 
-// Quan ly he thong 
+// Quan ly he thong
 import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
 import { QLTaiKhoanDeleteComponent } from './Component/quan-ly-tai-khoan/tai-khoan-delete/tai-khoan-delete.component';
 import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
@@ -59,6 +62,10 @@ import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.compo
 import { RfidCreateComponent } from './Component/RFID/rfid-create/rfid-create.component';
 import { RfidDeleteComponent } from './Component/RFID/rfid-delete/rfid-delete.component';
 
+import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-vehicle-index/driver-vehicle-index.component';
+import { DriverVehicleCreateComponent } from './Component/driver-vehicle/driver-vehicle-create/driver-vehicle-create.component';
+import { DriverVehicleDeleteComponent } from './Component/driver-vehicle/driver-vehicle-delete/driver-vehicle-delete.component';
+1
 
 @NgModule({
   declarations: [
@@ -79,6 +86,9 @@ import { RfidDeleteComponent } from './Component/RFID/rfid-delete/rfid-delete.co
     VehicleDeleteComponent,
     VehicleIndexComponent,
 
+    DeviceCreateComponent,
+    DeviceDeleteComponent,
+    DeviceIndexComponent,
     SettingIndexComponent,
 
     UserAuthorizationComponent,
@@ -92,6 +102,9 @@ import { RfidDeleteComponent } from './Component/RFID/rfid-delete/rfid-delete.co
     RfidIndexComponent,
     RfidCreateComponent,
     RfidDeleteComponent ,
+    DriverVehicleIndexComponent,
+    DriverVehicleCreateComponent,
+    DriverVehicleDeleteComponent,
 
 
   ],

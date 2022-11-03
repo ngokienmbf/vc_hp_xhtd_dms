@@ -8,11 +8,11 @@ export interface Driver {
   idCard: string,
   address: string,
   userName: string,
-  state: number,
+  state: boolean,
   createDay: Date,
-  createBy: Date,
-  cpdateDay: Date,
-  cpdateBy: Date,
+  createBy: string,
+  updateDay: Date,
+  updateBy: string,
 }
 
 export interface lstDriver {
@@ -22,32 +22,3 @@ export interface lstDriver {
   totalPage: number
   data: Driver[]
 }
-
-
-export interface DriverCreate {
-  fullName: string,
-  email: string,
-  phone: string,
-  birthday: Date,
-  gender: string,
-  idCard: string,
-  address: string,
-  userName: string,
-  state: number,
-}
-
-
-
-export interface DriverEdit {
-  id: number,
-  fullName: string,
-  email: string,
-  phone: string,
-  birthday: Date,
-  gender: string,
-  idCard: string,
-  address: string,
-  userName: string,
-  state: number,
-}
-

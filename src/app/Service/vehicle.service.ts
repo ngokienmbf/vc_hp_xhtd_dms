@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import  { CommonserviceService } from  './commonservice.service';
-import { lstVehicle,VehicleCreate,Vehicle,VehicleEdit } from '../Model/Vehicle'
+import { RequestService } from  './request.service';
+import { AccountService } from  './account.service';
+import { lstVehicle,Vehicle } from '../Model/Vehicle'
 import { map } from 'rxjs';
 
 @Injectable({
@@ -8,8 +9,7 @@ import { map } from 'rxjs';
 })
 export class VehicleService {
 
-  constructor(private httpService: CommonserviceService) { }
-
+  constructor(private httpService: RequestService,private accountService: AccountService) { }
 
   Paging(page:number, searchText:string,numberDis:number) {
     return this.httpService.getRequest('Vehicle' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
@@ -18,7 +18,11 @@ export class VehicleService {
       }))
   }
 
-  Insert(VehicleCreate: VehicleCreate) {
+  Insert(VehicleCreate: any) {
+    VehicleCreate.createBy = this.accountService.getUserInfo()['userName'] || 'null';
+    VehicleCreate.createDay = new Date();
+    VehicleCreate.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
+    VehicleCreate.updateDay = new Date();
     return this.httpService.postRequest('Vehicle',VehicleCreate)
       .pipe(map((data: any) => {
         return data;
@@ -32,7 +36,7 @@ export class VehicleService {
       }))
   }
 
-  Update(VehicleEdit : VehicleEdit)
+  Update(VehicleEdit : any)
   {
     return this.httpService.putRequest('Vehicle',VehicleEdit)
       .pipe(map((data: any) => {
@@ -45,17 +49,6 @@ export class VehicleService {
       .pipe(map((data:any ) => {
           return data;
       }))
-  }
-
-  GetAllEmpty() {
-    return this.httpService.getRequest('Vehicle/getAllEmpty')
-      .pipe(map((data : lstVehicle) => {
-          return data;
-      }))
-  }
-
-  GetByLicensePlates(licensePlates: string) {
-    return this.httpService.getRequest(`Vehicle/getByLicensePlate?licensePlates=${licensePlates}`);
   }
 
 }

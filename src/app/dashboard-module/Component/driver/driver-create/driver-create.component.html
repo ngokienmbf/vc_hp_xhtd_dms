@@ -1,24 +1,24 @@
 <div class="container-lg">
     <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
         <div class="row">
-            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới phương tiện</div >
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới lái xe</div >
                 <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
                     <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
-                        Sửa lái xe
+                        Thông tin lái xe
                     </div>
                 </ng-template>        </div>
         <div class="row">
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Tài khoản</label>
-                    <input type="text" class="form-control" formControlName="userName">
+                    <input type="text" class="form-control" formControlName="userName" [readonly]="(customerId&&!isCreate)">
                     <div *ngIf="submited && userName?.errors?.['required']">
                         <span *ngIf="userName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Họ tên</label>
                     <input type="text" class="form-control" formControlName="fullName">
                     <div *ngIf="submited && fullName?.errors?.['required']">
@@ -27,22 +27,26 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Trạng thái</label>
-                    <input type="text" class="form-control" formControlName="state">
+                    <!-- <input type="text" class="form-control" formControlName="state"> -->
+                    <select class="form-control" formControlName="state" >
+                        <option [ngValue]="true">active</option>
+                        <option [ngValue]="false">deactive</option>
+                    </select>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Số CMT/CCCD</label>
-                    <input type="number" class="form-control" formControlName="idCard">
+                    <input type="text" class="form-control" formControlName="idCard">
                     <div *ngIf="submited && idCard?.errors?.['required']">
                         <span *ngIf="idCard?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">phone</label>
                     <input type="text" class="form-control" formControlName="phone">
                     <div *ngIf="submited && phone?.errors?.['required']">
@@ -51,27 +55,30 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">email</label>
-                    <input type="number" class="form-control" formControlName="email">
+                    <input type="text" class="form-control" formControlName="email">
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">birthday</label>
-                    <input type="number" class="form-control" formControlName="birthday">
+                    <input type="datetime-local" class="form-control" formControlName="birthday">
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">gender</label>
-                    <input type="number" class="form-control" formControlName="gender">
+                    <select class="form-control" formControlName="gender" >
+                        <option [ngValue]="'Nam'">Nam</option>
+                         <option [ngValue]="'Nữ'">Nữ</option>
+                       </select>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="mb-3">
+                <div class="mb-6">
                     <label for="exampleFormControlInput1" class="form-label">address</label>
-                    <input type="number" class="form-control" formControlName="address">
+                    <input type="textarea" class="form-control" formControlName="address">
                 </div>
             </div>
 

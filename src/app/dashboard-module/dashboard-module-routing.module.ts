@@ -8,7 +8,9 @@ import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 import { ExampleComponent } from './Component/example/example.component'
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
+import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
 import { DriverIndexComponent } from './Component/driver/driver-index/driver-index.component';
+import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-vehicle-index/driver-vehicle-index.component';
 import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
 
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
@@ -20,19 +22,16 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
-      { path: 'taikhoan', component: TaikhoanComponent },
-      {
-        path: 'example',
-        component: ExampleComponent,
-      },
-
+      { path: 'tai-khoan', component: TaikhoanComponent },
+      {path: 'example',component: ExampleComponent },
 
       // quan ly
-
       { path: 'lai-xe', component: DriverIndexComponent },
-      { path: 'phuong-tien', component: VehicleIndexComponent },
+      { path: 'phuong-tien', component: VehicleIndexComponent },     
+       { path: 'lai-xe-phuong-tien', component: DriverVehicleIndexComponent },
 
       // danh muc
+      { path: 'thiet-bi', component: DeviceIndexComponent },
       { path: 'setting', component: SettingIndexComponent },
       { path: '404-not-found', component: NotfoundComponent },
 

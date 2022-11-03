@@ -1,6 +1,6 @@
 import { lstOrderOperating, OrderOperating } from './../Model/OrderOperating';
 import { Injectable } from '@angular/core';
-import { CommonserviceService } from './commonservice.service';
+import { RequestService } from './request.service';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 })
 export class OrderOperatingService {
 
-  constructor(private httpService: CommonserviceService) { }
+  constructor(private httpService: RequestService) { }
 
 
   Paging(page: number, searchText: string, numberDis: number, deliveryCode: string, state: string) {

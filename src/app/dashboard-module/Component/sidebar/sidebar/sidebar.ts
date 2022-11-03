@@ -46,6 +46,11 @@ export const ROUTE_DATA: TypeRoute[] = [
                 roles: ["Admin","ds"],
             },
             {
+                name :'Phương tiện - lái xe',
+                url:'lai-xe-phuong-tien',
+                roles: ["Admin","ds"],
+            },
+            {
                 name: 'Đơn hàng',
                 url: 'don-hang',
                 roles: ["Admin", "ds"]
@@ -73,7 +78,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         },
         {
             name :'Danh mục thiết bị',
-            url:'don-vi',
+            url:'thiet-bi',
             roles: ["Admin"],
         },
         {

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
 import { MatDialog } from '@angular/material/dialog';
-import { lstDriver, Driver } from 'src/app/Model/Driver';
-import { DriverService } from 'src/app/Service/driver.service';
+import { lstDevice, Device } from 'src/app/Model/Device';
+import { DeviceService } from 'src/app/Service/device.service';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
-import { DriverCreateComponent } from '../driver-create/driver-create.component';
-import { DriverDeleteComponent } from '../driver-delete/driver-delete.component';
+import { DeviceCreateComponent } from '../device-create/device-create.component';
+import { DeviceDeleteComponent } from '../device-delete/device-delete.component';
 
 @Component({
-  selector: 'app-driver-index',
-  templateUrl: './driver-index.component.html',
+  selector: 'app-device-index',
+  templateUrl: './device-index.component.html',
 })
-export class DriverIndexComponent implements OnInit {
+export class DeviceIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
   loadding: boolean = false;
@@ -24,7 +24,7 @@ export class DriverIndexComponent implements OnInit {
     totalPage : 0,
   }
 
-  lstdata : lstDriver = {
+  lstdata : lstDevice = {
     currentPage : 0,
     pageSize : 0,
     totalRecord : 0,
@@ -38,7 +38,7 @@ export class DriverIndexComponent implements OnInit {
     pageSize : 10
   }
   
-  constructor(private DriverService : DriverService,
+  constructor(private DeviceService : DeviceService,
     public dialog: MatDialog,
     private toastr : ToastrcustomService,
     public convertHelper: convertHelper) { }
@@ -49,7 +49,7 @@ export class DriverIndexComponent implements OnInit {
 
   Pagingdata(PageInfo : any)  {
     this.loadding = true;
-     this.DriverService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+     this.DeviceService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
       this.loadding = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
@@ -79,7 +79,7 @@ export class DriverIndexComponent implements OnInit {
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
-    const dialogRef = this.dialog.open(DriverCreateComponent);
+    const dialogRef = this.dialog.open(DeviceCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -98,7 +98,7 @@ export class DriverIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(DriverCreateComponent);
+    const dialogRef = this.dialog.open(DeviceCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
         if(result){
           if(result.succeeded === true){
@@ -117,7 +117,7 @@ export class DriverIndexComponent implements OnInit {
 
   openDelete(id: number){
     this.customerId = id;
-    const dialogRef = this.dialog.open(DriverDeleteComponent);
+    const dialogRef = this.dialog.open(DeviceDeleteComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe(result => {
       if(result){

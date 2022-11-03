@@ -1,6 +1,6 @@
+import { RequestService } from './request.service';
 import { lstRfid, rfid } from './../Model/Rfid';
 import { Injectable } from '@angular/core';
-import { CommonserviceService } from './commonservice.service';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 })
 export class RfidService {
 
-  constructor(private httpService: CommonserviceService) { }
+  constructor(private httpService: RequestService) { }
 
 
   Paging(page: number, searchText: string, numberDis: number) {
