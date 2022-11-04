@@ -14,13 +14,18 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
           <input type="text" class="form-control" formControlName="vehicle">
-
+          <div *ngIf="submited && vehicle?.errors?.['required']">
+            <span *ngIf="vehicle?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Giấy phép lái xe</label>
           <input type="text" class="form-control" formControlName="idCardNumber">
+          <div *ngIf="submited && idCardNumber?.errors?.['required']">
+            <span *ngIf="idCardNumber?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+          </div>
         </div>
       </div>
       <div class="col-lg-6">
@@ -45,6 +50,34 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trọng lượng không tải trung bình</label>
           <input type="number" class="form-control" formControlName="tonnageDefault">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 1</label>
+          <input type="number" class="form-control" formControlName="unladenWeight1">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 2</label>
+          <input type="number" class="form-control" formControlName="unladenWeight2">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 3</label>
+          <input type="number" class="form-control" formControlName="unladenWeight3">
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải TB?</label>
+          <select class="form-control" formControlName="isSetMediumUnladenWeight">
+            <option [ngValue]="true">Yes</option>
+            <option [ngValue]="false">No</option>
+          </select>
         </div>
       </div>
     </div>
