@@ -11,7 +11,14 @@ export class VehicleService {
 
   constructor(private httpService: RequestService,private accountService: AccountService) { }
 
-  Insert(VehicleCreate: Vehicle) {
+  Paging(page:number, searchText:string,numberDis:number) {
+    return this.httpService.getRequest('Vehicle' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
+      .pipe(map((data : lstVehicle) => {
+          return data;
+      }))
+  }
+
+  Insert(VehicleCreate: any) {
     VehicleCreate.createBy = this.accountService.getUserInfo()['userName'] || 'null';
     VehicleCreate.createDay = new Date();
     VehicleCreate.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
@@ -22,23 +29,15 @@ export class VehicleService {
       }))
   }
 
-  Paging(page:number, searchText:string,numberDis:number) {
-    return this.httpService.getRequest('Vehicle' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
-      .pipe(map((data : lstVehicle) => {
-          return data;
-      }))
-  }
-
   GetDetail(id: number) {
-    return this.httpService.getRequest('Vehicle',id)
+    return this.httpService.getRequest(`Vehicle/${id}`)
       .pipe(map((data:Vehicle ) => {
           return data;
       }))
   }
 
-  Update(VehicleEdit: Vehicle) {
-    VehicleEdit.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
-    VehicleEdit.updateDay = new Date();
+  Update(VehicleEdit : any)
+  {
     return this.httpService.putRequest('Vehicle',VehicleEdit)
       .pipe(map((data: any) => {
         return data;
@@ -46,7 +45,7 @@ export class VehicleService {
   }
 
   Delete(id: number) {
-    return this.httpService.deleteRequest('Vehicle/'+id)
+    return this.httpService.deleteRequest(`Vehicle/${id}`)
       .pipe(map((data:any ) => {
           return data;
       }))
@@ -58,6 +57,12 @@ export class VehicleService {
 
   GetWithDriver(id: number) {
     return this.httpService.getRequest(`Vehicle/GetWithDriver/{id}`);
+    
+  GetVehiclesNoRfid(page:number, searchText:string,numberDis:number) {
+    return this.httpService.getRequest(`Vehicle/getVehiclesNoRfid?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+    .pipe(map((data : lstVehicle) => {
+        return data;
+    }))
   }
 
 }

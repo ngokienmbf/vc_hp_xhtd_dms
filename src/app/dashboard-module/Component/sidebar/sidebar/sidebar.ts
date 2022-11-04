@@ -54,6 +54,11 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name: 'Đơn hàng',
                 url: 'don-hang',
                 roles: ["Admin", "ds"]
+            },
+            {
+                name: 'RFID',
+                url: 'rfid',
+                roles: ["Admin", "ds"]
             }
         ]
     },

@@ -11,7 +11,6 @@
             <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
         </div>
         <div class="col-md-8" style="text-align: right;">
-
             <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm mới</button>
         </div>
     </div>
@@ -21,11 +20,11 @@
                 <thead >
                   <tr >
                     <th  style="text-align: center;">STT</th>
-                    <th>Xe</th>
-                    <th>Lái xe</th>
-                    <th>Giấy phép</th>
+                    <th>Biển số </th>
+                    <th>Người lái</th>
+                    <th>Giấy phép lái xe</th>
                     <th>Trọng tải</th>
-                    <th>Trọng tải mặc định</th>
+                    <th>TL Bì</th>
                     <th>Cao</th>
                     <th>Rộng</th>
                     <th>Dài</th>
@@ -43,7 +42,8 @@
                     <td>{{item.heightVehicle}}</td>
                     <td>{{item.widthVehicle}}</td>
                     <td>{{item.longVehicle}}</td>
-                    <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.idVehicle)"></i><i class="bi bi-trash3" (click)="openDelete(item.idVehicle)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
+                    <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.idVehicle)"></i>
+                      <i class="bi bi-trash3" (click)="openDelete(item.idVehicle)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
                   </tr>
                 </tbody>
               </table>

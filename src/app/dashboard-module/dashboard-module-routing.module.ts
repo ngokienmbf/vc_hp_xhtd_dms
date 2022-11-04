@@ -1,3 +1,4 @@
+import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,7 +38,8 @@ const routes: Routes = [
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
-      { path: 'don-hang', component: OrderOperatingIndexComponent}
+      { path: 'don-hang', component: OrderOperatingIndexComponent},
+      { path: 'rfid', component: RfidIndexComponent}
 
 
 

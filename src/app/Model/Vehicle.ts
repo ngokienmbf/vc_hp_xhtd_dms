@@ -1,23 +1,20 @@
 export interface Vehicle {
   idVehicle: number,
   vehicle: string,
-  nameDriver: string,
-  idCardNumber: string,
-
   tonnage: number,
   tonnageDefault: number,
-  heightVehicle:	number,
-  widthVehicle:	number,
-  longVehicle:	number,
-
-  unladenWeight1:	number,
-  unladenWeight2:	number,
-  unladenWeight3:	number,
-  isSetMediumUnladenWeight:	boolean,
-
+  nameDriver: string,
+  idCardNumber: string,
+  heightVehicle: number,
+  widthVehicle: number,
+  longVehicle: number,
+  unladenWeight1: number,
+  unladenWeight2: number,
+  unladenWeight3: number,
+  isSetMediumUnladenWeight: number,
   createDay: Date,
-  updateDay: Date,
   createBy: string,
+  updateDay: Date,
   updateBy: string,
 }
 

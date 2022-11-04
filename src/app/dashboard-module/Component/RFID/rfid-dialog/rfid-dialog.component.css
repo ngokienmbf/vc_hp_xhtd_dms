@@ -1,0 +1,7 @@
+.ite-cont {
+  cursor: pointer;
+}
+
+.item-cont:hover {
+  background-color: rgb(202, 202, 202);
+}
