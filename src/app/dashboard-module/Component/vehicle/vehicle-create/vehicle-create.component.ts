@@ -2,7 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
+import { Item } from 'src/app/Model/multidropdown';
 import { VehicleService } from 'src/app/Service/vehicle.service';
+import { DriverService } from 'src/app/Service/driver.service';
 
 @Component({
   selector: 'app-vehicle-create',
@@ -13,9 +15,14 @@ export class VehicleCreateComponent implements OnInit {
   submited: boolean = false;
   listProductGroup: any = [];
   listUnit: any = [];
+
+  userNameSelected: string = "";
+  userNameList: Item[] = [];
+
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
-  constructor(private VehicleService: VehicleService, public dialogRef: MatDialogRef<VehicleCreateComponent>) {
+  
+  constructor(private VehicleService: VehicleService, private DriverService: DriverService, public dialogRef: MatDialogRef<VehicleCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       vehicle: new FormControl(''),
       tonnage: new FormControl(),
@@ -29,19 +36,17 @@ export class VehicleCreateComponent implements OnInit {
       unladenWeight2: new FormControl(),
       unladenWeight3: new FormControl(),
       isSetMediumUnladenWeight: new FormControl(),
-      createDay: new FormControl(),
-      createBy: new FormControl(''),
-      updateDay: new FormControl(),
-      updateBy: new FormControl(''),
+      userName: new FormControl(),
     })
   }
 
   ngOnInit(): void {
     //Edit
     if (this.customerId && this.isCreate === false) {
-      this.VehicleService.GetDetail(this.customerId).subscribe(response => {
+      this.VehicleService.GetWithDriver(this.customerId).subscribe(response => {
+        this.userNameSelected = response.userName;
         this.CreateEditForm = new FormGroup({
-          iDVehicle: new FormControl(response.idVehicle),
+          idVehicle: new FormControl(response.idVehicle),
           vehicle: new FormControl(response.vehicle),
           tonnage: new FormControl(response.tonnage),
           tonnageDefault: new FormControl(response.tonnageDefault),
@@ -54,35 +59,21 @@ export class VehicleCreateComponent implements OnInit {
           unladenWeight2: new FormControl(response.unladenWeight2),
           unladenWeight3: new FormControl(response.unladenWeight3),
           isSetMediumUnladenWeight: new FormControl(response.isSetMediumUnladenWeight),
+          userName: new FormControl(response.userName),
           createDay: new FormControl(response.createDay),
           createBy: new FormControl(response.createBy),
           updateDay: new FormControl(response.updateDay),
           updateBy: new FormControl(response.updateBy),
         })
+        this.DriverService.GetAllFull().subscribe((data) => {
+          this.userNameList = data;
+          //this.userNameSelected = this.userNameList.find(x => x.value == this.CreateEditForm.get('userName')?.value||null)?.name||'xxx';
+        });
       })
     }
   }
 
-  getGroupId(event: any) {
-    this.CreateEditForm.value.groupId = event.target.value;
-  }
-  getUnitId(event: any) {
-    this.CreateEditForm.value.unitId = event.target.value;
-  }
-
   get vehicle() { return this.CreateEditForm.get('vehicle') }
-  get idCardNumber() { return this.CreateEditForm.get('idCardNumber') }
-  get nameDriver() { return this.CreateEditForm.get('nameDriver') }
-  get tonnage() { return this.CreateEditForm.get('tonnage') }
-  get tonnageDefault() { return this.CreateEditForm.get('tonnageDefault') }
-  get heightVehicle() { return this.CreateEditForm.get('heightVehicle') }
-  get widthVehicle() { return this.CreateEditForm.get('widthVehicle') }
-  get longVehicle() { return this.CreateEditForm.get('longVehicle') }
-  get unladenWeight1() { return this.CreateEditForm.get('unladenWeight1') }
-  get unladenWeight2() { return this.CreateEditForm.get('unladenWeight2') }
-  get unladenWeight3() { return this.CreateEditForm.get('unladenWeight3') }
-  get isSetMediumUnladenWeight() { return this.CreateEditForm.get('isSetMediumUnladenWeight') }
-
 
   onSubmit() {
     this.submited = true;
@@ -99,7 +90,17 @@ export class VehicleCreateComponent implements OnInit {
     }
   }
 
-
+  onUserNameDropDownChange(item: Item): void {
+    if(!item.checked){
+      this.CreateEditForm.value.userName = '';
+      this.userNameSelected = '';
+    }
+    else
+    {
+      this.userNameSelected = item.name;
+      this.CreateEditForm.value.userName = item.name;
+    }
+  }
 
 
 }

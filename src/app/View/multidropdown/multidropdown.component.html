@@ -44,7 +44,7 @@
                         <input type="checkbox" class="custom-control-input" [id]="'chkItem' + item.id"
                             (change)='onChange($event, item)' [checked]="item.checked">
                         <label class="custom-control-label" [for]="'chkItem' + item.id">
-                            <span class="pl-2" [title]="item.name">{{item.name}}</span>
+                            <span class="pl-2" [title]="item.title?item.title:item.name">{{item.name}}</span>
                         </label>
                     </div>
                 </div>

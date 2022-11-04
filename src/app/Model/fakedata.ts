@@ -6,13 +6,15 @@ export const userNames = [
     name: "Kien",
     checked: false,
     visible: false,
+    value: 'kien',
 },
 {
-  uuid: "xx",
+  uuid: "yy",
   id: 1,
-  name: "UHxx",
+  name: "KhoaNv",
   checked: false,
   visible: false,
+  value: 'khoanv',
 },
 ]
 

@@ -10,77 +10,106 @@
       </ng-template>
     </div>
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
           <input type="text" class="form-control" formControlName="vehicle">
           <div *ngIf="submited && vehicle?.errors?.['required']">
             <span *ngIf="vehicle?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
+        </div>
         </div>
       </div>
-      <div class="col-lg-6">
+            <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Giấy phép lái xe</label>
-          <input type="text" class="form-control" formControlName="idCardNumber">
-          <div *ngIf="submited && idCardNumber?.errors?.['required']">
-            <span *ngIf="idCardNumber?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Người lái</label>
+          <label for="exampleFormControlInput1" class="form-label">Lái xe mặc định</label>
           <input type="text" class="form-control" formControlName="nameDriver">
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Giấy phép LX mặc định</label>
+          <input type="text" class="form-control" formControlName="idCardNumber">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tài khoản LX hiện tại</label>
+          <!-- <input type="text" class="form-control" formControlName="userName"> -->
+          <app-multidropdown 
+          [items]="userNameList" 
+          [showSearch]=true
+          [showAll]=false
+          [showStatus]=true
+          [showError]=false
+          [name]="userNameSelected"
+          placeholder="Chọn tài xế" 
+          (itemChange)="onUserNameDropDownChange($event)">
+        </app-multidropdown>
+        </div>
+      </div>
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trọng tải</label>
           <input type="number" class="form-control" formControlName="tonnage">
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Chiều cao</label>
-          <input type="text" class="form-control" formControlName="heightVehicle">
-        </div>
-      </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trọng lượng không tải trung bình</label>
           <input type="number" class="form-control" formControlName="tonnageDefault">
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 1</label>
-          <input type="number" class="form-control" formControlName="unladenWeight1">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 2</label>
-          <input type="number" class="form-control" formControlName="unladenWeight2">
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 3</label>
-          <input type="number" class="form-control" formControlName="unladenWeight3">
-        </div>
-      </div>
 
-      <div class="col-lg-6">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải TB?</label>
-          <select class="form-control" formControlName="isSetMediumUnladenWeight">
-            <option [ngValue]="true">Yes</option>
-            <option [ngValue]="false">No</option>
-          </select>
-        </div>
+
+    <div class="col-lg-4">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Chiều cao</label>
+        <input type="nunber" class="form-control" formControlName="heightVehicle">
       </div>
     </div>
+    <div class="col-lg-4">
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Rộng</label>
+          <input type="number" class="form-control" formControlName="widthVehicle">
+      </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Dài</label>
+            <input type="number" class="form-control" formControlName="longVehicle">
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 1</label>
+            <input type="number" class="form-control" formControlName="unladenWeight1">
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 2</label>
+            <input type="number" class="form-control" formControlName="unladenWeight2">
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải 3</label>
+            <input type="number" class="form-control" formControlName="unladenWeight3">
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Trọng Lg không tải TB?</label>
+            <select class="form-control" formControlName="isSetMediumUnladenWeight" >
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+            </select>
+        </div>
+    </div>
+
+  </div>
 
     <div class="d-flex justify-content-end">
       <button type="button" class="btn btn-success" type="submit">Lưu</button>

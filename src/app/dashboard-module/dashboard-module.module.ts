@@ -32,7 +32,7 @@ import { NotfoundComponent } from './Component/notfound/notfound.component';
 
 //Component
 import { HomeComponent } from './Component/home/home.component';
-import { SidebarComponent } from './Component/sidebar/sidebar/sidebar.component';
+import { SidebarComponent } from './Component/sidebar/sidebar.component';
 import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 
 // Quan ly
