@@ -51,4 +51,11 @@ export class VehicleService {
       }))
   }
 
+  GetVehiclesNoRfid(page:number, searchText:string,numberDis:number) {
+    return this.httpService.getRequest(`Vehicle/getVehiclesNoRfid?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+    .pipe(map((data : lstVehicle) => {
+        return data;
+    }))
+  }
+
 }

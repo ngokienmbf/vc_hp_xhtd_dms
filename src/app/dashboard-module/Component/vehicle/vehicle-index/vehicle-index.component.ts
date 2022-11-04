@@ -56,7 +56,6 @@ export class VehicleIndexComponent implements OnInit {
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
-      console.log('this.lstdata', this.lstdata);
     })
   }
 
