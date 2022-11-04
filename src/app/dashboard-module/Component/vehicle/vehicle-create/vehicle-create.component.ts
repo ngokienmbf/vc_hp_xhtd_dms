@@ -71,8 +71,6 @@ export class VehicleCreateComponent implements OnInit {
         });
       })
     }
-            
-
   }
 
   get vehicle() { return this.CreateEditForm.get('vehicle') }
