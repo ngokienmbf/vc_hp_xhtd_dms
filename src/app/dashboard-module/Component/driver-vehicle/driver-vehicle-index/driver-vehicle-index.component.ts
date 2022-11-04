@@ -60,7 +60,6 @@ export class DriverVehicleIndexComponent implements OnInit {
      })
   }
 
-
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     this.PageInfo = pageOfItems
@@ -73,13 +72,13 @@ export class DriverVehicleIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-
   //Create
-  
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
-    const dialogRef = this.dialog.open(DriverVehicleCreateComponent);
+    const dialogRef = this.dialog.open(DriverVehicleCreateComponent,{
+      height: '500px',width: '500px',
+  });
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -98,7 +97,9 @@ export class DriverVehicleIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(DriverVehicleCreateComponent);
+    const dialogRef = this.dialog.open(DriverVehicleCreateComponent,{
+      height: '500px',width: '500px',
+  });
     dialogRef.afterClosed().subscribe(result => {
         if(result){
           if(result.succeeded === true){

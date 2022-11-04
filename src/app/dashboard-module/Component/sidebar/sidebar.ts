@@ -55,11 +55,6 @@ export const ROUTE_DATA: TypeRoute[] = [
                 url: 'don-hang',
                 roles: ["Admin", "ds"]
             },
-            {
-                name: 'RFID',
-                url: 'rfid',
-                roles: ["Admin", "ds"]
-            }
         ]
     },
     {
@@ -72,9 +67,9 @@ export const ROUTE_DATA: TypeRoute[] = [
             roles: ["ds","Admin"],
         },
         {
-            name :'Danh mục RFID',
-            url:'404-not-found',
-            roles: ["Admin"],
+            name: 'Danh mục RFID',
+            url: 'rfid',
+            roles: ["Admin", "ds"]
         },
         {
             name :'Danh mục thiết bị',

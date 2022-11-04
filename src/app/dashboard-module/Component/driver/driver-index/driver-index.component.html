@@ -38,7 +38,10 @@
                     <td style="text-align: center;">{{i + 1}}</td>
                     <td>{{item.userName}}</td>
                     <td>{{item.fullName}}</td>
-                    <td>{{item.state}}</td>
+                    <td style="text-align: center;">
+                      <i *ngIf="item.state" class="bi bi-check-circle-fill" style="color: green;"></i>
+                      <i *ngIf="!item.state" class="bi bi-dash-circle-fill" style="color: red;"></i>
+                    </td>
                     <td>{{item.idCard}}</td>
                     <td>{{item.phone}}</td>
                     <td>{{item.email}}</td>

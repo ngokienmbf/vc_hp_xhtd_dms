@@ -9,6 +9,7 @@ export interface Driver {
   address: string,
   userName: string,
   state: boolean,
+  vehicles: string,
   createDay: Date,
   createBy: string,
   updateDay: Date,

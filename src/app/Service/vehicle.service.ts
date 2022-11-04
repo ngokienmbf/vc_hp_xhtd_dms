@@ -3,6 +3,7 @@ import { RequestService } from  './request.service';
 import { AccountService } from  './account.service';
 import { lstVehicle,Vehicle } from '../Model/Vehicle'
 import { map } from 'rxjs';
+import { Item } from '../Model/multidropdown';
 
 @Injectable({
   providedIn: 'root'
@@ -51,14 +52,22 @@ export class VehicleService {
       }))
   }
 
-  GetFreeVehicles(vehicle: string) {
-    return this.httpService.getRequest(`Vehicle/GetFreeVehicles/{vehicle}`);
+  GetFreeVehicles(vehicle: string ) {
+    return this.httpService.getRequest(`Vehicle/GetFreeVehicles/${vehicle}`)
+    .pipe(map((data : any) => {
+      return data.map((i : any) => ({
+        id: i.id,
+        name:  i.vehicle,
+        //title: i.vehicle
+      } as Item)) as Item[];
+    }));
   }
 
   GetWithDriver(id: number) {
-    return this.httpService.getRequest(`Vehicle/GetWithDriver/{id}`);
-    
-  GetVehiclesNoRfid(page:number, searchText:string,numberDis:number) {
+    return this.httpService.getRequest(`Vehicle/GetWithDriver/${id}`);
+  }
+
+  GetVehiclesNoRfid(page: number, searchText: string, numberDis: number) {
     return this.httpService.getRequest(`Vehicle/getVehiclesNoRfid?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
     .pipe(map((data : lstVehicle) => {
         return data;

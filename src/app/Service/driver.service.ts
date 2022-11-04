@@ -3,13 +3,14 @@ import { RequestService } from  './request.service';
 import { AccountService } from  './account.service';
 import { lstDriver,Driver } from '../Model/Driver'
 import { map } from 'rxjs';
+import { Item } from '../Model/multidropdown';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DriverService {
 
-  constructor(private httpService: RequestService,private accountService: AccountService) { }
+  constructor(private httpService: RequestService, private accountService: AccountService) { }
 
   Insert(DriverCreate: Driver) {
     DriverCreate.createBy = this.accountService.getUserInfo()['userName'] || 'null';
@@ -28,9 +29,27 @@ export class DriverService {
           return data;
       }))
   }
+  
+  GetAllFull() { // for dropdowns only
+    return this.httpService.getRequest(`Driver/GetFull`)
+    .pipe(map((data : any) => {
+      return data.map((i : any) => ({
+        id: i.id,
+        name:  i.userName,
+        title: i.fullName
+      } as Item)) as Item[];
+    }));
+  }
 
   GetDetail(id: number) {
     return this.httpService.getRequest('Driver',id)
+      .pipe(map((data:Driver ) => {
+          return data;
+      }))
+  }
+
+  GetWithVehicles(id: number) {
+    return this.httpService.getRequest('Driver/GetWithVehicles',id)
       .pipe(map((data:Driver ) => {
           return data;
       }))
@@ -52,7 +71,4 @@ export class DriverService {
       }))
   }
 
-  // GetByLicensePlates(licensePlates: string) {
-  //   return this.httpService.getRequest(`Vehicle/getByLicensePlate?licensePlates=${licensePlates}`);
-  // }
 }
