@@ -52,4 +52,12 @@ export class VehicleService {
       }))
   }
 
+  GetFreeVehicles(vehicle: string) {
+    return this.httpService.getRequest(`Vehicle/GetFreeVehicles/{vehicle}`);
+  }
+
+  GetWithDriver(id: number) {
+    return this.httpService.getRequest(`Vehicle/GetWithDriver/{id}`);
+  }
+
 }
