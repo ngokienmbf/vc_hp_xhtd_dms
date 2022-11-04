@@ -65,6 +65,7 @@ import { RfidDeleteComponent } from './Component/RFID/rfid-delete/rfid-delete.co
 import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-vehicle-index/driver-vehicle-index.component';
 import { DriverVehicleCreateComponent } from './Component/driver-vehicle/driver-vehicle-create/driver-vehicle-create.component';
 import { DriverVehicleDeleteComponent } from './Component/driver-vehicle/driver-vehicle-delete/driver-vehicle-delete.component';
+import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.component';
 1
 
 @NgModule({
@@ -105,6 +106,7 @@ import { DriverVehicleDeleteComponent } from './Component/driver-vehicle/driver-
     DriverVehicleIndexComponent,
     DriverVehicleCreateComponent,
     DriverVehicleDeleteComponent,
+    RfidDialogComponent,
 
 
   ],

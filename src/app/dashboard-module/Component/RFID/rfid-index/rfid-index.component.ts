@@ -1,3 +1,5 @@
+import { rfid } from './../../../../Model/Rfid';
+import { RfidDialogComponent } from './../rfid-dialog/rfid-dialog.component';
 import { RfidCreateComponent } from './../rfid-create/rfid-create.component';
 import { RfidDeleteComponent } from './../rfid-delete/rfid-delete.component';
 import { RfidService } from './../../../../Service/rfid.service';
@@ -51,7 +53,6 @@ export class RfidIndexComponent implements OnInit {
   Pagingdata(PageInfo: any) {
     this.loadding = true;
     this.rfidService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize).subscribe(data => {
-      console.log(data, 'data')
       this.loadding = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
@@ -106,22 +107,38 @@ export class RfidIndexComponent implements OnInit {
     });
   }
 
-  openEdit(id: number){
+  openEdit(id: number) {
     this.isCreate = false;
     this.createId = id;
     const dialogRef = this.dialog.open(RfidCreateComponent);
     dialogRef.componentInstance.createId = this.createId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
-          if(result.statusCode === 200){
-            this.toastr.showSuccess(result.message);
-            this.Pagingdata(this.PageInfo);
-          }
-          else
-          {
-            this.toastr.showError(result.message);
-          }
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    })
+  }
+
+  showVehicles(item: rfid) {
+    const dialogRef = this.dialog.open(RfidDialogComponent);
+    dialogRef.componentInstance.rfidSelected = item;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result,'result')
+      if (result) {
+        if (result.statusCode === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
       }
     })
   }
