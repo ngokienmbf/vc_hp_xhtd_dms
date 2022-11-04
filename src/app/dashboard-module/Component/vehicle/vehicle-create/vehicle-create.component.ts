@@ -61,8 +61,28 @@ export class VehicleCreateComponent implements OnInit {
         })
       })
     }
-
   }
+
+  getGroupId(event: any) {
+    this.CreateEditForm.value.groupId = event.target.value;
+  }
+  getUnitId(event: any) {
+    this.CreateEditForm.value.unitId = event.target.value;
+  }
+
+  get vehicle() { return this.CreateEditForm.get('vehicle') }
+  get idCardNumber() { return this.CreateEditForm.get('idCardNumber') }
+  get nameDriver() { return this.CreateEditForm.get('nameDriver') }
+  get tonnage() { return this.CreateEditForm.get('tonnage') }
+  get tonnageDefault() { return this.CreateEditForm.get('tonnageDefault') }
+  get heightVehicle() { return this.CreateEditForm.get('heightVehicle') }
+  get widthVehicle() { return this.CreateEditForm.get('widthVehicle') }
+  get longVehicle() { return this.CreateEditForm.get('longVehicle') }
+  get unladenWeight1() { return this.CreateEditForm.get('unladenWeight1') }
+  get unladenWeight2() { return this.CreateEditForm.get('unladenWeight2') }
+  get unladenWeight3() { return this.CreateEditForm.get('unladenWeight3') }
+  get isSetMediumUnladenWeight() { return this.CreateEditForm.get('isSetMediumUnladenWeight') }
+
 
   onSubmit() {
     this.submited = true;
