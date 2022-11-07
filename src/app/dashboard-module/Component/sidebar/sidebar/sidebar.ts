@@ -59,7 +59,12 @@ export const ROUTE_DATA: TypeRoute[] = [
                 name: 'RFID',
                 url: 'rfid',
                 roles: ["Admin", "ds"]
-            }
+            },
+            {
+              name: 'mang-xuat',
+              url: 'mang-xuat',
+              roles: ["Admin", "ds"]
+          },
         ]
     },
     {
