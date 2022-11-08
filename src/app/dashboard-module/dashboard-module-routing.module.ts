@@ -40,7 +40,7 @@ const routes: Routes = [
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
-      { path: 'don-hang', component: OrderOperatingIndexComponent},
+      { path: 'dieu-hanh-don', component: OrderOperatingIndexComponent},
       { path: 'rfid', component: RfidIndexComponent},
       { path: 'mang-xuat', component: TroughIndexComponent},
       { path: 'quan-ly-vao-ra', component: EnterExitIndexComponent},
