@@ -1,3 +1,4 @@
+import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
 import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
 import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
@@ -41,7 +42,8 @@ const routes: Routes = [
       { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
       { path: 'don-hang', component: OrderOperatingIndexComponent},
       { path: 'rfid', component: RfidIndexComponent},
-      { path: 'mang-xuat', component: TroughIndexComponent}
+      { path: 'mang-xuat', component: TroughIndexComponent},
+      { path: 'quan-ly-vao-ra', component: EnterExitIndexComponent},
 
 
 

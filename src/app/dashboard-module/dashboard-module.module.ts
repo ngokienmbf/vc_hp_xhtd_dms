@@ -69,6 +69,8 @@ import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.co
 import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
 import { TroughCreateComponent } from './Component/trough/trough-create/trough-create.component';
 import { TroughDeleteComponent } from './Component/trough/trough-delete/trough-delete.component';
+import { OrderOperatingCreateComponent } from './Component/orderoperating/order-operating-create/order-operating-create.component';
+import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
 1
 
 @NgModule({
@@ -113,6 +115,8 @@ import { TroughDeleteComponent } from './Component/trough/trough-delete/trough-d
     TroughIndexComponent,
     TroughCreateComponent,
     TroughDeleteComponent,
+    OrderOperatingCreateComponent,
+    EnterExitIndexComponent,
 
 
   ],

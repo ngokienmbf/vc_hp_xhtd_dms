@@ -34,26 +34,38 @@
         <thead>
           <tr>
             <th style="text-align: center;">STT</th>
-            <th>Vehicle</th>
+            <th>Ngày đặt hàng</th>
             <th>MSGH</th>
-            <th>Tên lái xe</th>
-            <th>Tên nhà phân phối</th>
+            <th>Biến số xe</th>
+            <th>Giờ vào cổng</th>
+            <th>Giờ ra cổng</th>
+            <th>Giờ cân vào</th>
+            <th>Giờ cân ra</th>
+            <th>Họ tên lái xe</th>
+            <th>Nhà phân phối/khách hàng</th>
             <th>Hàng hóa</th>
-            <th>SL</th>
-            <th>Trạng thái</th>
+            <th>Số lượng đặt</th>
+            <th>Trạng thái đơn hàng</th>
+            <th>Cảnh báo cân</th>
             <th style="text-align: center;">Hành động</th>
           </tr>
         </thead>
         <tbody style="border-top: none;">
           <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
             <td style="text-align: center;">{{i + 1}}</td>
-            <td>{{item.vehicle}}</td>
+            <td>{{item.orderDate | date:'dd/mm/YYYY hh:ss'}}</td>
             <td>{{item.deliveryCode}}</td>
+            <td>{{item.vehicle}}</td>
+            <td>{{item.timeConfirm2}}</td>
+            <td>{{item.timeConfirm8}}</td>
+            <td>{{item.timeConfirm3}}</td>
+            <td>{{item.timeConfirm7}}</td>
             <td>{{item.driverName}}</td>
             <td>{{item.nameDistributor}}</td>
             <td>{{item.nameProduct}}</td>
             <td>{{item.sumNumber}}</td>
             <td>{{item.state}}</td>
+            <td>{{item.warningNotCall}}</td>
             <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                 (click)="openEdit(item.id)"></i></td>
           </tr>

@@ -1,0 +1,381 @@
+<div class="container-lg order">
+  <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm
+        mới phương tiện</div>
+      <ng-template #elseBlock style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+        <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+          Sửa phương tiện
+        </div>
+      </ng-template>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Biển số xe</label>
+          <input type="text" class="form-control" formControlName="vehicle" maxlength="50" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tên lái xe</label>
+          <input type="text" class="form-control" formControlName="driverName" maxlength="250" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tên nhà phân phối</label>
+          <input type="text" class="form-control" formControlName="nameDistributor" maxlength="250" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">ItemId</label>
+          <input type="number" class="form-control" formControlName="itemId" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tên sản phẩm</label>
+          <input type="text" class="form-control" formControlName="nameProduct" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">catId</label>
+          <input type="text" class="form-control" formControlName="catId" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">sumNumber</label>
+          <input type="number" class="form-control" formControlName="sumNumber" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeIn33</label>
+          <input type="datetime-local" class="form-control" formControlName="timeIn33" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">cardNo</label>
+          <input type="text" class="form-control" formControlName="cardNo" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">orderId</label>
+          <input type="number" class="form-control" formControlName="orderId" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">deliveryCode</label>
+          <input type="text" class="form-control" formControlName="deliveryCode" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">deliveryCodeParent</label>
+          <input type="text" class="form-control" formControlName="deliveryCodeParent" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">orderDate</label>
+          <input type="datetime-local" class="form-control" formControlName="orderDate" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">typeProduct</label>
+          <input type="text" class="form-control" formControlName="typeProduct" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeIn21</label>
+          <input type="datetime-local" class="form-control" formControlName="timeIn21" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeIn22</label>
+          <input type="datetime-local" class="form-control" formControlName="timeIn22" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm1</label>
+          <input type="number" class="form-control" formControlName="confirm1" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm1</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm1" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm2</label>
+          <input type="number" class="form-control" formControlName="confirm2" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm2</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm2" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm3</label>
+          <input type="number" class="form-control" formControlName="confirm3" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm3</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm3" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm4</label>
+          <input type="number" class="form-control" formControlName="confirm4" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm4</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm4" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm5</label>
+          <input type="number" class="form-control" formControlName="confirm5" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm5</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm5" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm6</label>
+          <input type="number" class="form-control" formControlName="confirm6" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm6</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm6" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm7</label>
+          <input type="number" class="form-control" formControlName="confirm7" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm7</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm7" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm8</label>
+          <input type="number" class="form-control" formControlName="confirm8" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm8</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm8" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm9</label>
+          <input type="number" class="form-control" formControlName="confirm9" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">timeConfirm9</label>
+          <input type="datetime-local" class="form-control" formControlName="timeConfirm9" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm9Note</label>
+          <input type="text" class="form-control" formControlName="confirm9Note" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">confirm9Image</label>
+          <input type="text" class="form-control" formControlName="confirm9Image" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">step</label>
+          <input type="number" class="form-control" formControlName="step" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">indexOrder</label>
+          <input type="number" class="form-control" formControlName="indexOrder" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">indexOrder1</label>
+          <input type="number" class="form-control" formControlName="indexOrder1" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">indexOrder2</label>
+          <input type="number" class="form-control" formControlName="indexOrder2" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">trough</label>
+          <input type="number" class="form-control" formControlName="trough" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">trough1</label>
+          <input type="number" class="form-control" formControlName="trough1" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">numberVoice</label>
+          <input type="number" class="form-control" formControlName="numberVoice" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">state</label>
+          <input type="text" class="form-control" formControlName="state" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">prioritize</label>
+          <input type="number" class="form-control" formControlName="prioritize" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">dayCreate</label>
+          <input type="datetime-local" class="form-control" formControlName="dayCreate" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">iDDistributorSyn</label>
+          <input type="number" class="form-control" formControlName="iDDistributorSyn" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">areaId</label>
+          <input type="number" class="form-control" formControlName="areaId" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">areaName</label>
+          <input type="text" class="form-control" formControlName="areaName" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">codeStore</label>
+          <input type="text" class="form-control" formControlName="codeStore" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">nameStore</label>
+          <input type="text" class="form-control" formControlName="nameStore" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">driverUserName</label>
+          <input type="text" class="form-control" formControlName="driverUserName" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">driverAccept</label>
+          <input type="datetime-local" class="form-control" formControlName="driverAccept" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">indexOrderTemp</label>
+          <input type="number" class="form-control" formControlName="indexOrderTemp" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">weightIn</label>
+          <input type="number" class="form-control" formControlName="weightIn" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">weightInTime</label>
+          <input type="datetime-local" class="form-control" formControlName="weightInTime" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">weightOut</label>
+          <input type="number" class="form-control" formControlName="weightOut" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">weightOutTime</label>
+          <input type="datetime-local" class="form-control" formControlName="weightOutTime" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">noteFinish</label>
+          <input type="text" class="form-control" formControlName="noteFinish" readonly>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">longitude</label>
+          <input type="text" class="form-control" formControlName="longitude" readonly>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-success" type="submit">Lưu</button>
+      <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button
+        mat-dialog-close>Đóng</button>
+    </div> -->
+  </form>
+</div>
