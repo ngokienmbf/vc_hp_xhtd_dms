@@ -6,39 +6,48 @@
                     <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
                         Thông tin lái xe
                     </div>
-                </ng-template>        </div>
+                </ng-template>        
+        </div>
+
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Tài khoản</label>
-                    <!-- <input type="text" class="form-control" formControlName="userName"> -->
-
+                    <input type="text" class="form-control" formControlName="userName" hidden="true"> 
                     <app-multidropdown 
-                    [items]="userNameList" 
-                    [showSearch]=true
-                    [showAll]=false
-                    [showStatus]=true
-                    [showError]=false
-                    [name]="userNameOrigin"
-                    placeholder="Chọn tài xế" 
-                    (itemChange)="onUserNameDropDownChange($event)">
-                  </app-multidropdown>
-
-                    <div *ngIf="submited && userName?.errors?.['required']">
-                        <span *ngIf="userName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
-                    </div>
+                        [items]="userNameList"
+                        [showSearch]=true
+                        [showAll]=false
+                        [showStatus]=true
+                        [showError]=false
+                        [name]="userNameSelected"
+                        placeholder="Chọn tài xế" 
+                        (itemChange)="onUserNameDropDownChange($event)">
+                    </app-multidropdown>
+                </div>
+                <div *ngIf="submited && userName?.errors?.['required']">
+                    <span *ngIf="userName?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Phương tiện</label>
-                    <input type="text" class="form-control" formControlName="vehicle">
+                    <input type="text" class="form-control" formControlName="vehicle" hidden="true"> 
+                    <app-multidropdown 
+                        [items]="vehicleList" 
+                        [showSearch]=true
+                        [showAll]=false
+                        [showStatus]=true
+                        [showError]=false
+                        [name]="vehicleSelected"
+                        placeholder="Chọn xe" 
+                        (itemChange)="onVehicleDropDownChange($event)">
+                    </app-multidropdown>
                     <div *ngIf="submited && vehicle?.errors?.['required']">
                         <span *ngIf="vehicle?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
                 </div>
             </div>
-            
 
         </div>
 

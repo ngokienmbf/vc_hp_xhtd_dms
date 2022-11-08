@@ -80,10 +80,56 @@ export const ROUTE_DATA: TypeRoute[] = [
         name: 'Danh mục thiết bị',
         url: 'thiet-bi',
         roles: ["Admin"],
-      },
-      {
-        name: 'Danh mục khác',
-        url: '404-not-found',
+        children : [
+            {
+                name :'Lái xe',
+                url:'lai-xe',
+            },
+            {
+                name :'Phương tiện',
+                url:'phuong-tien',
+                roles: ["Admin","ds"],
+            },
+            {
+                name :'Phương tiện - lái xe',
+                url:'lai-xe-phuong-tien',
+                roles: ["Admin","ds"],
+            },
+            {
+                name: 'Đơn hàng',
+                url: 'don-hang',
+                roles: ["Admin", "ds"]
+            },
+        ]
+    },
+    {
+      name :'Danh mục',
+      roles: ["ds"],
+      children : [
+        {
+            name :'Danh mục máng xuất',
+            url:'404-not-found',
+            roles: ["ds","Admin"],
+        },
+        {
+            name: 'Danh mục RFID',
+            url: 'rfid',
+            roles: ["Admin", "ds"]
+        },
+        {
+            name :'Danh mục thiết bị',
+            url:'thiet-bi',
+            roles: ["Admin"],
+        },
+        {
+            name :'Danh mục khác',
+            url:'404-not-found',
+            roles: ["Admin"],
+        },
+      ]
+    },
+    {
+        name :'Quản trị hệ thống',
         roles: ["Admin"],
       },
     ]

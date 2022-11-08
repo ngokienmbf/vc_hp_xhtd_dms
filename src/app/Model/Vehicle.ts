@@ -12,6 +12,7 @@ export interface Vehicle {
   unladenWeight2: number,
   unladenWeight3: number,
   isSetMediumUnladenWeight: number,
+  userName: string,
   createDay: Date,
   createBy: string,
   updateDay: Date,

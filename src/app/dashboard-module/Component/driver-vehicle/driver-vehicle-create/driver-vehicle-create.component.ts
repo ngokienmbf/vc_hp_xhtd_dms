@@ -5,7 +5,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { DriverVehicleService } from 'src/app/Service/drivervehicle.service';
 import { VehicleService } from 'src/app/Service/vehicle.service';
 import { DriverService } from 'src/app/Service/driver.service';
-import { userNames, vehicles } from '../../../../Model/fakedata';
 
 
 @Component({
@@ -15,16 +14,12 @@ import { userNames, vehicles } from '../../../../Model/fakedata';
 export class DriverVehicleCreateComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  listProductGroup: any=[];
-  listUnit: any=[];
+
 
   userNameSelected: string = "";
   vehicleSelected: string = "";
   vehicleList: Item[] = [];
   userNameList: Item[] = [];
-
-  userNameOrigin: string = "";
-  vehicleOrigin: string = "";
 
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
@@ -32,62 +27,54 @@ export class DriverVehicleCreateComponent implements OnInit {
   constructor(private DriverVehicleService: DriverVehicleService,
     private VehicleService: VehicleService,
     private DriverService: DriverService,
-     public dialogRef: MatDialogRef<DriverVehicleCreateComponent>) {
+    public dialogRef: MatDialogRef<DriverVehicleCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       vehicle: new FormControl('', Validators.required),
       userName: new FormControl('', Validators.required),
     })
   }
+  tmp?: string[];
 
   ngOnInit(): void {
     if (this.customerId && this.isCreate === false) { 
     //Edit
       this.DriverVehicleService.GetDetail(this.customerId).subscribe(response => {
-        this.userNameOrigin = response.userName;
-        this.vehicleOrigin = response.vehicle;
+        this.vehicleSelected = response.vehicle;
+        this.userNameSelected = response.userName;
+
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
           vehicle: new FormControl(response.vehicle),
-          userName: new FormControl(response.userName),
-         
+          userName: new FormControl(response.userName),         
           createDay: new FormControl(response.createDay),
           createBy: new FormControl(response.createBy),
           updateDay: new FormControl(response.updateDay),
           updateBy: new FormControl(response.updateBy),
         })
+
+        this.VehicleService.GetFreeVehicles(response.vehicle).subscribe((data) => {
+          this.vehicleList = data;
+        });
+
+        this.DriverService.GetAllFull().subscribe((data) => {
+          this.userNameList = data;
+        });
       })
+
+    } else {
+      this.VehicleService.GetFreeVehicles('x').subscribe((data) => {
+        this.vehicleList = data;
+      });
+
+      this.DriverService.GetAllFull().subscribe((data) => {
+        this.userNameList = data;
+      });
     }
-    this.GetVehicleList();
-    this.GetUserNameList();
-  }
-
-
-  GetVehicleList()
-  {
-    // this.VehicleService.GetVehicleList.subscribe(data=> {
-    //   this.vehicleList = data;
-    // })
-
-  }
-
-  GetUserNameList(){
-    // this.DriverService.GetUserNameList().subscribe(data=> {
-    //   this.userNameList = data;
-    // })
-    this.userNameList = userNames;
   }
 
   get userName() { return this.CreateEditForm.get('userName'); }
-  get vehicle() { return this.CreateEditForm.get('vehicle') }
+  get vehicle() { return this.CreateEditForm.get('vehicle'); }
  
-
-  getGroupId(event: any) {
-    this.CreateEditForm.value.groupId = event.target.value;
-  }
-  getUnitId(event: any) {
-    this.CreateEditForm.value.unitId = event.target.value;
-  }
-
   onSubmit() {
     this.submited = true;
     // console.log(this.CreateEditForm.value)
@@ -105,12 +92,31 @@ export class DriverVehicleCreateComponent implements OnInit {
 
   onUserNameDropDownChange(item: Item): void {
     if(!item.checked){
-      this.CreateEditForm.value.userName = null;
+      // this.CreateEditForm.value.userName = '';
+      this.userNameSelected = '';
+      this.CreateEditForm.get('userName')?.setValue('');
     }
     else
     {
       this.userNameSelected = item.name;
+      // this.CreateEditForm.value.userName = item.name;
+      this.CreateEditForm.get('userName')?.setValue(item.name);
+    }
+    // console.log(this.CreateEditForm.value.userName);
+    // console.log(this.CreateEditForm.get('userName'));
+  }
+  
+  onVehicleDropDownChange(item: Item): void {
+    if(!item.checked){
+      this.vehicleSelected = '';
+      this.CreateEditForm.get('vehicle')?.setValue('');
+    }
+    else
+    {
+      this.vehicleSelected = item.name;
+      this.CreateEditForm.get('vehicle')?.setValue(item.name);
     }
   }
+
 
 }

@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class MultidropdownComponent  {
 
     _items: Item[] = [];
-    @Input()name : string = '';
+    @Input() name : string = '';
     @Input() placeholder: string = '';
     @Input() showSearch = true;
     @Input() showAll = true;
@@ -62,7 +62,7 @@ export class MultidropdownComponent  {
             this.all.visible = true;
             return;
         }
-        this.filtered = this._items.filter(i => i.name.toLowerCase().indexOf(search) !== -1);
+        this.filtered = this._items.filter(i => i.name.toLowerCase().indexOf(search) !== -1 || (i.title?i.title:i.name).toLowerCase().indexOf(search) !== -1);
         if (this.all.name.toLowerCase().indexOf(search) !== -1) {
             this.all.visible = true;
         } else {

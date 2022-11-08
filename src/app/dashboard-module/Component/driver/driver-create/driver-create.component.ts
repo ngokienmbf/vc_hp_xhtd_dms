@@ -24,6 +24,7 @@ export class DriverCreateComponent implements OnInit {
       idCard: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required),
       state : new FormControl(),
+      vehicles : new FormControl(),
       address : new FormControl(),
       birthday: new FormControl(),
       email: new FormControl(),
@@ -34,10 +35,11 @@ export class DriverCreateComponent implements OnInit {
   ngOnInit(): void {
     if (this.customerId && this.isCreate === false) { 
     //Edit
-      this.DriverService.GetDetail(this.customerId).subscribe(response => {
+      this.DriverService.GetWithVehicles(this.customerId).subscribe(response => {
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
           fullName: new FormControl(response.fullName),
+          vehicles: new FormControl(response.vehicles),
           userName: new FormControl(response.userName),
           idCard: new FormControl(response.idCard),
           phone: new FormControl(response.phone),
@@ -60,22 +62,7 @@ export class DriverCreateComponent implements OnInit {
   get idCard() { return this.CreateEditForm.get('idCard') }
   get phone() { return this.CreateEditForm.get('phone') }
   get state() { return this.CreateEditForm.get('state') }
-  get address() { return this.CreateEditForm.get('address') }
-  get birthday() { return this.CreateEditForm.get('birthday') }
-  get email() { return this.CreateEditForm.get('phonemaile') }
-  get gender() { return this.CreateEditForm.get('gender') }
-  get createDay() { return this.CreateEditForm.get('createDay') }
-  get createBy() { return this.CreateEditForm.get('createBy') }
-  get updateDay() { return this.CreateEditForm.get('updateDay') }
-  get updateBy() { return this.CreateEditForm.get('updateBy') }
 
-
-  getGroupId(event: any) {
-    this.CreateEditForm.value.groupId = event.target.value;
-  }
-  getUnitId(event: any) {
-    this.CreateEditForm.value.unitId = event.target.value;
-  }
 
   onSubmit() {
     this.submited = true;
