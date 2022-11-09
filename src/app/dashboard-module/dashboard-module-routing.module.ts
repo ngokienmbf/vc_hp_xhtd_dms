@@ -9,6 +9,8 @@ import { ExampleComponent } from './Component/example/example.component'
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
 import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
+import { CategoryIndexComponent } from './Component/device/category-index/category-index.component';
+import { DeviceTabsComponent } from './Component/device/device-tabs.component';
 import { DriverIndexComponent } from './Component/driver/driver-index/driver-index.component';
 import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-vehicle-index/driver-vehicle-index.component';
 import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
@@ -16,10 +18,11 @@ import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoa
 import { RoleGuardService } from '../Interceptor//rolo.guard.service'
 import { NotfoundComponent } from './Component/notfound/notfound.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
+import { DeviceBoardComponent } from './Component/device/device-board/device-board.component';
 
 
 const routes: Routes = [
-  {
+{
     path: '', component: HomeComponent,
     children: [
       { path: 'tai-khoan', component: TaikhoanComponent },
@@ -28,33 +31,28 @@ const routes: Routes = [
       // quan ly
       { path: 'lai-xe', component: DriverIndexComponent },
       { path: 'phuong-tien', component: VehicleIndexComponent },     
-       { path: 'lai-xe-phuong-tien', component: DriverVehicleIndexComponent },
+      { path: 'lai-xe-phuong-tien', component: DriverVehicleIndexComponent },
 
       // danh muc
-      { path: 'thiet-bi', component: DeviceIndexComponent },
+      { path: 'ds-thiet-bi', component: DeviceBoardComponent},
+      { path: 'rfid', component: RfidIndexComponent},
       { path: 'setting', component: SettingIndexComponent },
       { path: '404-not-found', component: NotfoundComponent },
+
 
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
       { path: 'don-hang', component: OrderOperatingIndexComponent},
-      { path: 'rfid', component: RfidIndexComponent}
-
-
-
-      // {
-      //   path: 'plan-packing', component: PackingBoardComponent,
-      //   children: [
-      //     { path: '', component: BookingCustomerIndexComponent},
-      //     { path: 'list', component: BookingCustomerIndexComponent },
-      //     { path: 'template', component: PlanPackingIndexComponent },
-      //     { path: 'perform', component: PerformIndexComponent}
-      //   ]
-      // },
+      { path: 'thiet-bi', component: DeviceTabsComponent,
+        children: [
+          { path: '', component: DeviceIndexComponent},
+          { path: 'list', component: DeviceIndexComponent},
+          { path: 'hang-muc', component: CategoryIndexComponent },
+        ]
+      },
     ]
-    }
-];
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

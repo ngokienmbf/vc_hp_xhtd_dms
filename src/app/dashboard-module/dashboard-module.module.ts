@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -48,6 +49,10 @@ import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle
 import { DeviceCreateComponent } from './Component/device/device-create/device-create.component';
 import { DeviceDeleteComponent } from './Component/device/device-delete/device-delete.component';
 import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
+import { DeviceTabsComponent } from './Component/device/device-tabs.component';
+import { CategoryCreateComponent } from './Component/device/category-create/category-create.component';
+import { CategoryDeleteComponent } from './Component/device/category-delete/category-delete.component';
+import { CategoryIndexComponent } from './Component/device/category-index/category-index.component';
 
 // Quan ly he thong
 import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
@@ -66,6 +71,7 @@ import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-v
 import { DriverVehicleCreateComponent } from './Component/driver-vehicle/driver-vehicle-create/driver-vehicle-create.component';
 import { DriverVehicleDeleteComponent } from './Component/driver-vehicle/driver-vehicle-delete/driver-vehicle-delete.component';
 import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.component';
+import { DeviceBoardComponent } from './Component/device/device-board/device-board.component';
 1
 
 @NgModule({
@@ -83,13 +89,20 @@ import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.co
     DriverCreateComponent,
     DriverDeleteComponent,
     DriverIndexComponent,
+
     VehicleCreateComponent,
     VehicleDeleteComponent,
     VehicleIndexComponent,
 
+    CategoryCreateComponent,
+    CategoryDeleteComponent,
+    CategoryIndexComponent,
     DeviceCreateComponent,
     DeviceDeleteComponent,
     DeviceIndexComponent,
+    DeviceTabsComponent,
+
+
     SettingIndexComponent,
 
     UserAuthorizationComponent,
@@ -107,6 +120,7 @@ import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.co
     DriverVehicleCreateComponent,
     DriverVehicleDeleteComponent,
     RfidDialogComponent,
+    DeviceBoardComponent,
 
 
   ],
@@ -121,6 +135,7 @@ import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.co
     MatTreeModule,
     MatMenuModule,
     MatDialogModule,
+    MatRadioModule,
     MatProgressSpinnerModule,
     MatTabsModule,
     MatAutocompleteModule,

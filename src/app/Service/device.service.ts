@@ -3,6 +3,7 @@ import { RequestService } from  './request.service';
 import { AccountService } from  './account.service';
 import { lstDevice,Device } from '../Model/Device'
 import { map } from 'rxjs';
+import { Item } from '../Model/multidropdown';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,17 @@ export class DeviceService {
       .pipe(map((data:any ) => {
           return data;
       }))
+  }
+
+  GetAllFull() { // for dropdowns only
+    return this.httpService.getRequest(`Device/GetFull`)
+    .pipe(map((data : any) => {
+      return data.map((i : any) => ({
+        id: i.id,
+        name:  i.code,
+        title: i.name
+      } as Item)) as Item[];
+    }));
   }
 
 }

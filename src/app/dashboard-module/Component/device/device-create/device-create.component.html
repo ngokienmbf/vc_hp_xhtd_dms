@@ -1,16 +1,19 @@
 <div class="container-lg">
     <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
         <div class="row">
-            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới thiết bị</div >
-                <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
-                    <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
-                        Thông tin thiết bị
-                    </div>
-                </ng-template>        </div>
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Thêm mới thiết bị
+            </div >
+            <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Thông tin thiết bị
+                </div>
+            </ng-template>        
+        </div>
         <div class="row">
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Code</label>
+                    <label for="exampleFormControlInput1" class="form-label">Mã thiết bị</label>
                     <input type="text" class="form-control" formControlName="code" [readonly]="(customerId&&!isCreate)">
                     <div *ngIf="submited && code?.errors?.['required']">
                         <span *ngIf="code?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
@@ -21,72 +24,125 @@
                 <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Tên</label>
                     <input type="text" class="form-control" formControlName="name">
-                    
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Code cha</label>
-                    <input type="text" class="form-control" formControlName="codeParent">
-                    <div *ngIf="submited && name?.errors?.['required']">
-                        <span *ngIf="name?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    <label for="exampleFormControlInput1" class="form-label">Thiết bị quản lý</label>
+                    <input type="text" class="form-control" formControlName="manCode" hidden="true">
+                    <app-multidropdown 
+                    [items]="deviceList" 
+                    [showSearch]=true
+                    [showAll]=false
+                    [showStatus]=true
+                    [showError]=false
+                    [name]="manCodeSelected"
+                    placeholder="Chọn TB quản lý" 
+                    (itemChange)="onManCodeDropDownChange($event)">
+                    </app-multidropdown>
+
+                    <div *ngIf="submited && manCode?.errors?.['required']">
+                        <span *ngIf="manCode?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">IP address</label>
-                    <input type="text" class="form-control" formControlName="ipaddress">
+                    <label for="exampleFormControlInput1" class="form-label">Mã Hạng mục</label>
+                    <input type="text" class="form-control" formControlName="catCode" hidden="true">
+                    <app-multidropdown 
+                    [items]="categoryList" 
+                    [showSearch]=true
+                    [showAll]=false
+                    [showStatus]=true
+                    [showError]=false
+                    [name]="catCodeSelected"
+                    placeholder="Chọn TB quản lý" 
+                    (itemChange)="onManCodeDropDownChange($event)">
+                    </app-multidropdown>
+                    <div *ngIf="submited && catCode?.errors?.['required']">
+                        <span *ngIf="catCode?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">IP Address</label>
+                    <input type="text" class="form-control" formControlName="ipAddress">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Port</label>
-                    <input type="text" class="form-control" formControlName="port">
+                    <input type="number" class="form-control" formControlName="portNumber">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Input Port</label>
-                    <input type="number" class="form-control" formControlName="inputPort">
+                    <label for="exampleFormControlInput1" class="form-label">Cổng TB khác kn vào</label>
+                    <input type="number" class="form-control" formControlName="portNumberDeviceIn">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Output Address Type</label>
-                    <input type="number" class="form-control" formControlName="outputAddrType">
+                    <label for="exampleFormControlInput1" class="form-label">Cổng kết nối ra thiết bị</label>
+                    <input type="number" class="form-control" formControlName="portNumberDeviceOut">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Output Port</label>
-                    <input type="number" class="form-control" formControlName="outputPort">
+                    <label for="exampleFormControlInput1" class="form-label">Cổng vào 1</label>
+                    <input type="number" class="form-control" formControlName="portNumberDeviceIn1">
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="mb-6">
-                    <label for="exampleFormControlInput1" class="form-label">Oper ID</label>
-                    <input type="number" class="form-control" formControlName="operID">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Cổng ra 1</label>
+                    <input type="number" class="form-control" formControlName="portNumberDeviceOut1">
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="mb-6">
-                    <label for="exampleFormControlInput1" class="form-label">Door Action</label>
-                    <input type="number" class="form-control" formControlName="doorAction">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Cổng vào 2</label>
+                    <input type="number" class="form-control" formControlName="portNumberDeviceIn2">
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="mb-6">
-                    <label for="exampleFormControlInput1" class="form-label">Door/AuxoutID</label>
-                    <input type="number" class="form-control" formControlName="doorOrAuxoutID">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Cổng ra 2</label>
+                    <input type="number" class="form-control" formControlName="portNumberDeviceOut2">
                 </div>
             </div>
 
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Miêu tả</label>
+                    <input type="textarea" class="form-control" formControlName="descriptioon">
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Trạng thái</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event)" formControlName="state" >
+                          <mat-radio-button [checked]='stateChecked' [value]=true> Hoạt động</mat-radio-button>
+                          <mat-radio-button [checked]='!stateChecked' [value]=false>Khóa</mat-radio-button>
+                          <!-- <mat-radio-button [checked]='stateChecked==a.value' *ngFor="let a of lstState" [value]=a.value>{{a.name}}</mat-radio-button> -->
+                      </mat-radio-group>
+                  </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mb-6">
+                    <label for="exampleFormControlInput1" class="form-label">Thứ tự hiển thị</label>
+                    <input type="number" class="form-control" formControlName="showIndex">
+                </div>
+            </div>
         </div>
 
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-success" type="submit">Lưu</button>
             <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
-        </div>
+        </div>    
     </form>
 </div>

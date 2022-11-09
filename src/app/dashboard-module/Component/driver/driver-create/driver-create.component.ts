@@ -4,15 +4,17 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { DriverService } from 'src/app/Service/driver.service';
 
+import {MatRadioChange, MatRadioModule} from '@angular/material/radio';
+
 @Component({
   selector: 'app-driver-create',
   templateUrl: './driver-create.component.html',
 })
 export class DriverCreateComponent implements OnInit {
+
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  listProductGroup: any=[];
-  listUnit: any=[];
+  stateChecked: boolean = true;
 
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
@@ -36,6 +38,7 @@ export class DriverCreateComponent implements OnInit {
     if (this.customerId && this.isCreate === false) { 
     //Edit
       this.DriverService.GetWithVehicles(this.customerId).subscribe(response => {
+        this.stateChecked = response.state;
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
           fullName: new FormControl(response.fullName),
@@ -57,17 +60,16 @@ export class DriverCreateComponent implements OnInit {
     }
   }
 
-  get userName() { return this.CreateEditForm.get('userName'); }
+  get userName() { return this.CreateEditForm.get('userName') }
   get fullName() { return this.CreateEditForm.get('fullName') }
   get idCard() { return this.CreateEditForm.get('idCard') }
   get phone() { return this.CreateEditForm.get('phone') }
-  get state() { return this.CreateEditForm.get('state') }
-
 
   onSubmit() {
     this.submited = true;
     // console.log(this.CreateEditForm.value)
     if (this.CreateEditForm.valid && this.isCreate === true) {
+      this.CreateEditForm.get('state')?.setValue(this.stateChecked);
       this.DriverService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       });
@@ -77,7 +79,12 @@ export class DriverCreateComponent implements OnInit {
         this.dialogRef.close(response);
       })
     }
+  }
 
+  radioChange(event: MatRadioChange) {
+    this.CreateEditForm.get('state')?.setValue(event.value);
+    console.log(this.CreateEditForm.value.state);
+    this.stateChecked = event.value;
   }
 
 }

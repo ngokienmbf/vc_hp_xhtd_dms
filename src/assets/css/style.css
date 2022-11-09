@@ -87,11 +87,13 @@ width: 100%;
     } */
 }
 
+
+/* common */
 .hight_modal{
     max-height: 500px;
 }
+
 .title_modal{
- 
     font-size: large !important;
     font-weight: 500 !important;
     border-bottom: 1px solid #9d9d9d !important;
@@ -100,6 +102,7 @@ width: 100%;
 .ng-star-inserted{
     stroke-width: 4% !important;
 }
+
 .mat-progress-spinner circle, .mat-spinner circle {
     stroke: #00afdd !important;
 }
@@ -107,4 +110,21 @@ width: 100%;
 .mat-progress-spinner svg {
     width: 80px !important;
     height: 80px !important;
+}
+
+.no-border {
+    border: 0 !important;
+    box-shadow: none !important; 
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #9e7b4c !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #9e7b4c !important;
 }

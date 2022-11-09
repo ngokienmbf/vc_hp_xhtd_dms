@@ -73,7 +73,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         },
         {
             name :'Danh mục thiết bị',
-            url:'thiet-bi',
+            url:'ds-thiet-bi',
             roles: ["Admin"],
         },
         {
@@ -99,7 +99,7 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Cấu hình thiết bị',
-                url:'404-not-found',
+                url:'thiet-bi',
                 roles: ["Admin"],
             },
             {

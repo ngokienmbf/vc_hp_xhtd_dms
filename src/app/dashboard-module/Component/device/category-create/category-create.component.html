@@ -1,0 +1,54 @@
+<div class="container-lg">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Thêm mới hạng mục
+            </div >
+            <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Thông tin hạng mục
+                </div>
+            </ng-template>        
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Mã Hạng mục bị</label>
+                    <input type="text" class="form-control" formControlName="code" [readonly]="(customerId&&!isCreate)">
+                    <div *ngIf="submited && code?.errors?.['required']">
+                        <span *ngIf="code?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Tên Hạng mục</label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Trạng thái</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event)" formControlName="state" >
+                          <mat-radio-button [checked]='stateChecked' [value]=true> Hoạt động</mat-radio-button>
+                          <mat-radio-button [checked]='!stateChecked' [value]=false>Khóa</mat-radio-button>
+                          <!-- <mat-radio-button [checked]='stateChecked==a.value' *ngFor="let a of lstState" [value]=a.value>{{a.name}}</mat-radio-button> -->
+                      </mat-radio-group>
+                  </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mb-6">
+                    <label for="exampleFormControlInput1" class="form-label">Thứ tự hiển thị</label>
+                    <input type="number" class="form-control" formControlName="showIndex">
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-success" type="submit">Lưu</button>
+            <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
+        </div>    
+    </form>
+</div>

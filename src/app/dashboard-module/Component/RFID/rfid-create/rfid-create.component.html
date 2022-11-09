@@ -37,9 +37,11 @@
       <div class="col-lg-6">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trạng thái</label>
-          <select class="form-control" formControlName="state">
-            <option *ngFor="let a of lstState" [ngValue]="a.value">{{a.name}}</option>
-          </select>
+            <mat-radio-group class="form-control no-border" (change)="radioChange($event)" formControlName="state" >
+                <mat-radio-button [checked]='stateChecked' [value]=true> Hoạt động</mat-radio-button>
+                <mat-radio-button [checked]='!stateChecked' [value]=false>Khóa</mat-radio-button>
+                <!-- <mat-radio-button [checked]='stateChecked==a.value' *ngFor="let a of lstState" [value]=a.value>{{a.name}}</mat-radio-button> -->
+            </mat-radio-group>
         </div>
       </div>
       <div class="col-lg-6">
