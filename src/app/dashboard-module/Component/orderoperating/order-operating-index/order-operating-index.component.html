@@ -3,29 +3,37 @@
 </div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
   <div class="row">
-    <h2 class="col-sm-6" style="font-weight: 500;">Danh sách phương tiện</h2>
+    <h2 class="col-sm-6" style="font-weight: 500;">Danh sách đơn hàng</h2>
   </div>
 
   <div class="row" style=" margin-bottom: 25px;">
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Biển số xe" aria-label="Recipient's username"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="searchVehicle($event)">
+    <div class="col-lg-9 col-sm-12 d-flex justify-content-between">
+      <div class="col-sm-3 mr-10">
+        <input type="text" class="form-control" placeholder="Biển số xe" aria-label="Recipient's username"
+          aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="searchVehicle($event)">
+      </div>
+      <div class="col-sm-3 mr-10">
+        <input type="text" class="form-control" placeholder="MSGH" aria-label="Recipient's username"
+          aria-describedby="button-addon2" [(ngModel)]="PageInfo.deliveryCode"
+          (ngModelChange)="searchDeliverCode($event)">
+      </div>
+      <div class="col-sm-3 mr-10">
+        <select class="form-control" [(ngModel)]="PageInfo.state" (ngModelChange)="searchState($event)">
+          <option value="" disabled selected hidden>Trạng thái</option>
+          <option *ngFor="let op of options" [value]="op">
+            {{op}}
+          </option>
+        </select>
+      </div>
+      <div class="col-sm-3 mr-10">
+        <button type="button" class="btn btn-primary" (click)="resetFilter()"><i
+            class="bi bi-arrow-clockwise"></i></button>
+      </div>
     </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="MSGH" aria-label="Recipient's username"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.deliveryCode"
-        (ngModelChange)="searchDeliverCode($event)">
-    </div>
-    <div class="col-sm-3">
-      <select class="form-control" [(ngModel)]="PageInfo.state" (ngModelChange)="searchState($event)">
-        <option value="" disabled selected hidden>Trạng thái</option>
-        <option *ngFor="let op of options" [value]="op" >
-          {{op}}
-        </option>
-      </select>
-    </div>
-    <div class="col-sm-3">
-      <button type="button" class="btn btn-primary" (click)="resetFilter()"><i class="bi bi-arrow-clockwise"></i></button>
+    <div class="col-lg-3 d-flex justify-content-end">
+      <div>
+        <button type="button" class="btn btn-success text-nowrap" (click)="exportReport()">Xuất báo cáo</button>
+      </div>
     </div>
   </div>
   <div class="row">

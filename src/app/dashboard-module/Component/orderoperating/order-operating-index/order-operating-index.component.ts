@@ -50,7 +50,7 @@ export class OrderOperatingIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode,this.PageInfo.state).subscribe(data => {
+    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.state).subscribe(data => {
       this.lstdata = data;
       this.loadding = false;
       this.Pagination.currentPage = data.currentPage,
@@ -113,5 +113,15 @@ export class OrderOperatingIndexComponent implements OnInit {
       state: ''
     }
     this.Pagingdata(this.PageInfo);
+  }
+
+  exportReport() {
+    return this.orderOperatingService.ExportReport(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.state)
+      .subscribe((result: Blob) => {
+        const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
+        const url = window.URL.createObjectURL(blob);
+        window.open(url);
+        console.log("Success");
+      });
   }
 }

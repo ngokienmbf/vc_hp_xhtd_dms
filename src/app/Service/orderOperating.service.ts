@@ -32,5 +32,9 @@ export class OrderOperatingService {
       }))
   }
 
+  ExportReport(page: number, searchText: string, numberDis: number, deliveryCode: string, state: string) {
+    return this.httpService.downloadRequest(`OrderOperating/exportReport?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&deliveryCode=${deliveryCode}&state=${state}`)
+  }
+
 
 }
