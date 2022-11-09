@@ -1,3 +1,5 @@
+import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
+import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
 import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { NgModule } from '@angular/core';
@@ -51,6 +53,22 @@ const routes: Routes = [
           { path: 'hang-muc', component: CategoryIndexComponent },
         ]
       },
+      { path: 'dieu-hanh-don', component: OrderOperatingIndexComponent},
+      { path: 'rfid', component: RfidIndexComponent},
+      { path: 'mang-xuat', component: TroughIndexComponent},
+      { path: 'quan-ly-vao-ra', component: EnterExitIndexComponent},
+
+
+
+      // {
+      //   path: 'plan-packing', component: PackingBoardComponent,
+      //   children: [
+      //     { path: '', component: BookingCustomerIndexComponent},
+      //     { path: 'list', component: BookingCustomerIndexComponent },
+      //     { path: 'template', component: PlanPackingIndexComponent },
+      //     { path: 'perform', component: PerformIndexComponent}
+      //   ]
+      // },
     ]
 }];
 

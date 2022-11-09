@@ -3,29 +3,37 @@
 </div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
   <div class="row">
-    <h2 class="col-sm-6" style="font-weight: 500;">Danh sách phương tiện</h2>
+    <h2 class="col-sm-6" style="font-weight: 500;">Danh sách đơn hàng</h2>
   </div>
 
   <div class="row" style=" margin-bottom: 25px;">
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Biển số xe" aria-label="Recipient's username"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="searchVehicle($event)">
+    <div class="col-lg-9 col-sm-12 d-flex justify-content-between">
+      <div class="col-sm-3 mr-10">
+        <input type="text" class="form-control" placeholder="Biển số xe" aria-label="Recipient's username"
+          aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="searchVehicle($event)">
+      </div>
+      <div class="col-sm-3 mr-10">
+        <input type="text" class="form-control" placeholder="MSGH" aria-label="Recipient's username"
+          aria-describedby="button-addon2" [(ngModel)]="PageInfo.deliveryCode"
+          (ngModelChange)="searchDeliverCode($event)">
+      </div>
+      <div class="col-sm-3 mr-10">
+        <select class="form-control" [(ngModel)]="PageInfo.state" (ngModelChange)="searchState($event)">
+          <option value="" disabled selected hidden>Trạng thái</option>
+          <option *ngFor="let op of options" [value]="op">
+            {{op}}
+          </option>
+        </select>
+      </div>
+      <div class="col-sm-3 mr-10">
+        <button type="button" class="btn btn-primary" (click)="resetFilter()"><i
+            class="bi bi-arrow-clockwise"></i></button>
+      </div>
     </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="MSGH" aria-label="Recipient's username"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.deliveryCode"
-        (ngModelChange)="searchDeliverCode($event)">
-    </div>
-    <div class="col-sm-3">
-      <select class="form-control" [(ngModel)]="PageInfo.state" (ngModelChange)="searchState($event)">
-        <option value="" disabled selected hidden>Trạng thái</option>
-        <option *ngFor="let op of options" [value]="op" >
-          {{op}}
-        </option>
-      </select>
-    </div>
-    <div class="col-sm-3">
-      <button type="button" class="btn btn-primary" (click)="resetFilter()"><i class="bi bi-arrow-clockwise"></i></button>
+    <div class="col-lg-3 d-flex justify-content-end">
+      <div>
+        <button type="button" class="btn btn-success text-nowrap" (click)="exportReport()">Xuất báo cáo</button>
+      </div>
     </div>
   </div>
   <div class="row">
@@ -34,12 +42,14 @@
         <thead>
           <tr>
             <th style="text-align: center;">STT</th>
-            <th>Vehicle</th>
+            <th>Ngày đặt hàng</th>
             <th>MSGH</th>
+            <th>Vehicle</th>
             <th>Tên lái xe</th>
             <th>Tên nhà phân phối</th>
             <th>Hàng hóa</th>
-            <th>SL</th>
+            <th>SL đặt hàng</th>
+            <th>STT đặt hàng</th>
             <th>Trạng thái</th>
             <th style="text-align: center;">Hành động</th>
           </tr>
@@ -47,12 +57,14 @@
         <tbody style="border-top: none;">
           <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
             <td style="text-align: center;">{{i + 1}}</td>
-            <td>{{item.vehicle}}</td>
+            <td>{{item.orderDate | date:'dd/mm/YYYY hh:ss' }}</td>
             <td>{{item.deliveryCode}}</td>
+            <td>{{item.vehicle}}</td>
             <td>{{item.driverName}}</td>
             <td>{{item.nameDistributor}}</td>
             <td>{{item.nameProduct}}</td>
             <td>{{item.sumNumber}}</td>
+            <td>{{item.indexOrder}}</td>
             <td>{{item.state}}</td>
             <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                 (click)="openEdit(item.id)"></i></td>
@@ -63,6 +75,5 @@
     <div>
       <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
     </div>
-
   </div>
 </div>
