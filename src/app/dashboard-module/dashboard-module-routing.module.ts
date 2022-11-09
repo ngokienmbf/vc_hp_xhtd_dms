@@ -1,3 +1,5 @@
+import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
+import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
 import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { NgModule } from '@angular/core';
@@ -27,7 +29,7 @@ const routes: Routes = [
 
       // quan ly
       { path: 'lai-xe', component: DriverIndexComponent },
-      { path: 'phuong-tien', component: VehicleIndexComponent },     
+      { path: 'phuong-tien', component: VehicleIndexComponent },
        { path: 'lai-xe-phuong-tien', component: DriverVehicleIndexComponent },
 
       // danh muc
@@ -38,8 +40,10 @@ const routes: Routes = [
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
-      { path: 'don-hang', component: OrderOperatingIndexComponent},
-      { path: 'rfid', component: RfidIndexComponent}
+      { path: 'dieu-hanh-don', component: OrderOperatingIndexComponent},
+      { path: 'rfid', component: RfidIndexComponent},
+      { path: 'mang-xuat', component: TroughIndexComponent},
+      { path: 'quan-ly-vao-ra', component: EnterExitIndexComponent},
 
 
 

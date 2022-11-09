@@ -35,14 +35,14 @@
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Tài khoản LX hiện tại</label>
           <!-- <input type="text" class="form-control" formControlName="userName"> -->
-          <app-multidropdown 
-          [items]="userNameList" 
+          <app-multidropdown
+          [items]="userNameList"
           [showSearch]=true
           [showAll]=false
           [showStatus]=true
           [showError]=false
           [name]="userNameSelected"
-          placeholder="Chọn tài xế" 
+          placeholder="Chọn tài xế"
           (itemChange)="onUserNameDropDownChange($event)">
         </app-multidropdown>
         </div>

@@ -1,17 +1,17 @@
-import { OrderOperatingService } from './../../../../Service/orderOperating.service';
-import { lstOrderOperating } from './../../../../Model/OrderOperating';
 import { Component, OnInit } from '@angular/core';
-import { Pagination } from 'src/app/Model/Table';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
-import { OrderOperatingCreateComponent } from '../order-operating-create/order-operating-create.component';
+import { lstOrderOperating } from 'src/app/Model/OrderOperating';
+import { Pagination } from 'src/app/Model/Table';
+import { OrderOperatingService } from 'src/app/Service/orderOperating.service';
+import { OrderOperatingCreateComponent } from '../../orderoperating/order-operating-create/order-operating-create.component';
 
 @Component({
-  selector: 'app-order-operating-index',
-  templateUrl: './order-operating-index.component.html',
-  styleUrls: ['./order-operating-index.component.css']
+  selector: 'app-enter-exit-index',
+  templateUrl: './enter-exit-index.component.html',
+  styleUrls: ['./enter-exit-index.component.css']
 })
-export class OrderOperatingIndexComponent implements OnInit {
+export class EnterExitIndexComponent implements OnInit {
 
   isCreate: boolean = true;
   loadding: boolean = false;
@@ -50,7 +50,7 @@ export class OrderOperatingIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loadding = true;
-    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.state).subscribe(data => {
+    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode,this.PageInfo.state).subscribe(data => {
       this.lstdata = data;
       this.loadding = false;
       this.Pagination.currentPage = data.currentPage,
@@ -115,13 +115,4 @@ export class OrderOperatingIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-  exportReport() {
-    return this.orderOperatingService.ExportReport(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.state)
-      .subscribe((result: Blob) => {
-        const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
-        console.log("Success");
-      });
-  }
 }

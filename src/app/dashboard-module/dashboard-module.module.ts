@@ -66,6 +66,11 @@ import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-v
 import { DriverVehicleCreateComponent } from './Component/driver-vehicle/driver-vehicle-create/driver-vehicle-create.component';
 import { DriverVehicleDeleteComponent } from './Component/driver-vehicle/driver-vehicle-delete/driver-vehicle-delete.component';
 import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.component';
+import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
+import { TroughCreateComponent } from './Component/trough/trough-create/trough-create.component';
+import { TroughDeleteComponent } from './Component/trough/trough-delete/trough-delete.component';
+import { OrderOperatingCreateComponent } from './Component/orderoperating/order-operating-create/order-operating-create.component';
+import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
 1
 
 @NgModule({
@@ -107,6 +112,11 @@ import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.co
     DriverVehicleCreateComponent,
     DriverVehicleDeleteComponent,
     RfidDialogComponent,
+    TroughIndexComponent,
+    TroughCreateComponent,
+    TroughDeleteComponent,
+    OrderOperatingCreateComponent,
+    EnterExitIndexComponent,
 
 
   ],
