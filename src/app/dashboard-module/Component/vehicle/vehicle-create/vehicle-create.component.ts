@@ -13,8 +13,6 @@ import { DriverService } from 'src/app/Service/driver.service';
 export class VehicleCreateComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  listProductGroup: any = [];
-  listUnit: any = [];
 
   userNameSelected: string = "";
   userNameList: Item[] = [];
