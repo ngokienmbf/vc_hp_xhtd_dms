@@ -1,3 +1,4 @@
+import { SignalrService } from './../../../../Service/signalr.service';
 import { OrderOperatingService } from './../../../../Service/orderOperating.service';
 import { lstOrderOperating } from './../../../../Model/OrderOperating';
 import { Component, OnInit } from '@angular/core';
@@ -41,11 +42,17 @@ export class OrderOperatingIndexComponent implements OnInit {
     state: ''
   }
   constructor(private orderOperatingService: OrderOperatingService,
+    private signalrService: SignalrService,
     public dialog: MatDialog,
     private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
     this.Pagingdata(this.PageInfo);
+
+    this.signalrService.initiateSignalrConnection();
+    this.signalrService.hubMessage.subscribe((hubMessage: string) => {
+      this.reloadData(hubMessage);
+    });
   }
 
   Pagingdata(PageInfo: any) {
@@ -58,6 +65,14 @@ export class OrderOperatingIndexComponent implements OnInit {
         this.Pagination.totalPage = data.totalPage,
         this.Pagination.totalRecord = data.totalRecord
     })
+  }
+
+  reloadData(hubMessage: string) {
+    setTimeout(() => {
+      if (hubMessage === 'string') {
+        this.Pagingdata(this.PageInfo)
+      }
+    }, 300)
   }
 
   openEdit(id: number) {
