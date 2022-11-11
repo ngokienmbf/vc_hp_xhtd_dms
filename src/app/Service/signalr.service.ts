@@ -37,6 +37,7 @@ export class SignalrService {
 
   private setSignalrClientMethods(): void {
     this.connection.on(this.EVENT_MESSAGE, (message: string) => {
+      message = message.replace(/'/g, `"`);
       this.hubMessage.next(message);
     });
   }

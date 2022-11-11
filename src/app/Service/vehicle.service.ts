@@ -74,4 +74,11 @@ export class VehicleService {
     }))
   }
 
+  GetByLP(vehicle: string) {
+    return this.httpService.getRequest(`Vehicle/license-plate/${vehicle}`)
+    .pipe(map((data:any ) => {
+        return data;
+    }))
+  }
+
 }
