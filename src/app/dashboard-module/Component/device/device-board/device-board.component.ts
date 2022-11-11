@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DeviceService } from 'src/app/Service/device.service';
 import { CategoryService } from 'src/app/Service/category.service';
-import { Item } from 'src/app/Model/multidropdown';
 import { Category } from 'src/app/Model/Category';
 import { Device } from 'src/app/Model/Device';
+import { MatAccordion } from '@angular/material/expansion';
+
 @Component({
   selector: 'app-device-board',
   templateUrl: './device-board.component.html',
@@ -12,16 +13,27 @@ import { Device } from 'src/app/Model/Device';
 export class DeviceBoardComponent implements OnInit {
   loadding: boolean = false;
   constructor(private DeviceService: DeviceService,private CategoryService: CategoryService) { }
-  deviceList: Device[] = [];
   categoryList: Category[] = [];
-  ngOnInit(): void {
+  
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
-    this.CategoryService.GetAllFullForList().subscribe((data) => {
+  ngOnInit(): void {
+    this.CategoryService.GetFullForList().subscribe((data) => {
       this.categoryList = data;
     });
-    // this.DeviceService.GetAllFull().subscribe((data) => {
-    //   this.deviceList = data;
-    // });
   }
 
+  step = 0;
+  
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 }

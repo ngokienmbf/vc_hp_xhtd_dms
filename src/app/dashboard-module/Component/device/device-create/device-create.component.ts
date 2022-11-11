@@ -87,7 +87,7 @@ export class DeviceCreateComponent implements OnInit {
         this.DeviceService.GetAllFull().subscribe((data) => {
           this.deviceList = data;
         });
-        this.CategoryService.GetAllFull().subscribe((data) => {
+        this.CategoryService.GetFull().subscribe((data) => {
           this.categoryList = data;
         });
       })
@@ -95,7 +95,7 @@ export class DeviceCreateComponent implements OnInit {
       this.DeviceService.GetAllFull().subscribe((data) => {
         this.deviceList = data;
       });
-      this.CategoryService.GetAllFull().subscribe((data) => {
+      this.CategoryService.GetFull().subscribe((data) => {
         this.categoryList = data;
       });
     }

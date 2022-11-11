@@ -26,6 +26,8 @@ import { AutocompleteComponent } from './../View/autocomplete/autocomplete.compo
 import { LoadingComponent } from '../View/loading/loading.component';
 import { MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
 import { PaginationComponent } from '../View/pagination/pagination.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 // authen/example
 import { ExampleComponent } from './Component/example/example.component';
@@ -77,6 +79,7 @@ import { TroughCreateComponent } from './Component/trough/trough-create/trough-c
 import { TroughDeleteComponent } from './Component/trough/trough-delete/trough-delete.component';
 import { OrderOperatingCreateComponent } from './Component/orderoperating/order-operating-create/order-operating-create.component';
 import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
+import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
 1
 
 @NgModule({
@@ -131,6 +134,7 @@ import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/
     TroughDeleteComponent,
     OrderOperatingCreateComponent,
     EnterExitIndexComponent,
+    DeviceControlComponent,
 
 
   ],
@@ -153,7 +157,9 @@ import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    MatExpansionModule,
+    MatTooltipModule,
     // ToastrModule.forRoot()
   ],
 })

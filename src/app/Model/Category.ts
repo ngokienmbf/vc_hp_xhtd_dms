@@ -1,3 +1,5 @@
+import { Device } from "./Device"
+
 export interface Category {
   id: number,
   code: string,
@@ -10,6 +12,9 @@ export interface Category {
   updateDay: Date,
   createBy: string,
   updateBy: string,
+  devices: Device[],
+  _countActiveDevices: number,
+  _countDeactiveDevices: number,
 }
 
 export interface lstCategory {

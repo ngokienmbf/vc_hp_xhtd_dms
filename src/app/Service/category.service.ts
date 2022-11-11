@@ -24,13 +24,13 @@ export class CategoryService {
   }
 
   Paging(page:number, searchText:string,numberDis:number) {
-    return this.httpService.getRequest('Category' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
+    return this.httpService.getRequest('Category/GetAllWithDevice' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
       .pipe(map((data : lstCategory) => {
           return data;
       }))
   }
   
-  GetAllFull() { // for dropdowns only
+  GetFull() { // for dropdowns only
     return this.httpService.getRequest(`Category/GetFull`)
     .pipe(map((data : any) => {
       return data.map((i : any) => ({
@@ -41,11 +41,49 @@ export class CategoryService {
     }));
   }
 
-  GetAllFullForList() { // for dropdowns only
+  GetFullForList() {
     return this.httpService.getRequest(`Category/GetFull`)
     .pipe(map((data: Category[] ) => {
       return data;
   }))
+  }
+
+  GetFullForControl() {
+    return this.httpService.getRequest(`Category/GetFull`)
+    .pipe(map((data: Category[] ) => {
+      let this_ = {
+        categoryList : data,
+        countActiveCat : 0,
+        countDeactiveCat: 0,
+        countActiveDev: 0,
+        countDeactiveDev: 0,
+      };
+
+      // not working
+      for (let i = 0; i < this_.categoryList.length, i++;){
+        console.log(this_.categoryList);
+        if (this_.categoryList[i].state){
+          this_.countActiveCat=this_.countActiveCat+1;
+        }else {
+          this_.countDeactiveCat++;
+        }
+
+        this_.categoryList[i]._countActiveDevices=0;
+        this_.categoryList[i]._countDeactiveDevices=0;
+
+        for (let j= 0; j < this_.categoryList[i].devices.length, j++;){
+          if (this_.categoryList[i].devices[j].state){
+            this_.countActiveDev++;
+            this_.categoryList[i]._countActiveDevices++;
+          }else {
+            this_.countDeactiveDev++;
+            this_.categoryList[i]._countDeactiveDevices++;
+          }
+        }
+      }
+
+      return this_;
+    })) ;
   }
 
   GetDetail(id: number) {
@@ -66,6 +104,15 @@ export class CategoryService {
     CategoryEdit.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
     CategoryEdit.updateDay = new Date();
     return this.httpService.putRequest('Category',CategoryEdit)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
+  UpdateState(CategoryEdit: Category) {
+    CategoryEdit.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
+    CategoryEdit.updateDay = new Date();
+    return this.httpService.putRequest('Category/UpdateState',CategoryEdit)
       .pipe(map((data: any) => {
         return data;
       }))

@@ -46,6 +46,15 @@ export class DeviceService {
       }))
   }
 
+  UpdateState(DeviceEdit: Device) {
+    DeviceEdit.updateBy = this.accountService.getUserInfo()['userName'] || 'null';
+    DeviceEdit.updateDay = new Date();
+    return this.httpService.putRequest('Device/UpdateState',DeviceEdit)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
   Delete(id: number) {
     return this.httpService.deleteRequest('Device/'+id)
       .pipe(map((data:any ) => {

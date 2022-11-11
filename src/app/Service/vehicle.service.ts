@@ -52,13 +52,13 @@ export class VehicleService {
       }))
   }
 
-  GetFreeVehicles(vehicle: string ) {
-    return this.httpService.getRequest(`Vehicle/GetFreeVehicles/${vehicle}`)
+  GetFull() {
+    return this.httpService.getRequest(`Vehicle/GetFull`)
     .pipe(map((data : any) => {
       return data.map((i : any) => ({
-        id: i.id,
+        id: i.idVehicle,
         name:  i.vehicle,
-        //title: i.vehicle
+        // title: i.vehicle
       } as Item)) as Item[];
     }));
   }

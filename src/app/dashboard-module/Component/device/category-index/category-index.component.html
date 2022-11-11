@@ -24,6 +24,7 @@
                     <th>Mã Hạng mục</th>
                     <th>Tên Hạng mục</th>
                     <th>Thứ tự hiển thị</th>
+                    <th>Danh sách Thiết bị</th>
                     <th style="text-align: center;">Trạng thái</th>
                     <th>Hành động</th>
                   </tr>
@@ -34,6 +35,11 @@
                     <td>{{item.code}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.showIndex}}</td>
+                    <td> 
+                      <p *ngFor="let d of item.devices; index as j"> 
+                       {{d.name}} 
+                    </p>
+                  </td>
                     <td style="text-align: center;">
                       <i *ngIf="item.state" class="bi bi-check-circle-fill" style="color: green;"></i>
                       <i *ngIf="!item.state" class="bi bi-dash-circle-fill" style="color: red;"></i>

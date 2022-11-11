@@ -1,0 +1,42 @@
+
+
+<div class="container-fluid">
+
+  
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row">
+      <div class="col-12 card-category" *ngFor="let cat of categoryList; index as i">
+        <mat-card>
+            <mat-card-title>{{cat.name}}</mat-card-title>
+            <mat-card-subtitle>
+                <i *ngIf="cat.state" class="bi bi-check-circle-fill" style="color: green;">Đang chạy</i>
+                <i *ngIf="!cat.state" class="bi bi-dash-circle-fill" style="color: red;">Đang dừng</i>
+            </mat-card-subtitle>
+            
+            <mat-card-actions>
+                <button *ngIf="cat.state" mat-button class="btn btn-danger" (click)="changeState(1,cat.id,false)">Dừng</button>
+                <button *ngIf="!cat.state" mat-button class="btn btn-success" (click)="changeState(1,cat.id,true)">Chạy</button>
+            </mat-card-actions>
+            <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-3 card-device" *ngFor="let dev of cat.devices; index as j">
+                    <mat-card>
+                        <mat-card-title>{{dev.name}}</mat-card-title>
+                        <mat-card-subtitle>
+                            <i *ngIf="dev.state" class="bi bi-check-circle-fill" style="color: green;">Đang chạy</i>
+                            <i *ngIf="!dev.state" class="bi bi-dash-circle-fill" style="color: red;">Đang dừng</i>
+                        </mat-card-subtitle>
+                        <mat-card-actions>
+                            <button *ngIf="dev.state" mat-button class="btn btn-danger" (click)="changeState(2,dev.id,false)">Dừng</button>
+                            <button *ngIf="!dev.state" mat-button class="btn btn-success" (click)="changeState(2,dev.id,true)">Chạy</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>            
+        </div>
+        </mat-card>
+      </div> <!-- parent col / each Category -->
+      
+    </div><!--  row -->
+  </div>
+  

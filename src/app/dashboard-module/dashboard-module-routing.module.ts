@@ -21,6 +21,7 @@ import { RoleGuardService } from '../Interceptor//rolo.guard.service'
 import { NotfoundComponent } from './Component/notfound/notfound.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
 import { DeviceBoardComponent } from './Component/device/device-board/device-board.component';
+import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
 
 
 const routes: Routes = [
@@ -48,7 +49,8 @@ const routes: Routes = [
       { path: 'don-hang', component: OrderOperatingIndexComponent},
       { path: 'thiet-bi', component: DeviceTabsComponent,
         children: [
-          { path: '', component: DeviceIndexComponent},
+          { path: '', component: DeviceControlComponent},
+          { path: 'dieu-khien', component: DeviceControlComponent},
           { path: 'list', component: DeviceIndexComponent},
           { path: 'hang-muc', component: CategoryIndexComponent },
         ]

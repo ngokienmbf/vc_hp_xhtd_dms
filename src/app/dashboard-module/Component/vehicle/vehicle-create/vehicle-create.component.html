@@ -93,14 +93,14 @@
         </div>
     </div>
   </div>
-  <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+  <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;" *ngIf="(customerId&&!isCreate)">
   </div>
-    <div class="row">
+    <div class="row" *ngIf="(customerId&&!isCreate)">
       <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Tài khoản LX hiện tại</label>
-          <!-- <input type="text" class="form-control" formControlName="userName"> -->
-          <app-multidropdown 
+          <label for="exampleFormControlInput1" class="form-label">Tài khoản lái xe</label>
+          <input type="text" readonly="true" class="form-control" formControlName="drivers">
+          <!-- <app-multidropdown 
           [items]="userNameList" 
           [showSearch]=true
           [showAll]=false
@@ -109,7 +109,7 @@
           [name]="userNameSelected"
           placeholder="Chọn tài xế" 
           (itemChange)="onUserNameDropDownChange($event)">
-        </app-multidropdown>
+        </app-multidropdown> -->
         </div>
       </div>
 

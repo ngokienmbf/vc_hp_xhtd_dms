@@ -1,0 +1,51 @@
+button { margin-left: 5px;}
+
+.card-category {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    /* border-style: double;
+    border-width: 2px;
+    border-color: #a17c50; */
+}
+
+.card-device {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.card-category .mat-card:not([class*=mat-elevation-z]) {
+    box-shadow:1px 1px 2px 2px rgb(161 124 80), 1px 2px 4px 0px rgb(161 124 80), 1px 1px 2px 0px rgb(161 124 80)
+}
+
+.card-device .mat-card:not([class*=mat-elevation-z]) {
+    box-shadow:1px 1px 1px 1px rgb(161 124 80), 1px 2px 4px 0px rgb(161 124 80), 1px 1px 2px 0px rgb(161 124 80)
+}
+
+.card-device .mat-card-title  {
+    font-size: 14px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.example-headers-align .mat-form-field + .mat-form-field {
+margin-left: 8px;
+}
+
+/* .mat-expansion-panel-header {
+    background: #a17c50;
+} */
+
+.mat-expansion-panel {
+    background: #d9b790;
+}
+
+::ng-deep .my-tooltip {
+    background: #a17c50 !important;
+    white-space: pre-line;
+    color: white !important;
+    font-size: 14px !important;
+}
