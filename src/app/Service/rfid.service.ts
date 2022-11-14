@@ -45,4 +45,11 @@ export class RfidService {
         return data;
       }))
   }
+
+  AssignVehicle(data: any) {
+    return this.httpService.postRequest(`rfid/assignVehicle`, data)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
 }
