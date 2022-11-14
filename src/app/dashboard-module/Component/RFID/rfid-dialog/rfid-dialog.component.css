@@ -1,7 +1,12 @@
-.ite-cont {
+.item-cont {
   cursor: pointer;
 }
 
 .item-cont:hover {
+  background-color: rgb(235, 235, 235);
+  transition: 0.2s;
+}
+
+.activate {
   background-color: rgb(202, 202, 202);
 }

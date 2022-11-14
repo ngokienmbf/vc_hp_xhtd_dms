@@ -1,7 +1,7 @@
+import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
 import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
 import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
-import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Component/home/home.component';
@@ -22,6 +22,7 @@ import { NotfoundComponent } from './Component/notfound/notfound.component';
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
 import { DeviceBoardComponent } from './Component/device/device-board/device-board.component';
 import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
+import { OrderOperatingListComponent } from './Component/orderoperating/order-operating-list/order-operating-list.component';
 
 
 const routes: Routes = [

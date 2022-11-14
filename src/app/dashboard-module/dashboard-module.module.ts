@@ -64,7 +64,6 @@ import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-a
 import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
 import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
-import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
 import { RfidCreateComponent } from './Component/RFID/rfid-create/rfid-create.component';
 import { RfidDeleteComponent } from './Component/RFID/rfid-delete/rfid-delete.component';
@@ -80,6 +79,8 @@ import { TroughDeleteComponent } from './Component/trough/trough-delete/trough-d
 import { OrderOperatingCreateComponent } from './Component/orderoperating/order-operating-create/order-operating-create.component';
 import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
 import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
+import { OrderOperatingListComponent } from './Component/orderoperating/order-operating-list/order-operating-list.component';
+import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 1
 
 @NgModule({
@@ -120,7 +121,7 @@ import { DeviceControlComponent } from './Component/device/device-control/device
     QuanTriHeThongComponent,
     RolePermissionComponent,
     TaikhoanComponent,
-    OrderOperatingIndexComponent,
+    OrderOperatingListComponent,
     RfidIndexComponent,
     RfidCreateComponent,
     RfidDeleteComponent ,
@@ -135,6 +136,7 @@ import { DeviceControlComponent } from './Component/device/device-control/device
     OrderOperatingCreateComponent,
     EnterExitIndexComponent,
     DeviceControlComponent,
+    OrderOperatingIndexComponent,
 
 
   ],

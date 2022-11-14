@@ -11,8 +11,8 @@ export class OrderOperatingService {
   constructor(private httpService: RequestService) { }
 
 
-  Paging(page: number, searchText: string, numberDis: number, deliveryCode: string, state: string) {
-    return this.httpService.getRequest(`OrderOperating?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&deliveryCode=${deliveryCode}&state=${state}`)
+  Paging(page: number, searchText: string, numberDis: number, deliveryCode: string, step: string) {
+    return this.httpService.getRequest(`OrderOperating?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&deliveryCode=${deliveryCode}&step=${step}`)
       .pipe(map((data: lstOrderOperating) => {
         return data;
       }))

@@ -2,78 +2,29 @@
   <mat-spinner *ngIf="loadding == true"></mat-spinner>
 </div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
-  <div class="row">
-    <h2 class="col-sm-6" style="font-weight: 500;">Danh sách đơn hàng</h2>
-  </div>
+  <mat-tab-group animationDuration="0ms" (selectedIndexChange)="myTabSelectedIndexChange($event)">
+    <mat-tab label="Danh sách xe vào/ra">
+      <div class="row">
+        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách xe vào/ra</h2>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th style="text-align: center;">STT</th>
+              <th>Biển số xe</th>
+            </tr>
+          </thead>
+          <tbody style="border-top: none;">
+            <tr *ngFor="let item of lstdata; index as i" class="align-middle">
+              <td style="text-align: center;">{{i + 1}}</td>
+              <td>{{item.vehicle}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Danh sách đơn hàng">
+      <app-order-operating-list showType="QLVR"></app-order-operating-list>
+    </mat-tab>
+  </mat-tab-group>
 
-  <div class="row" style=" margin-bottom: 25px;">
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="Biển số xe" aria-label="Recipient's username"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="searchVehicle($event)">
-    </div>
-    <div class="col-sm-3">
-      <input type="text" class="form-control" placeholder="MSGH" aria-label="Recipient's username"
-        aria-describedby="button-addon2" [(ngModel)]="PageInfo.deliveryCode"
-        (ngModelChange)="searchDeliverCode($event)">
-    </div>
-    <div class="col-sm-3">
-      <select class="form-control" [(ngModel)]="PageInfo.state" (ngModelChange)="searchState($event)">
-        <option value="" disabled selected hidden>Trạng thái</option>
-        <option *ngFor="let op of options" [value]="op" >
-          {{op}}
-        </option>
-      </select>
-    </div>
-    <div class="col-sm-3">
-      <button type="button" class="btn btn-primary" (click)="resetFilter()"><i class="bi bi-arrow-clockwise"></i></button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th style="text-align: center;">STT</th>
-            <th>Ngày đặt hàng</th>
-            <th>MSGH</th>
-            <th>Biến số xe</th>
-            <th>Giờ vào cổng</th>
-            <th>Giờ ra cổng</th>
-            <th>Giờ cân vào</th>
-            <th>Giờ cân ra</th>
-            <th>Họ tên lái xe</th>
-            <th>Nhà phân phối/khách hàng</th>
-            <th>Hàng hóa</th>
-            <th>Số lượng đặt</th>
-            <th>Trạng thái đơn hàng</th>
-            <th>Cảnh báo cân</th>
-            <th style="text-align: center;">Hành động</th>
-          </tr>
-        </thead>
-        <tbody style="border-top: none;">
-          <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
-            <td style="text-align: center;">{{i + 1}}</td>
-            <td>{{item.orderDate | date:'dd/mm/YYYY hh:ss'}}</td>
-            <td>{{item.deliveryCode}}</td>
-            <td>{{item.vehicle}}</td>
-            <td>{{item.timeConfirm2}}</td>
-            <td>{{item.timeConfirm8}}</td>
-            <td>{{item.timeConfirm3}}</td>
-            <td>{{item.timeConfirm7}}</td>
-            <td>{{item.driverName}}</td>
-            <td>{{item.nameDistributor}}</td>
-            <td>{{item.nameProduct}}</td>
-            <td>{{item.sumNumber}}</td>
-            <td>{{item.state}}</td>
-            <td>{{item.warningNotCall}}</td>
-            <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
-                (click)="openEdit(item.id)"></i></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
-    </div>
-  </div>
 </div>
