@@ -17,7 +17,7 @@ import { lstStep } from 'src/app/utils/helper/constant';
 export class OrderOperatingListComponent implements OnInit {
   @Input() showType!: string;
   isCreate: boolean = true;
-  loadding: boolean = false;
+  loading: boolean = false;
   options = lstStep;
   idDetail: number = 0;
 
@@ -59,10 +59,10 @@ export class OrderOperatingListComponent implements OnInit {
   }
 
   Pagingdata(PageInfo: any) {
-    this.loadding = true;
+    this.loading = true;
     this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.step).subscribe(data => {
       this.lstdata = data;
-      this.loadding = false;
+      this.loading = false;
       this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,

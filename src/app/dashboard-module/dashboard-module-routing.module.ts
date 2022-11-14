@@ -1,3 +1,4 @@
+import { WeightStationIndexComponent } from './Component/weight-station/weight-station-index/weight-station-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
 import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'rfid', component: RfidIndexComponent},
       { path: 'mang-xuat', component: TroughIndexComponent},
       { path: 'quan-ly-vao-ra', component: EnterExitIndexComponent},
+      { path: 'quan-ly-tram-can', component: WeightStationIndexComponent},
 
 
 

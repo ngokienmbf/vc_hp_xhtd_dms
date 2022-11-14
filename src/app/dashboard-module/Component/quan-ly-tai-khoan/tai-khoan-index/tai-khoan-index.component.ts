@@ -14,7 +14,7 @@ import { UserAuthorizationComponent } from '../user-authorization/user-authoriza
 export class QLTaiKhoanIndexComponent implements OnInit {
   isCreate: boolean = true;
   customerId: number = 0;
-  loadding: boolean = false;
+  loading: boolean = false;
 
 
   lstdata: any = [];
@@ -35,11 +35,11 @@ export class QLTaiKhoanIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo: any) {
-    this.loadding = true;
+    this.loading = true;
     this.AccountService
       .Paging(PageInfo.page, PageInfo.Keyword, PageInfo.pageSize)
       .subscribe((data) => {
-        this.loadding = false;
+        this.loading = false;
         this.lstdata = data;
       });
   }
