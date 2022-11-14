@@ -46,7 +46,7 @@ export const ROUTE_DATA: TypeRoute[] = [
         roles: ["Admin", "ds"],
       },
       {
-        name: 'Phương tiện - lái xe',
+        name: 'Lái xe - Phương tiện',
         url: 'lai-xe-phuong-tien',
         roles: ["Admin", "ds"],
       },
@@ -76,49 +76,14 @@ export const ROUTE_DATA: TypeRoute[] = [
         url: 'rfid',
         roles: ["Admin", "ds"]
       },
-      {
-        name: 'Danh mục thiết bị',
-        url: 'thiet-bi',
-        roles: ["Admin"],
-        children : [
-            {
-                name :'Lái xe',
-                url:'lai-xe',
-            },
-            {
-                name :'Phương tiện',
-                url:'phuong-tien',
-                roles: ["Admin","ds"],
-            },
-            {
-                name :'Phương tiện - lái xe',
-                url:'lai-xe-phuong-tien',
-                roles: ["Admin","ds"],
-            },
-            {
-                name: 'Đơn hàng',
-                url: 'don-hang',
-                roles: ["Admin", "ds"]
-            },
-        ]
-    },
-    {
-      name :'Danh mục',
-      roles: ["ds"],
-      children : [
         {
-            name :'Danh mục máng xuất',
-            url:'404-not-found',
-            roles: ["ds","Admin"],
-        },
-        {
-            name: 'Danh mục RFID',
-            url: 'rfid',
+            name: 'Đơn hàng',
+            url: 'don-hang',
             roles: ["Admin", "ds"]
         },
         {
             name :'Danh mục thiết bị',
-            url:'thiet-bi',
+            url:'ds-thiet-bi',
             roles: ["Admin"],
         },
         {
@@ -126,38 +91,32 @@ export const ROUTE_DATA: TypeRoute[] = [
             url:'404-not-found',
             roles: ["Admin"],
         },
-      ]
+    ]
     },
     {
         name :'Quản trị hệ thống',
         roles: ["Admin"],
-      },
-    ]
-  },
-  {
-    name: 'Quản trị hệ thống',
-    roles: ["Admin"],
-    children: [
-      {
-        name: 'Quản lý tài khoản',
-        url: 'quan-ly-tai-khoan',
-        roles: ["Admin"],
-      },
-      {
-        name: 'Phân quyền hệ thống',
-        url: 'quan-ly-he-thong',
-        roles: ["Admin"],
-      },
-      {
-        name: 'Cấu hình thiết bị',
-        url: '404-not-found',
-        roles: ["Admin"],
-      },
-      {
-        name: 'Cấu hình chung hệ thống',
-        url: 'setting',
-        roles: ["Admin"],
-      },
-    ]
-  },
+        children : [
+            {
+                name :'Quản lý tài khoản',
+                url:'quan-ly-tai-khoan',
+                roles: ["Admin"],
+            },
+            {
+                name :'Phân quyền hệ thống',
+                url:'quan-ly-he-thong',
+                roles: ["Admin"],
+            },
+            {
+                name :'Cấu hình thiết bị',
+                url:'thiet-bi',
+                roles: ["Admin"],
+            },
+            {
+                name :'Cấu hình chung hệ thống',
+                url:'setting',
+                roles: ["Admin"],
+            },
+        ]
+    },
 ]

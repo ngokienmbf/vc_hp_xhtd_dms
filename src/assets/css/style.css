@@ -46,22 +46,16 @@ width: 100%;
 
 .main-login .mat-raised-button {
     width: 100%;
-    background-color: #9e7b4c !important;
+    background-color: #a17c50 !important;
 }
 
 .main-login div.form-action> a {
-    color: #9e7b4c !important;
+    color: #a17c50 !important;
 }
 
 /* login, forgot, send verify code >> */
 
 
-.btn-outline-secondary {
-    color: #fff !important;
-    background-color: #00afdd !important;
-    border-color: #00afdd !important;
-    font-weight: 500 !important;
-}
 .mt_checkbox{
     margin-top: 29px;
     
@@ -87,24 +81,58 @@ width: 100%;
     } */
 }
 
+
+/* common */
 .hight_modal{
     max-height: 500px;
 }
+
 .title_modal{
- 
     font-size: large !important;
     font-weight: 500 !important;
-    border-bottom: 1px solid #9d9d9d !important;
+    border-bottom: 1px solid #a17c50 !important;
 }
 
 .ng-star-inserted{
     stroke-width: 4% !important;
 }
+
+.no-border {
+    border: 0 !important;
+    box-shadow: none !important; 
+}
+
+/* navi tab */
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #a17c50 !important;
+}
+
+
+
+/* material */
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+    display: none;}
+
 .mat-progress-spinner circle, .mat-spinner circle {
-    stroke: #00afdd !important;
+    stroke: #a17c50 !important;
 }
 
 .mat-progress-spinner svg {
     width: 80px !important;
     height: 80px !important;
+}
+
+
+/* radio */
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: #9e7b4c !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #9e7b4c !important;
 }

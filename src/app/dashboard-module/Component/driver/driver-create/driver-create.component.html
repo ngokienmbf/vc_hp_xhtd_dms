@@ -6,7 +6,8 @@
                     <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
                         Thông tin lái xe
                     </div>
-                </ng-template>        </div>
+                </ng-template>        
+        </div>
         <div class="row">
             <div class="col-lg-4">
                 <div class="mb-2">
@@ -26,16 +27,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Trạng thái</label>
-                    <!-- <input type="text" class="form-control" formControlName="state"> -->
-                    <select class="form-control" formControlName="state" >
-                        <option [ngValue]="true">active</option>
-                        <option [ngValue]="false">deactive</option>
-                    </select>
-                </div>
-            </div>
+
             <div class="col-lg-4">
                 <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Số CMT/CCCD</label>
@@ -47,7 +39,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">phone</label>
+                    <label for="exampleFormControlInput1" class="form-label">SĐT</label>
                     <input type="text" class="form-control" formControlName="phone">
                     <div *ngIf="submited && phone?.errors?.['required']">
                         <span *ngIf="phone?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
@@ -56,19 +48,19 @@
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">email</label>
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
                     <input type="text" class="form-control" formControlName="email">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">birthday</label>
+                    <label for="exampleFormControlInput1" class="form-label">Ngày sinh</label>
                     <input type="datetime-local" class="form-control" formControlName="birthday">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">gender</label>
+                    <label for="exampleFormControlInput1" class="form-label">Giới tính</label>
                     <select class="form-control" formControlName="gender" >
                         <option [ngValue]="'Nam'">Nam</option>
                          <option [ngValue]="'Nữ'">Nữ</option>
@@ -77,17 +69,27 @@
             </div>
             <div class="col-lg-4">
                 <div class="mb-6">
-                    <label for="exampleFormControlInput1" class="form-label">address</label>
+                    <label for="exampleFormControlInput1" class="form-label">Địa chỉ</label>
                     <input type="textarea" class="form-control" formControlName="address">
                 </div>
             </div>
+            <div class="col-lg-4">
+                <div class="mb-6">
+                    <label for="exampleFormControlInput1" class="form-label">Trạng thái</label>
+                    <mat-radio-group class="form-control no-border" (change)="radioChange($event)" formControlName="state" >
+                        <mat-radio-button [checked]='stateChecked' [value]=true> Hoạt động</mat-radio-button>
+                        <mat-radio-button [checked]='!stateChecked' [value]=false>Khóa</mat-radio-button>
+                        <!-- <mat-radio-button [checked]='stateChecked==a.value' *ngFor="let a of lstState" [value]=a.value>{{a.name}}</mat-radio-button> -->
+                    </mat-radio-group>
+                </div>
+            </div>
+
             <div class="col-lg-4" *ngIf="(customerId&&!isCreate)">
                 <div class="mb-6">
                     <label for="exampleFormControlInput1" class="form-label">Danh sách xe</label>
                     <input type="textarea" class="form-control" formControlName="vehicles" [readonly]="(customerId&&!isCreate)">
                 </div>
             </div>
-
         </div>
 
         <div class="d-flex justify-content-end">

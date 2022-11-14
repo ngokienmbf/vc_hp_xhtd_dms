@@ -2,6 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strictPropertyInitialization": false, // loại bỏ bắt buộc khởi tạo giá trị biến, giống như dùng ! cho tất cả các biến vậy
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

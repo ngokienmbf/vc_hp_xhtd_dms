@@ -2,19 +2,23 @@ import { RfidService } from './../../../../Service/rfid.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-rfid-create',
   templateUrl: './rfid-create.component.html',
-  styleUrls: ['./rfid-create.component.css']
 })
 export class RfidCreateComponent implements OnInit {
 
   CreateEditForm!: FormGroup;
   submited: boolean = false;
+
   @Input() createId: number = 0;
   @Input() isCreate: boolean = true;
-  lstState = [{value: true, name: "Kích hoạt"}, { value: false, name: "Khoá"}]
+
+
+
+  //lstState = [{value: true, name: "Kích hoạt"}, { value: false, name: "Khoá"}]
   constructor(private rfidService: RfidService, public dialogRef: MatDialogRef<RfidCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       code: new FormControl(''),
@@ -30,11 +34,19 @@ export class RfidCreateComponent implements OnInit {
       lastEnter: new FormControl(),
     })
   }
+  
+  stateChecked: boolean = true;
+  radioChange(event: MatRadioChange) {
+    this.CreateEditForm.get('state')?.setValue(event.value);
+    console.log(this.CreateEditForm.value.state);
+    this.stateChecked = event.value;
+  }
 
   ngOnInit(): void {
     //Edit
     if (this.createId && this.isCreate === false) {
       this.rfidService.GetDetail(this.createId).subscribe(response => {
+        this.stateChecked = response.state;
         this.CreateEditForm = new FormGroup({
           id: new FormControl(response.id),
           code: new FormControl(response.code),
@@ -57,6 +69,7 @@ export class RfidCreateComponent implements OnInit {
     this.submited = true;
     // console.log(this.CreateEditForm.value)
     if (this.CreateEditForm.valid && this.isCreate === true) {
+      this.CreateEditForm.get('state')?.setValue(this.stateChecked);
       this.rfidService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
       });
@@ -66,7 +79,7 @@ export class RfidCreateComponent implements OnInit {
         this.dialogRef.close(response);
       })
     }
-
   }
+  
 
 }

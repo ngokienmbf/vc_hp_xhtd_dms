@@ -3,7 +3,7 @@
 </div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
     <div class="row">
-        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách thiết bị</h2>
+        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách hạng mục</h2>
     </div>
 
     <div class="row" style=" margin-bottom: 25px;">
@@ -21,14 +21,12 @@
                 <thead >
                   <tr >
                     <th style="text-align: center;">STT</th>
-                    <th>Mã TB</th>
-                    <th>Tên TB</th>
                     <th>Mã Hạng mục</th>
-                    <th>Mã TB quản lý</th>
-                    <th>IP Address</th>
-                    <th>Port</th>
+                    <th>Tên Hạng mục</th>
+                    <th>Thứ tự hiển thị</th>
+                    <th>Danh sách Thiết bị</th>
                     <th style="text-align: center;">Trạng thái</th>
-                    <th style="text-align: center;">Hành động</th>
+                    <th>Hành động</th>
                   </tr>
                 </thead>
                 <tbody style="border-top: none;">
@@ -36,10 +34,12 @@
                     <td style="text-align: center;">{{i + 1}}</td>
                     <td>{{item.code}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.catCode}}</td>
-                    <td>{{item.manCode}}</td>
-                    <td>{{item.ipAddress}}</td>
-                    <td>{{item.portNumber}}</td>
+                    <td>{{item.showIndex}}</td>
+                    <td> 
+                      <p *ngFor="let d of item.devices; index as j"> 
+                       {{d.name}} 
+                    </p>
+                  </td>
                     <td style="text-align: center;">
                       <i *ngIf="item.state" class="bi bi-check-circle-fill" style="color: green;"></i>
                       <i *ngIf="!item.state" class="bi bi-dash-circle-fill" style="color: red;"></i>

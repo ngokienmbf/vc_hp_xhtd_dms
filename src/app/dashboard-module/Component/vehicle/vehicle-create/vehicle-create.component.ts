@@ -13,11 +13,9 @@ import { DriverService } from 'src/app/Service/driver.service';
 export class VehicleCreateComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  listProductGroup: any = [];
-  listUnit: any = [];
 
-  userNameSelected: string = "";
-  userNameList: Item[] = [];
+  // userNameSelected: string = "";
+  // userNameList: Item[] = [];
 
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
@@ -36,7 +34,7 @@ export class VehicleCreateComponent implements OnInit {
       unladenWeight2: new FormControl(),
       unladenWeight3: new FormControl(),
       isSetMediumUnladenWeight: new FormControl(),
-      userName: new FormControl(),
+      drivers: new FormControl(),
     })
   }
 
@@ -44,7 +42,7 @@ export class VehicleCreateComponent implements OnInit {
     //Edit
     if (this.customerId && this.isCreate === false) {
       this.VehicleService.GetWithDriver(this.customerId).subscribe(response => {
-        this.userNameSelected = response.userName;
+        // this.userNameSelected = response.drivers;
         this.CreateEditForm = new FormGroup({
           idVehicle: new FormControl(response.idVehicle),
           vehicle: new FormControl(response.vehicle),
@@ -59,16 +57,18 @@ export class VehicleCreateComponent implements OnInit {
           unladenWeight2: new FormControl(response.unladenWeight2),
           unladenWeight3: new FormControl(response.unladenWeight3),
           isSetMediumUnladenWeight: new FormControl(response.isSetMediumUnladenWeight),
-          userName: new FormControl(response.userName),
+          
+          drivers: new FormControl(response.drivers.toString()),
+
           createDay: new FormControl(response.createDay),
           createBy: new FormControl(response.createBy),
           updateDay: new FormControl(response.updateDay),
           updateBy: new FormControl(response.updateBy),
         })
-        this.DriverService.GetAllFull().subscribe((data) => {
-          this.userNameList = data;
-          //this.userNameSelected = this.userNameList.find(x => x.value == this.CreateEditForm.get('userName')?.value||null)?.name||'xxx';
-        });
+        // this.DriverService.GetAllFull().subscribe((data) => {
+        //   this.userNameList = data;
+        //   //this.userNameSelected = this.userNameList.find(x => x.value == this.CreateEditForm.get('userName')?.value||null)?.name||'xxx';
+        // });
       })
     }
   }
@@ -90,17 +90,17 @@ export class VehicleCreateComponent implements OnInit {
     }
   }
 
-  onUserNameDropDownChange(item: Item): void {
-    if(!item.checked){
-      this.CreateEditForm.value.userName = '';
-      this.userNameSelected = '';
-    }
-    else
-    {
-      this.userNameSelected = item.name;
-      this.CreateEditForm.value.userName = item.name;
-    }
-  }
+  // onUserNameDropDownChange(item: Item): void {
+  //   if(!item.checked){
+  //     this.CreateEditForm.value.userName = '';
+  //     this.userNameSelected = '';
+  //   }
+  //   else
+  //   {
+  //     this.userNameSelected = item.name;
+  //     this.CreateEditForm.value.userName = item.name;
+  //   }
+  // }
 
 
 }
