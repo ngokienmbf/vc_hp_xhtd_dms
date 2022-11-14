@@ -84,7 +84,7 @@ export class RfidDialogComponent implements OnInit {
 
   handleSubmit() {
     this.loading = true;
-    this.rfidService.Update({...this.rfidSelected, vehicle : this.itemSelected}).subscribe(res => this.dialogRef.close(res));
+    this.rfidService.AssignVehicle({id: this.rfidSelected?.id, vehicle: this.itemSelected}).subscribe(res => this.dialogRef.close(res));
   }
 
 }
