@@ -138,8 +138,22 @@ export class OrderOperatingListComponent implements OnInit {
   }
 
   exportReport() {
-    return this.orderOperatingService.ExportReport(this.PageInfo.page,
-      this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.step)
+    let showType = ''
+    switch (this.showType) {
+      case 'DHD':
+        showType = 'listorder'
+        break;
+      case 'QLVR':
+        showType = 'door'
+        break;
+      case 'QLTC':
+        showType = 'weightStation'
+        break;
+      default:
+        break;
+    }
+
+    return this.orderOperatingService.ExportReport(showType)
       .subscribe((result: Blob) => {
         const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
         const url = window.URL.createObjectURL(blob);
