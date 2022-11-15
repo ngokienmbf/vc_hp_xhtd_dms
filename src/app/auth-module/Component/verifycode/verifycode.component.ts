@@ -10,7 +10,7 @@ import { ToastrcustomService } from '../../../Interceptor/toastrcustom';
 })
 export class VerifycodeComponent implements OnInit {
   code : string = "";
-  loadding: boolean = false;
+  loading: boolean = false;
 
   constructor(private accountservice : AccountService,private router : Router,private toastr: ToastrcustomService) { }
 
@@ -19,7 +19,7 @@ export class VerifycodeComponent implements OnInit {
 
 
   sendCode() {
-    this.loadding = true;
+    this.loading = true;
 
     var stringToObj = JSON.parse(String(localStorage.getItem('emailInfo')));
     var obj = {
@@ -27,7 +27,7 @@ export class VerifycodeComponent implements OnInit {
       code : this.code
     }
     this.accountservice.sendCode(obj).subscribe(response => {
-    this.loadding = false;
+    this.loading = false;
     console.log(response)
       if(response.jwt != null){
         localStorage.setItem("UserInfo", JSON.stringify(response));

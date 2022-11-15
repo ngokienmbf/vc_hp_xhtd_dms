@@ -14,8 +14,8 @@ export class SettingIndexComponent implements OnInit {
   listSettingService: any = [];
   listUnit: any = [];
   lockOrOpen: boolean = false;
-  loadding: boolean = false;
-  
+  loading: boolean = false;
+
   constructor(private SettingService: SettingService, private toastr: ToastrcustomService) {
     this.CreateEditForm = new FormGroup({
       emailSupport: new FormControl(),
@@ -34,7 +34,7 @@ export class SettingIndexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadding = true;
+    this.loading = true;
 
     this.lockOrOpen = true;
 
@@ -55,8 +55,8 @@ export class SettingIndexComponent implements OnInit {
         adminName: new FormControl(response.adminName),
       })
     })
-    this.loadding = false;
-    
+    this.loading = false;
+
   }
 
   checkEdit() {

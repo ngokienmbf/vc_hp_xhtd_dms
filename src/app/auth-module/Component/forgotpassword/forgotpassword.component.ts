@@ -9,7 +9,7 @@ import { ToastrcustomService } from '../../../Interceptor/toastrcustom';
   styleUrls: ['./forgotpassword.component.css']
 })
 export class ForgotpasswordComponent implements OnInit {
-  loadding: boolean = false;
+  loading: boolean = false;
   emailorphone : string = "";
   constructor(private accountservice : AccountService,private router : Router,private toastr: ToastrcustomService) { }
 
@@ -17,10 +17,10 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   sendCode(){
-    this.loadding = true;
+    this.loading = true;
 
     this.accountservice.sendEmailorPhone(this.emailorphone).subscribe(response => {
-    this.loadding = false;
+    this.loading = false;
 
         if(response.errorCode === "00"){
           localStorage.setItem("emailInfo", JSON.stringify(this.emailorphone));
