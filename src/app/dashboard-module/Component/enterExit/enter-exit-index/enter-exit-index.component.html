@@ -11,12 +11,26 @@
             <tr>
               <th style="text-align: center;">STT</th>
               <th>Biển số xe</th>
+              <th>MSGH</th>
+              <th>Sản phẩm</th>
+              <th>Khối lượng đặt hàng</th>
+              <th>Khối lượng thực xuất</th>
+              <th>Khối lượng lệch</th>
+              <th>Độ lệch %</th>
+              <th>Cảnh báo cân ra</th>
             </tr>
           </thead>
           <tbody style="border-top: none;">
             <tr *ngFor="let item of lstdata; index as i" class="align-middle">
               <td style="text-align: center;">{{i + 1}}</td>
               <td>{{item.vehicle}}</td>
+              <td>{{item.deliveryCode}}</td>
+              <td>{{item.nameProduct}}</td>
+              <td>{{item.sumNumber}}</td>
+              <td>{{item.deliveryCode}}</td>
+              <td>{{item.deliveryCode}}</td>
+              <td>{{item.warningNotCall}}</td>
+              <td>{{item.warningNotCall}}</td>
             </tr>
           </tbody>
         </table>

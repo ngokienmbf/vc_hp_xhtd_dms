@@ -43,9 +43,14 @@ export class EnterExitIndexComponent implements OnInit {
       hubMessage = JSON.parse(hubMessage);
       if (hubMessage.FromService === 'CV') {
         this.loading = true;
-        this.vehicleService.GetByLP(hubMessage.Vehicle).subscribe(data => {
-          this.lstdata.unshift(data);
-          this.loading = false;
+        this.orderOperatingService.GetOrderByCode(hubMessage.DeliveryCode).subscribe(res => {
+          if (res.statusCode == 200) {
+            this.lstdata.unshift(res.data);
+            this.loading = false;
+          } else {
+            this.toastr.showError(res.error);
+            this.loading = false;
+          }
         })
       }
     }, 300)
