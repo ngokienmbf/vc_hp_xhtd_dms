@@ -1,0 +1,51 @@
+<div style="position: absolute; top: 40%; left: 40%;">
+  <mat-spinner *ngIf="loadding == true" ></mat-spinner>
+</div>
+<div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
+    <div class="row">
+        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách thiết bị</h2>
+    </div>
+
+    <div class="example-action-buttons">
+      <button class="btn btn-outline-dark" (click)="accordion.openAll()">Xem tất cả</button>
+      <button class="btn btn-outline-dark"  (click)="accordion.closeAll()">Đóng tất cả</button>
+    </div>
+
+    <mat-accordion class="example-headers-align" multi>
+
+      <mat-expansion-panel *ngFor="let cat of categoryList; index as i"
+      [expanded]="step === i" (opened)="setStep(i)" >
+        <mat-expansion-panel-header>
+          <mat-panel-title style="font-size: 16px;font-weight: 500;" >
+          </mat-panel-title>
+          <mat-panel-description style="font-size: 16px;font-weight: 500;" >
+            {{cat.code}} - {{cat.name}}
+            <!-- <mat-icon>account_circle</mat-icon> -->
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <ul>
+          <li *ngFor="let dev of cat.devices; index as j" >
+            {{dev.name}}
+            <ul>
+              <li *ngIf="null != dev.ipAddress" >IP: {{dev.ipAddress}} </li>
+              <li *ngIf="-1 != dev.portNumber" >Port: {{dev.portNumber}} </li>
+              <li *ngIf="-1 != dev.portNumberDeviceIn" >Cổng vào: {{dev.portNumberDeviceIn}} </li>
+              <li *ngIf="-1 != dev.portNumberDeviceOut" >Cổng ra: {{dev.portNumberDeviceOut}} </li>
+              <li *ngIf="-1 != dev.portNumberDeviceIn1" >Cổng vào 1: {{dev.portNumberDeviceIn1}} </li>
+              <li *ngIf="-1 != dev.portNumberDeviceOut1" >Cổng ra 1: {{dev.portNumberDeviceOut1}} </li>
+              <li *ngIf="-1 != dev.portNumberDeviceIn2" >Cổng vào 2: {{dev.portNumberDeviceIn2}} </li>
+              <li *ngIf="-1 != dev.portNumberDeviceOut2" >Cổng ra 2: {{dev.portNumberDeviceOut2}} </li>
+    
+            </ul>
+          </li>
+        </ul>
+
+        <mat-action-row>
+          <button class="btn btn-outline-dark" [disabled]="0 == i"  (click)="prevStep()">Previous</button>
+          <button class="btn btn-outline-dark" [disabled]="categoryList.length-1 == i"  (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+</div>

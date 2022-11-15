@@ -1,9 +1,9 @@
 <div style="position: absolute; top: 40%; left: 40%;">
-  <mat-spinner *ngIf="loading == true" ></mat-spinner>
+  <mat-spinner *ngIf="loadding == true" ></mat-spinner>
 </div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
     <div class="row">
-        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách phương tiện</h2>
+        <h2 class="col-sm-6" style="font-weight: 500;">Danh sách hạng mục</h2>
     </div>
 
     <div class="row" style=" margin-bottom: 25px;">
@@ -11,6 +11,7 @@
             <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
         </div>
         <div class="col-md-8" style="text-align: right;">
+
             <button class="btn btn-outline-secondary" type="button" id="button-addon3" (click)="openCreate()">Thêm mới</button>
         </div>
     </div>
@@ -20,28 +21,30 @@
                 <thead >
                   <tr >
                     <th style="text-align: center;">STT</th>
-                    <th>Biển số </th>
-                    <th>Trọng tải</th>
-                    <th>TL Bì</th>
-                    <th>Cao</th>
-                    <th>Rộng</th>
-                    <th>Dài</th>
-                    <th>Tài khoản lái xe hiện tại </th>
-                    <th style="text-align: center;">Hành động</th>
+                    <th>Mã Hạng mục</th>
+                    <th>Tên Hạng mục</th>
+                    <th>Thứ tự hiển thị</th>
+                    <th>Danh sách Thiết bị</th>
+                    <th style="text-align: center;">Trạng thái</th>
+                    <th>Hành động</th>
                   </tr>
                 </thead>
                 <tbody style="border-top: none;">
                   <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
                     <td style="text-align: center;">{{i + 1}}</td>
-                    <td>{{item.vehicle}}</td>
-                    <td>{{item.tonnage}}</td>
-                    <td>{{item.tonnageDefault}}</td>
-                    <td>{{item.heightVehicle}}</td>
-                    <td>{{item.widthVehicle}}</td>
-                    <td>{{item.longVehicle}}</td>
-                    <td>{{item.drivers}}</td>
-                    <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.idVehicle)"></i>
-                      <i class="bi bi-trash3" (click)="openDelete(item.idVehicle)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
+                    <td>{{item.code}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.showIndex}}</td>
+                    <td> 
+                      <p *ngFor="let d of item.devices; index as j"> 
+                       {{d.name}} 
+                    </p>
+                  </td>
+                    <td style="text-align: center;">
+                      <i *ngIf="item.state" class="bi bi-check-circle-fill" style="color: green;"></i>
+                      <i *ngIf="!item.state" class="bi bi-dash-circle-fill" style="color: red;"></i>
+                    </td>
+                    <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i><i class="bi bi-trash3" (click)="openDelete(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
                   </tr>
                 </tbody>
               </table>

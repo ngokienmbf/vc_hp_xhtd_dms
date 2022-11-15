@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    
+    <div class="row">
+        <div style="padding: 15px 20px 15px 20px; margin: 10px 0px 5px 0px; background: #d9b790;
+	border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+	box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);">
+            <h3 style="margin: 0px;"> Tổng cộng <span class="badge bg-success">{{countActiveCat}}</span> hạng mục đang hoạt động,  <span class="badge bg-danger"> {{countDeactiveCat}} </span> hạng mục đang dừng </h3>
+            <h3 style="margin: 0px;"> Tổng cộng  <span class="badge bg-success"> {{countActiveDev}}</span> thiết bị đang hoạt động, <span class="badge bg-danger"> {{countDeactiveDev}} </span> thiết bị đang dừng  </h3>
+        </div >
+    </div>
+  
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row">
+        <div class="col-12 card-category">
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel *ngFor="let cat of countCategoryList; index as i"
+                [expanded]="step === i" (opened)="setStep(i)" >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <span style="font-size: 16px;font-weight: 500;" >{{cat.name}}</span> 	&nbsp;&nbsp;
+                  <i *ngIf="cat.state" class="bi bi-check-circle-fill" style="color: green;">Đang chạy</i>
+                  <i *ngIf="!cat.state" class="bi bi-dash-circle-fill" style="color: red;">Đang dừng</i>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <div>
+                        <span class="badge bg-success">{{cat._countActiveDevices}}</span>
+                        <span class="badge bg-danger">{{cat._countDeactiveDevices}}</span>
+                    </div>
+                </mat-panel-description>
+                <mat-action-row>
+                    <button *ngIf="cat.state" mat-button class="btn btn-danger" (click)="changeState(1,cat.id,false)">Dừng</button>
+                    <button *ngIf="!cat.state" mat-button class="btn btn-success" (click)="changeState(1,cat.id,true)">Chạy</button>
+                </mat-action-row>
+            </mat-expansion-panel-header>
+
+            <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;"></div>
+            <div class="row accordion">
+                <div class="accordion_item col-12 col-sm-6 col-md-3 card-device" *ngFor="let dev of cat.devices; index as j"
+                        matTooltip="
+                        {{ dev.ipAddress!==null ? 'IP: '+dev.ipAddress+ '&#13;' : null}} &#13;
+                        {{ dev.portNumber!==-1 ? 'Port: '+dev.portNumber+ '&#13;' : null}} &#13;
+                        {{ dev.portNumberDeviceIn!==-1 ? 'Cổng vào: '+dev.portNumberDeviceIn+ '&#13;' : null}} &#13;
+                        {{ dev.portNumberDeviceOut!==-1 ? 'Cổng ra: '+dev.portNumberDeviceOut+ '&#13;' : null}} &#13;
+                        {{ dev.portNumberDeviceIn1!==-1 ? 'Cổng vào 1: '+dev.portNumberDeviceIn1+ '&#13;' : null}} &#13;
+                        {{ dev.portNumberDeviceOut1!==-1 ? 'Cổng ra 1: '+dev.portNumberDeviceOut1+ '&#13;' : null}} &#13;
+                        {{ dev.portNumberDeviceIn2!==-1 ? 'Cổng vào 2: '+dev.portNumberDeviceIn2+ '&#13;' : null}} &#13;
+                        {{ dev.portNumberDeviceOut2!==-1 ? 'Cổng ra 2: '+dev.portNumberDeviceOut2+ '&#13;' : null}} &#13;
+                        " data-html="true"
+                        matTooltipClass="my-tooltip"
+                        aria-label="Button that shows a red tooltip"
+                >
+                    <mat-card>
+                        <mat-card-title>{{dev.name}}</mat-card-title>
+                        <mat-card-subtitle>
+                            <i *ngIf="dev.state" class="bi bi-check-circle-fill" style="color: green;">Đang chạy</i>
+                            <i *ngIf="!dev.state" class="bi bi-dash-circle-fill" style="color: red;">Đang dừng</i>
+                        </mat-card-subtitle>
+                        <mat-card-actions>
+                            <button *ngIf="dev.state" mat-button class="btn btn-danger" (click)="changeState(2,dev.id,false)">Dừng</button>
+                            <button *ngIf="!dev.state" mat-button class="btn btn-success" (click)="changeState(2,dev.id,true)">Chạy</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>            
+            </div>
+
+            
+
+        </mat-expansion-panel>
+      </mat-accordion>
+      </div> <!-- parent col / each Category -->
+      
+    </div><!--  row -->
+  </div>

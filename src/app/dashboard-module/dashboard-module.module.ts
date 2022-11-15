@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,6 +26,8 @@ import { AutocompleteComponent } from './../View/autocomplete/autocomplete.compo
 import { LoadingComponent } from '../View/loading/loading.component';
 import { MultidropdownComponent } from '../View/multidropdown/multidropdown.component';
 import { PaginationComponent } from '../View/pagination/pagination.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 // authen/example
 import { ExampleComponent } from './Component/example/example.component';
@@ -48,6 +51,10 @@ import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle
 import { DeviceCreateComponent } from './Component/device/device-create/device-create.component';
 import { DeviceDeleteComponent } from './Component/device/device-delete/device-delete.component';
 import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
+import { DeviceTabsComponent } from './Component/device/device-tabs.component';
+import { CategoryCreateComponent } from './Component/device/category-create/category-create.component';
+import { CategoryDeleteComponent } from './Component/device/category-delete/category-delete.component';
+import { CategoryIndexComponent } from './Component/device/category-index/category-index.component';
 
 // Quan ly he thong
 import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
@@ -65,11 +72,13 @@ import { DriverVehicleIndexComponent } from './Component/driver-vehicle/driver-v
 import { DriverVehicleCreateComponent } from './Component/driver-vehicle/driver-vehicle-create/driver-vehicle-create.component';
 import { DriverVehicleDeleteComponent } from './Component/driver-vehicle/driver-vehicle-delete/driver-vehicle-delete.component';
 import { RfidDialogComponent } from './Component/RFID/rfid-dialog/rfid-dialog.component';
+import { DeviceBoardComponent } from './Component/device/device-board/device-board.component';
 import { TroughIndexComponent } from './Component/trough/trough-index/trough-index.component';
 import { TroughCreateComponent } from './Component/trough/trough-create/trough-create.component';
 import { TroughDeleteComponent } from './Component/trough/trough-delete/trough-delete.component';
 import { OrderOperatingCreateComponent } from './Component/orderoperating/order-operating-create/order-operating-create.component';
 import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
+import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
 import { OrderOperatingListComponent } from './Component/orderoperating/order-operating-list/order-operating-list.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { WeightStationIndexComponent } from './Component/weight-station/weight-station-index/weight-station-index.component';
@@ -90,13 +99,20 @@ import { WeightStationIndexComponent } from './Component/weight-station/weight-s
     DriverCreateComponent,
     DriverDeleteComponent,
     DriverIndexComponent,
+
     VehicleCreateComponent,
     VehicleDeleteComponent,
     VehicleIndexComponent,
 
+    CategoryCreateComponent,
+    CategoryDeleteComponent,
+    CategoryIndexComponent,
     DeviceCreateComponent,
     DeviceDeleteComponent,
     DeviceIndexComponent,
+    DeviceTabsComponent,
+
+
     SettingIndexComponent,
 
     UserAuthorizationComponent,
@@ -114,11 +130,13 @@ import { WeightStationIndexComponent } from './Component/weight-station/weight-s
     DriverVehicleCreateComponent,
     DriverVehicleDeleteComponent,
     RfidDialogComponent,
+    DeviceBoardComponent,
     TroughIndexComponent,
     TroughCreateComponent,
     TroughDeleteComponent,
     OrderOperatingCreateComponent,
     EnterExitIndexComponent,
+    DeviceControlComponent,
     OrderOperatingIndexComponent,
     WeightStationIndexComponent,
 
@@ -135,6 +153,7 @@ import { WeightStationIndexComponent } from './Component/weight-station/weight-s
     MatTreeModule,
     MatMenuModule,
     MatDialogModule,
+    MatRadioModule,
     MatProgressSpinnerModule,
     MatTabsModule,
     MatAutocompleteModule,
@@ -142,7 +161,9 @@ import { WeightStationIndexComponent } from './Component/weight-station/weight-s
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    MatExpansionModule,
+    MatTooltipModule,
     // ToastrModule.forRoot()
   ],
 })

@@ -2,7 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatRadioChange } from '@angular/material/radio';
+import { Item } from 'src/app/Model/multidropdown';
 import { DeviceService } from 'src/app/Service/device.service';
+import { CategoryService } from 'src/app/Service/category.service';
 
 @Component({
   selector: 'app-device-create',
@@ -11,76 +14,98 @@ import { DeviceService } from 'src/app/Service/device.service';
 export class DeviceCreateComponent implements OnInit {
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  listProductGroup: any=[];
-  listUnit: any=[];
 
   @Input() customerId : number = 0;
   @Input() isCreate: boolean = true;
 
-  constructor(private DeviceService: DeviceService, public dialogRef: MatDialogRef<DeviceCreateComponent>) {
+  manCodeSelected: string = "";
+  catCodeSelected: string = "";
+  deviceList: Item[] = [];
+  categoryList: Item[] = [];
+
+
+  constructor(private DeviceService: DeviceService,private CategoryService: CategoryService, public dialogRef: MatDialogRef<DeviceCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       code: new FormControl('', Validators.required),
       name : new FormControl(),
-      codeParent : new FormControl('', Validators.required),
-      port: new FormControl(),
-      ipaddress: new FormControl(),
-      inputPort: new FormControl(),
-      outputAddrType: new FormControl(),
-      outputPort: new FormControl(),
-      operID: new FormControl(),
-      doorAction: new FormControl(),
-      doorOrAuxoutID: new FormControl(),
+      manCode : new FormControl('', Validators.required),
+      catCode: new FormControl(),
+      ipAddress: new FormControl(),
+      portNumber: new FormControl(),
+
+      portNumberDeviceIn: new FormControl(),
+      portNumberDeviceOut: new FormControl(),
+      portNumberDeviceIn1: new FormControl(),
+      portNumberDeviceOut1: new FormControl(),
+      portNumberDeviceIn2: new FormControl(),
+      portNumberDeviceOut2: new FormControl(),
+
+      descriptioon: new FormControl(),
+      state: new FormControl(),
+      showIndex: new FormControl(),
     })
   }
 
+  stateChecked: boolean = true;
+  radioChange(event: MatRadioChange) {
+    this.CreateEditForm.get('state')?.setValue(event.value);
+    console.log(this.CreateEditForm.value.state);
+    this.stateChecked = event.value;
+  }
+
   ngOnInit(): void {
-    if (this.customerId && this.isCreate === false) { 
-    //Edit
+    if (this.customerId && this.isCreate === false) {
       this.DeviceService.GetDetail(this.customerId).subscribe(response => {
+        this.catCodeSelected = response.catCode;
+        this.manCodeSelected = response.manCode;
+        this.stateChecked = response.state;
         this.CreateEditForm = new FormGroup({
+          id: new FormControl(response.id),
           code: new FormControl(response.code),
-          name: new FormControl(response.name),
-          codeParent: new FormControl(response.codeParent),
-          port: new FormControl(response.port),
-          ipaddress: new FormControl(response.ipaddress),
-          inputPort : new FormControl(response.inputPort),
-          outputAddrType : new FormControl(response.outputAddrType),
-          outputPort: new FormControl(response.outputPort),
-          operID: new FormControl(response.operID),
-          doorAction: new FormControl(response.doorAction),
-          doorOrAuxoutID: new FormControl(response.doorOrAuxoutID),
+          name : new FormControl(response.name),
+          manCode : new FormControl(response.manCode),
+          catCode: new FormControl(response.catCode),
+          ipAddress: new FormControl(response.ipAddress),
+          portNumber: new FormControl(response.portNumber),
+    
+          PortNumberDeviceIn: new FormControl(response.portNumberDeviceIn),
+          PortNumberDeviceOut: new FormControl(response.portNumberDeviceOut),
+          PortNumberDeviceIn1: new FormControl(response.portNumberDeviceIn1),
+          PortNumberDeviceOut1: new FormControl(response.portNumberDeviceOut1),
+          PortNumberDeviceIn2: new FormControl(response.portNumberDeviceIn2),
+          PortNumberDeviceOut2: new FormControl(response.portNumberDeviceOut2),
+    
+          descriptioon: new FormControl(response.descriptioon),
+          state: new FormControl(response.state),
+          showIndex: new FormControl(response.showIndex),
+
           createDay: new FormControl(response.createDay),
           createBy: new FormControl(response.createBy),
           updateDay: new FormControl(response.updateDay),
           updateBy: new FormControl(response.updateBy),
         })
+        this.DeviceService.GetAllFull().subscribe((data) => {
+          this.deviceList = data;
+        });
+        this.CategoryService.GetFull().subscribe((data) => {
+          this.categoryList = data;
+        });
       })
+    } else {
+      this.DeviceService.GetAllFull().subscribe((data) => {
+        this.deviceList = data;
+      });
+      this.CategoryService.GetFull().subscribe((data) => {
+        this.categoryList = data;
+      });
     }
   }
 
   get code() { return this.CreateEditForm.get('code'); }
   get name() { return this.CreateEditForm.get('name') }
-  get codeParent() { return this.CreateEditForm.get('codeParent') }
-  get port() { return this.CreateEditForm.get('port') }
-  get ipaddress() { return this.CreateEditForm.get('ipaddress') }
-  get inputPort() { return this.CreateEditForm.get('inputPort') }
-  get outputAddrType() { return this.CreateEditForm.get('outputAddrType') }
-  get outputPort() { return this.CreateEditForm.get('outputPort') }
-  get operID() { return this.CreateEditForm.get('operID') }
-  get doorAction() { return this.CreateEditForm.get('doorAction') }
-  get doorOrAuxoutID() { return this.CreateEditForm.get('doorOrAuxoutID') }
-  get createDay() { return this.CreateEditForm.get('createDay') }
-  get createBy() { return this.CreateEditForm.get('createBy') }
-  get updateDay() { return this.CreateEditForm.get('updateDay') }
-  get updateBy() { return this.CreateEditForm.get('updateBy') }
+  get catCode() { return this.CreateEditForm.get('catCode') }
+  get manCode() { return this.CreateEditForm.get('manCode') }
 
-
-  getGroupId(event: any) {
-    this.CreateEditForm.value.groupId = event.target.value;
-  }
-  getUnitId(event: any) {
-    this.CreateEditForm.value.unitId = event.target.value;
-  }
 
   onSubmit() {
     this.submited = true;
@@ -95,7 +120,30 @@ export class DeviceCreateComponent implements OnInit {
         this.dialogRef.close(response);
       })
     }
+  }
 
+  onManCodeDropDownChange(item: Item): void {
+    if(!item.checked){
+      this.CreateEditForm.value.manCode = '';
+      this.manCodeSelected = '';
+    }
+    else
+    {
+      this.manCodeSelected = item.name;
+      this.CreateEditForm.value.manCode = item.name;
+    }
+  }
+
+  onCategoryDropDownChange(item: Item): void {
+    if(!item.checked){
+      this.CreateEditForm.value.catCode = '';
+      this.catCodeSelected = '';
+    }
+    else
+    {
+      this.catCodeSelected = item.name;
+      this.CreateEditForm.value.catCode = item.name;
+    }
   }
 
 }

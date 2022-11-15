@@ -18,8 +18,8 @@
             <span *ngIf="vehicle?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
         </div>
         </div>
-      </div>
-            <div class="col-lg-4">
+       </div>
+        <!--    <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Lái xe mặc định</label>
           <input type="text" class="form-control" formControlName="nameDriver">
@@ -30,23 +30,8 @@
           <label for="exampleFormControlInput1" class="form-label">Giấy phép LX mặc định</label>
           <input type="text" class="form-control" formControlName="idCardNumber">
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Tài khoản LX hiện tại</label>
-          <!-- <input type="text" class="form-control" formControlName="userName"> -->
-          <app-multidropdown
-          [items]="userNameList"
-          [showSearch]=true
-          [showAll]=false
-          [showStatus]=true
-          [showError]=false
-          [name]="userNameSelected"
-          placeholder="Chọn tài xế"
-          (itemChange)="onUserNameDropDownChange($event)">
-        </app-multidropdown>
-        </div>
-      </div>
+      </div> -->
+      
       <div class="col-lg-4">
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Trọng tải</label>
@@ -55,11 +40,10 @@
       </div>
       <div class="col-lg-4">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Trọng lượng không tải trung bình</label>
+          <label for="exampleFormControlInput1" class="form-label">Trọng lượng không tải</label>
           <input type="number" class="form-control" formControlName="tonnageDefault">
         </div>
       </div>
-
 
     <div class="col-lg-4">
       <div class="mb-3">
@@ -108,8 +92,28 @@
             </select>
         </div>
     </div>
-
   </div>
+  <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;" *ngIf="(customerId&&!isCreate)">
+  </div>
+    <div class="row" *ngIf="(customerId&&!isCreate)">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Tài khoản lái xe</label>
+          <input type="text" readonly="true" class="form-control" formControlName="drivers">
+          <!-- <app-multidropdown 
+          [items]="userNameList" 
+          [showSearch]=true
+          [showAll]=false
+          [showStatus]=true
+          [showError]=false
+          [name]="userNameSelected"
+          placeholder="Chọn tài xế" 
+          (itemChange)="onUserNameDropDownChange($event)">
+        </app-multidropdown> -->
+        </div>
+      </div>
+
+    </div>
 
     <div class="d-flex justify-content-end">
       <button type="button" class="btn btn-success" type="submit">Lưu</button>

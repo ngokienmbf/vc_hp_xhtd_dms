@@ -21,18 +21,14 @@
                 <thead >
                   <tr >
                     <th style="text-align: center;">STT</th>
-                    <th>Code</th>
-                    <th>Tên</th>
-                    <th>Code cha</th>
+                    <th>Mã TB</th>
+                    <th>Tên TB</th>
+                    <th>Mã Hạng mục</th>
+                    <th>Mã TB quản lý</th>
+                    <th>IP Address</th>
                     <th>Port</th>
-                    <th>IP address</th>
-                    <th>Input Port</th>
-                    <th>Output Address Type</th>
-                    <th>Output Port</th>
-                    <th>operID</th>
-                    <th>Door Action</th>
-                    <th>Door/Auxout ID</th>
-                    <th  style="text-align: center;">Hành động</th>
+                    <th style="text-align: center;">Trạng thái</th>
+                    <th style="text-align: center;">Hành động</th>
                   </tr>
                 </thead>
                 <tbody style="border-top: none;">
@@ -40,15 +36,14 @@
                     <td style="text-align: center;">{{i + 1}}</td>
                     <td>{{item.code}}</td>
                     <td>{{item.name}}</td>
-                    <td>{{item.codeParent}}</td>
-                    <td>{{item.port}}</td>
-                    <td>{{item.ipaddress}}</td>
-                    <td>{{item.inputPort}}</td>
-                    <td>{{item.outputAddrType}}</td>
-                    <td>{{item.outputPort}}</td>
-                    <td>{{item.operID}}</td>
-                    <td>{{item.doorAction}}</td>
-                    <td>{{item.doorOrAuxoutID}}</td>
+                    <td>{{item.catCode}}</td>
+                    <td>{{item.manCode}}</td>
+                    <td>{{item.ipAddress}}</td>
+                    <td>{{item.portNumber}}</td>
+                    <td style="text-align: center;">
+                      <i *ngIf="item.state" class="bi bi-check-circle-fill" style="color: green;"></i>
+                      <i *ngIf="!item.state" class="bi bi-dash-circle-fill" style="color: red;"></i>
+                    </td>
                     <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i><i class="bi bi-trash3" (click)="openDelete(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
                   </tr>
                 </tbody>

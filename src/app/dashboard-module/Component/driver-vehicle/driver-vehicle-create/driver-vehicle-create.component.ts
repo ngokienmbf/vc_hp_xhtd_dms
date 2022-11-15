@@ -52,7 +52,7 @@ export class DriverVehicleCreateComponent implements OnInit {
           updateBy: new FormControl(response.updateBy),
         })
 
-        this.VehicleService.GetFreeVehicles(response.vehicle).subscribe((data) => {
+        this.VehicleService.GetFull().subscribe((data) => {
           this.vehicleList = data;
         });
 
@@ -62,7 +62,7 @@ export class DriverVehicleCreateComponent implements OnInit {
       })
 
     } else {
-      this.VehicleService.GetFreeVehicles('x').subscribe((data) => {
+      this.VehicleService.GetFull().subscribe((data) => {
         this.vehicleList = data;
       });
 
@@ -77,7 +77,6 @@ export class DriverVehicleCreateComponent implements OnInit {
  
   onSubmit() {
     this.submited = true;
-    // console.log(this.CreateEditForm.value)
     if (this.CreateEditForm.valid && this.isCreate === true) {
       this.DriverVehicleService.Insert(this.CreateEditForm.value).subscribe(response => {
         this.dialogRef.close(response);
@@ -107,6 +106,7 @@ export class DriverVehicleCreateComponent implements OnInit {
   }
   
   onVehicleDropDownChange(item: Item): void {
+    console.log(item);
     if(!item.checked){
       this.vehicleSelected = '';
       this.CreateEditForm.get('vehicle')?.setValue('');
