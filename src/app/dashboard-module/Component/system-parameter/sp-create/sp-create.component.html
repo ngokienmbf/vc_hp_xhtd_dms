@@ -1,0 +1,42 @@
+<div class="container-lg">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">Thêm mới tham số</div >
+                <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                    <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                        Chi tiets tham số
+                    </div>
+                </ng-template>        
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Mã</label>
+                    <input type="text" class="form-control" formControlName="code" [readonly]="(customerId&&!isCreate)">
+                    <div *ngIf="submited && code?.errors?.['required']">
+                        <span *ngIf="code?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Tên</label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Giá trị</label>
+                    <input type="text" class="form-control" formControlName="value">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-success" type="submit">Lưu</button>
+            <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
+        </div>
+    </form>
+</div>

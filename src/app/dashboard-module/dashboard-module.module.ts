@@ -81,6 +81,9 @@ import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/
 import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
 import { OrderOperatingListComponent } from './Component/orderoperating/order-operating-list/order-operating-list.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
+import { SpIndexComponent } from './Component/system-parameter/sp-index/sp-index.component';
+import { SpCreateComponent } from './Component/system-parameter/sp-create/sp-create.component';
+import { SpDeleteComponent } from './Component/system-parameter/sp-delete/sp-delete.component';
 1
 
 @NgModule({
@@ -137,6 +140,9 @@ import { OrderOperatingIndexComponent } from './Component/orderoperating/order-o
     EnterExitIndexComponent,
     DeviceControlComponent,
     OrderOperatingIndexComponent,
+    SpIndexComponent,
+    SpCreateComponent,
+    SpDeleteComponent,
 
 
   ],

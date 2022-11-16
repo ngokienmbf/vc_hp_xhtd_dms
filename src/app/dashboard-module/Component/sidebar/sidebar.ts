@@ -6,26 +6,26 @@ export interface TypeRoute {
 }
 
 // Quản lý
-// Quản lý lái xe
-// Quản lý phương tiện
-// Quản lý vào, ra
-// Quản lý điều hành đơn hàng
-// Quản lý xuất hàng trạm cân 951
-// Quản lý xuất hàng máng xuất xi bao
-// Quản lý xuất hàng máng xuất xi rời
-// Quản lý xuất hàng Clinker
-// Quản lý giám sát hành trình đơn hàng
+  // Quản lý lái xe
+  // Quản lý phương tiện
+  // Quản lý vào, ra
+  // Quản lý điều hành đơn hàng
+  // Quản lý xuất hàng trạm cân 951
+  // Quản lý xuất hàng máng xuất xi bao
+  // Quản lý xuất hàng máng xuất xi rời
+  // Quản lý xuất hàng Clinker
+  // Quản lý giám sát hành trình đơn hàng
 // Danh mục (Master Data)
-// Danh mục máng xuất
-// Danh mục thẻ RFID
-// Danh mục thiết bị
-// Danh mục khác
+  // Danh mục máng xuất
+  // Danh mục thẻ RFID
+  // Danh mục thiết bị
+  // Danh mục khác
 // Quản trị hệ thống
-// Quản lý tài khoản người dùng
-// Quản lý nhóm tài khoản, phân quyền
-// Quản lý cấu hình thiết bị
-// Quản lý cấu hình chung hệ thống
-// Đăng nhập
+  // Quản lý tài khoản người dùng
+  // Quản lý nhóm tài khoản, phân quyền
+  // Quản lý cấu hình thiết bị
+  // Quản lý cấu hình chung hệ thống
+  // Đăng nhập
 export const ROUTE_DATA: TypeRoute[] = [
   {
     name: 'Ví dụ',
@@ -114,7 +114,7 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Cấu hình chung hệ thống',
-                url:'setting',
+                url:'cau-hinh-chung',
                 roles: ["Admin"],
             },
         ]

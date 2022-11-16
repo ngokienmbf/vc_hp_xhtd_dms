@@ -9,6 +9,7 @@ import { HomeComponent } from './Component/home/home.component';
 import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
 import { ExampleComponent } from './Component/example/example.component'
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
+import { SpIndexComponent } from './Component/system-parameter/sp-index/sp-index.component';
 import { VehicleIndexComponent } from './Component/vehicle/vehicle-index/vehicle-index.component';
 import { DeviceIndexComponent } from './Component/device/device-index/device-index.component';
 import { CategoryIndexComponent } from './Component/device/category-index/category-index.component';
@@ -40,14 +41,14 @@ const routes: Routes = [
       // danh muc
       { path: 'ds-thiet-bi', component: DeviceBoardComponent},
       { path: 'rfid', component: RfidIndexComponent},
-      { path: 'setting', component: SettingIndexComponent },
       { path: '404-not-found', component: NotfoundComponent },
+      { path: 'don-hang', component: OrderOperatingIndexComponent},
 
 
       // Quản trị hệ thống
       { path: 'quan-ly-tai-khoan', component: QLTaiKhoanIndexComponent },
       { path: 'quan-ly-he-thong', component: QuanTriHeThongComponent},
-      { path: 'don-hang', component: OrderOperatingIndexComponent},
+      { path: 'cau-hinh-chung', component: SpIndexComponent },
       { path: 'thiet-bi', component: DeviceTabsComponent,
         children: [
           { path: '', component: DeviceControlComponent},
