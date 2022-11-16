@@ -36,5 +36,9 @@ export class OrderOperatingService {
     return this.httpService.downloadRequest(`OrderOperating/exportReport?typeReport=${typeReport}`)
   }
 
+  GetOrderByCode(deliveryCode: string) {
+    return this.httpService.getRequest(`OrderOperating/getOrderByCode?code=${deliveryCode}`)
+  }
+
 
 }
