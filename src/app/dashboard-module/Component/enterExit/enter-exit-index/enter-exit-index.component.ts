@@ -18,27 +18,10 @@ import { Vehicle } from 'src/app/Model/Vehicle';
 })
 export class EnterExitIndexComponent implements OnInit {
 
-  isCreate: boolean = true;
-  loadding: boolean = false;
-  options = lstStep;
-  idDetail: number = 0;
+  loading: boolean = false;
   selected: number = 0;
   lstdata: any[] = [] ;
 
-  Pagination: Pagination = {
-    currentPage: 0,
-    pageSize: 0,
-    totalRecord: 0,
-    totalPage: 0,
-  }
-
-  PageInfo = {
-    page: 1,
-    Keyword: '',
-    pageSize: 10,
-    deliveryCode: '',
-    state: ''
-  }
   constructor(private orderOperatingService: OrderOperatingService,
     private vehicleService: VehicleService,
     private signalrService: SignalrService,
@@ -59,10 +42,15 @@ export class EnterExitIndexComponent implements OnInit {
       }
       hubMessage = JSON.parse(hubMessage);
       if (hubMessage.FromService === 'CV') {
-        this.loadding = true;
-        this.vehicleService.GetByLP(hubMessage.Vehicle).subscribe(data => {
-          this.lstdata.unshift(data);
-          this.loadding = false;
+        this.loading = true;
+        this.orderOperatingService.GetOrderByCode(hubMessage.DeliveryCode).subscribe(res => {
+          if (res.statusCode == 200) {
+            this.lstdata.unshift(res.data);
+            this.loading = false;
+          } else {
+            this.toastr.showError(res.error);
+            this.loading = false;
+          }
         })
       }
     }, 300)

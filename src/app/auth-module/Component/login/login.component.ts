@@ -9,7 +9,7 @@ import { ToastrcustomService } from '../../../Interceptor/toastrcustom'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loadding: boolean = false;
+  loading: boolean = false;
    User : UserLogin = {
     userName : '',
     password : '',
@@ -22,10 +22,10 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(UserInfo : UserLogin) {
-    this.loadding = true;
+    this.loading = true;
     this.AccountService.Login(UserInfo).subscribe(response => {
       console.log(response)
-      this.loadding = false;
+      this.loading = false;
         // if(response.errorCode == "00"){
         if(response.errorCode == "200"){
           this.toatr.showSuccess("Đăng nhập thành công")

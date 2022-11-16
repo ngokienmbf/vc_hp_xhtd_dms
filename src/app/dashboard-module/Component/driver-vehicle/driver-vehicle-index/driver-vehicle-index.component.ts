@@ -15,7 +15,7 @@ import { DriverVehicleDeleteComponent } from '../driver-vehicle-delete/driver-ve
 export class DriverVehicleIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
-  loadding: boolean = false;
+  loading: boolean = false;
 
   Pagination: Pagination = {
     currentPage : 0,
@@ -37,7 +37,7 @@ export class DriverVehicleIndexComponent implements OnInit {
     Keyword : '',
     pageSize : 10
   }
-  
+
   constructor(private DriverVehicleService : DriverVehicleService,
     public dialog: MatDialog,
     private toastr : ToastrcustomService,
@@ -48,9 +48,9 @@ export class DriverVehicleIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
-    this.loadding = true;
+    this.loading = true;
      this.DriverVehicleService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-      this.loadding = false;
+      this.loading = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
       this.Pagination.pageSize = data.pageSize,

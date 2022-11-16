@@ -84,6 +84,7 @@ import { OrderOperatingIndexComponent } from './Component/orderoperating/order-o
 import { SpIndexComponent } from './Component/system-parameter/sp-index/sp-index.component';
 import { SpCreateComponent } from './Component/system-parameter/sp-create/sp-create.component';
 import { SpDeleteComponent } from './Component/system-parameter/sp-delete/sp-delete.component';
+import { WeightStationIndexComponent } from './Component/weight-station/weight-station-index/weight-station-index.component';
 1
 
 @NgModule({
@@ -143,6 +144,7 @@ import { SpDeleteComponent } from './Component/system-parameter/sp-delete/sp-del
     SpIndexComponent,
     SpCreateComponent,
     SpDeleteComponent,
+    WeightStationIndexComponent,
 
 
   ],

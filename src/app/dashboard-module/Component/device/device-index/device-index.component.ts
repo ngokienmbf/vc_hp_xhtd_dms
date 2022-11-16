@@ -15,7 +15,7 @@ import { DeviceDeleteComponent } from '../device-delete/device-delete.component'
 export class DeviceIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
-  loadding: boolean = false;
+  loading: boolean = false;
 
   Pagination: Pagination = {
     currentPage : 0,
@@ -37,7 +37,7 @@ export class DeviceIndexComponent implements OnInit {
     Keyword : '',
     pageSize : 10
   }
-  
+
   constructor(private DeviceService : DeviceService,
     public dialog: MatDialog,
     private toastr : ToastrcustomService,
@@ -48,9 +48,9 @@ export class DeviceIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
-    this.loadding = true;
+    this.loading = true;
      this.DeviceService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-      this.loadding = false;
+      this.loading = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
       this.Pagination.pageSize = data.pageSize,
@@ -75,7 +75,7 @@ export class DeviceIndexComponent implements OnInit {
 
 
   //Create
-  
+
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;

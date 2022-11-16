@@ -60,6 +60,11 @@ export const ROUTE_DATA: TypeRoute[] = [
         url: 'quan-ly-vao-ra',
         roles: ["Admin", "ds"]
       },
+      {
+        name: 'Quản lý trạm cân 951',
+        url: 'quan-ly-tram-can',
+        roles: ["Admin", "ds"]
+      },
     ]
   },
   {
