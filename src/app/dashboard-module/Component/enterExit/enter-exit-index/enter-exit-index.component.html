@@ -27,9 +27,9 @@
               <td>{{item.deliveryCode}}</td>
               <td>{{item.nameProduct}}</td>
               <td>{{item.sumNumber}}</td>
-              <td>{{item.deliveryCode}}</td>
-              <td>{{item.deliveryCode}}</td>
-              <td>{{item.warningNotCall}}</td>
+              <td>{{item.weightOut - item.weightIn}}</td>
+              <td>{{item.weightOut - item.sumNumber}}</td>
+              <td>{{((item.weightOut*100/item.sumNumber).toFixed(2))}}</td>
               <td>{{item.warningNotCall}}</td>
             </tr>
           </tbody>
