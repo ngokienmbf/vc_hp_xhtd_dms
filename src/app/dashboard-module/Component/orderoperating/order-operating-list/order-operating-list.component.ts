@@ -20,6 +20,7 @@ export class OrderOperatingListComponent implements OnInit {
   loading: boolean = false;
   options = lstStep;
   idDetail: number = 0;
+  volumeStatus: string = 'OFF';
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -160,5 +161,32 @@ export class OrderOperatingListComponent implements OnInit {
         window.open(url);
         console.log("Success");
       });
+  }
+
+  async openMedia(vehicle: string) {
+    this.volumeStatus = 'ON';
+    var lstVoice = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U', 'V', 'W', 'R', 'W', 'X', 'W', 'Z']
+    this.playAudio('../../../../../assets/AudioNormal/audio_generer/moixe.wav');
+    setTimeout(() => {
+      for (let j = 0; j < lstVoice.length; j++) {
+        const element = lstVoice[j];
+        for (let index = 0; index < vehicle.length; index++) {
+          if (vehicle[index] == element) {
+            setTimeout(() => {
+              this.playAudio(`../../../../../assets/AudioNormal/${lstVoice[j]}.wav`);
+            }, index * 500)
+          }
+        }
+      }
+    }, 800);
+    setTimeout(() => {
+      this.playAudio('../../../../../assets/AudioNormal/audio_generer/vaonhanhang.wav');
+    }, 4800)
+    this.volumeStatus = 'OFF';
+  }
+
+  playAudio(url: string) {
+    var audio = new Audio(url);
+    audio.play();
   }
 }

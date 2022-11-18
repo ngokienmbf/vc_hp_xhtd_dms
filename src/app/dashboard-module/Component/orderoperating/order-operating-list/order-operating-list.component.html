@@ -66,7 +66,9 @@
             <td>{{item.sumNumber}}</td>
             <td>{{item.indexOrder}}</td>
             <td>{{convertHelper.showStep(item.step)}}</td>
-            <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
+            <td style="text-align: center;">
+              <i [ngClass]="{'bi bi-volume-up-fill' : volumeStatus === 'ON', 'bi bi-volume-off-fill': volumeStatus === 'OFF'}" style="font-size:15px;cursor: pointer; padding-right: 10px;" (click)="openMedia(item.vehicle)"></i>
+              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                 (click)="openEdit(item.id)"></i></td>
           </tr>
         </tbody>
@@ -107,7 +109,8 @@
             <td>{{item.sumNumber}}</td>
             <td>{{convertHelper.showStep(item.step)}}</td>
             <td>{{item.warningNotCall}}</td>
-            <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
+            <td style="text-align: center;">
+              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
                 (click)="openEdit(item.id)"></i></td>
           </tr>
         </tbody>

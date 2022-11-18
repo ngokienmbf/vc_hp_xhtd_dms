@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   // urlApi : 'https://45.124.94.191:8019/api/',
   // urlApi : 'https://seaportwebapi.phanmem.one/api/',
-  urlApi : 'https://localhost:5001/api/',
+  // urlApi : 'https://localhost:5001/api/',
+  urlApi : 'https://localhost:44398/api/',
 };
 
 /*

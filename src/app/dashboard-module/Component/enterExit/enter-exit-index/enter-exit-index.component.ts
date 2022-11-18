@@ -20,7 +20,28 @@ export class EnterExitIndexComponent implements OnInit {
 
   loading: boolean = false;
   selected: number = 0;
-  lstdata: any[] = [] ;
+  lstdata: lstOrderOperating = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+    data: []
+  };
+
+  Pagination: Pagination = {
+    currentPage: 0,
+    pageSize: 0,
+    totalRecord: 0,
+    totalPage: 0,
+  }
+
+    PageInfo = {
+    page: 1,
+    Keyword: '',
+    pageSize: 10,
+    deliveryCode: '',
+    step: '2'
+  }
 
   constructor(private orderOperatingService: OrderOperatingService,
     private vehicleService: VehicleService,
@@ -30,9 +51,22 @@ export class EnterExitIndexComponent implements OnInit {
     private toastr: ToastrcustomService) { }
 
   ngOnInit(): void {
+    this.Pagingdata(this.PageInfo);
     this.signalrService.hubMessage.subscribe((hubMessage: string) => {
       this.getVehicle(hubMessage);
     });
+  }
+
+  Pagingdata(PageInfo: any) {
+    this.loading = true;
+    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.step).subscribe(data => {
+      this.lstdata = data;
+      this.loading = false;
+      this.Pagination.currentPage = data.currentPage,
+        this.Pagination.pageSize = data.pageSize,
+        this.Pagination.totalPage = data.totalPage,
+        this.Pagination.totalRecord = data.totalRecord
+    })
   }
 
   getVehicle(hubMessage: any) {
@@ -42,14 +76,12 @@ export class EnterExitIndexComponent implements OnInit {
       }
       hubMessage = JSON.parse(hubMessage);
       if (hubMessage.FromService === 'CV') {
-        this.loading = true;
         this.orderOperatingService.GetOrderByCode(hubMessage.DeliveryCode).subscribe(res => {
           if (res.statusCode == 200) {
-            this.lstdata.unshift(res.data);
-            this.loading = false;
+            this.lstdata.data.pop();
+            this.lstdata.data.unshift(res.data);
           } else {
             this.toastr.showError(res.error);
-            this.loading = false;
           }
         })
       }
@@ -58,6 +90,14 @@ export class EnterExitIndexComponent implements OnInit {
 
   myTabSelectedIndexChange(index: number) {
     this.selected = index;
+  }
+
+  onChangePage(pageOfItems: any) {
+    pageOfItems.Keyword = this.PageInfo.Keyword;
+    pageOfItems.deliveryCode = this.PageInfo.deliveryCode;
+    pageOfItems.step = this.PageInfo.step;
+    this.PageInfo = pageOfItems
+    this.Pagingdata(pageOfItems)
   }
 
 }
