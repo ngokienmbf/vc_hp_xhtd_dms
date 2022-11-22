@@ -1,26 +1,21 @@
-export interface Account
+    export interface AccountGroup
 {
     id: number,
-    userName: string,
-    fullName: string,
-    passWord : string,
-    groupId: number,
+    name: string,
     state: boolean,
-    deviceId: string, 
-    deviceIdDayUpdate: Date, 
     createDay: Date,
     updateDay: Date,
     createBy: string,
     updateBy: string,
 }
 
-export interface lstAccount
+export interface lstAccountGroup
 {
     currentPage: number,
     pageSize : number,
     totalRecord : number,
     totalPage: number
-    data : Account[]
+    data : AccountGroup[]
 }
 
 
