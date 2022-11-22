@@ -16,18 +16,18 @@ export class DriverVehicleCreateComponent implements OnInit {
   submited: boolean = false;
 
 
-  userNameSelected: string = "";
   vehicleSelected: string = "";
   vehicleList: Item[] = [];
+  userNameSelected: string = "";
   userNameList: Item[] = [];
 
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
 
   constructor(private DriverVehicleService: DriverVehicleService,
-    private VehicleService: VehicleService,
-    private DriverService: DriverService,
-    public dialogRef: MatDialogRef<DriverVehicleCreateComponent>) {
+              private VehicleService: VehicleService,
+              private DriverService: DriverService,
+              public dialogRef: MatDialogRef<DriverVehicleCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       vehicle: new FormControl('', Validators.required),
       userName: new FormControl('', Validators.required),
@@ -56,7 +56,7 @@ export class DriverVehicleCreateComponent implements OnInit {
           this.vehicleList = data;
         });
 
-        this.DriverService.GetAllFull().subscribe((data) => {
+        this.DriverService.GetFull().subscribe((data) => {
           this.userNameList = data;
         });
       })
@@ -66,15 +66,12 @@ export class DriverVehicleCreateComponent implements OnInit {
         this.vehicleList = data;
       });
 
-      this.DriverService.GetAllFull().subscribe((data) => {
+      this.DriverService.GetFull().subscribe((data) => {
         this.userNameList = data;
       });
     }
   }
 
-  get userName() { return this.CreateEditForm.get('userName'); }
-  get vehicle() { return this.CreateEditForm.get('vehicle'); }
- 
   onSubmit() {
     this.submited = true;
     if (this.CreateEditForm.valid && this.isCreate === true) {
@@ -88,6 +85,9 @@ export class DriverVehicleCreateComponent implements OnInit {
       })
     }
   }
+
+  get userName() { return this.CreateEditForm.get('userName'); }
+  get vehicle() { return this.CreateEditForm.get('vehicle'); }
 
   onUserNameDropDownChange(item: Item): void {
     if(!item.checked){

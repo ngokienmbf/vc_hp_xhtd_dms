@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
 import { MatDialog } from '@angular/material/dialog';
-import { lstSystemParameter, SystemParameter } from 'src/app/Model/SystemParameter';
-import { SystemParameterService } from 'src/app/Service/systemParameter.service';
+import { lstAccGrFunc, AccGrFunc } from 'src/app/Model/AccGrFunc';
+import { AccGrFuncService } from 'src/app/Service/accGrFunc.service';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
-import { SpCreateComponent } from '../sp-create/sp-create.component';
-import { SpDeleteComponent } from '../sp-delete/sp-delete.component';
-
+import { AccGrFuncCreateComponent } from '../group-function-create/group-function-create.component';
+import { AccGrFuncDeleteComponent } from '../group-function-delete/group-function-delete.component';
 
 @Component({
-  selector: 'app-sp-index',
-  templateUrl: './sp-index.component.html',
+  selector: 'app-group-function-index',
+  templateUrl: './group-function-index.component.html',
 })
-export class SpIndexComponent implements OnInit {
-
+export class AccGrFuncIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
   loadding: boolean = false;
@@ -26,7 +24,7 @@ export class SpIndexComponent implements OnInit {
     totalPage : 0,
   }
 
-  lstdata : lstSystemParameter = {
+  lstdata : lstAccGrFunc = {
     currentPage : 0,
     pageSize : 0,
     totalRecord : 0,
@@ -40,7 +38,7 @@ export class SpIndexComponent implements OnInit {
     pageSize : 10
   }
   
-  constructor(private SystemParameterService : SystemParameterService,
+  constructor(private AccGrFuncService : AccGrFuncService,
     public dialog: MatDialog,
     private toastr : ToastrcustomService,
     public convertHelper: convertHelper) { }
@@ -51,7 +49,7 @@ export class SpIndexComponent implements OnInit {
 
   Pagingdata(PageInfo : any)  {
     this.loadding = true;
-     this.SystemParameterService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+     this.AccGrFuncService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
       this.loadding = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
@@ -62,12 +60,12 @@ export class SpIndexComponent implements OnInit {
      })
   }
 
-
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
   }
+  
   onSearch(e:any)
   {
     this.PageInfo.Keyword = e;
@@ -75,13 +73,11 @@ export class SpIndexComponent implements OnInit {
     this.Pagingdata(this.PageInfo);
   }
 
-
   //Create
-  
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
-    const dialogRef = this.dialog.open(SpCreateComponent);
+    const dialogRef = this.dialog.open(AccGrFuncCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -100,7 +96,7 @@ export class SpIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(SpCreateComponent);
+    const dialogRef = this.dialog.open(AccGrFuncCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
         if(result){
           if(result.succeeded === true){
@@ -119,7 +115,7 @@ export class SpIndexComponent implements OnInit {
 
   openDelete(id: number){
     this.customerId = id;
-    const dialogRef = this.dialog.open(SpDeleteComponent);
+    const dialogRef = this.dialog.open(AccGrFuncDeleteComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
@@ -134,5 +130,4 @@ export class SpIndexComponent implements OnInit {
       }
   });
   }
-
 }

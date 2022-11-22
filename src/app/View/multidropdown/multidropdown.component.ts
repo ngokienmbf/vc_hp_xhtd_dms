@@ -72,7 +72,7 @@ export class MultidropdownComponent  {
 
     get selected(): string {
         return this.all && this.all.checked ? this.all.name :
-            this._items.filter(i => i.checked && i.visible).map(i => i.name).join(', ');
+            this._items.filter(i => i.checked && i.visible).map(i => i.title?i.title:i.name).join(', ');
         // return this._items.filter(i => i.checked && i.visible).map(i => i);
     }
 

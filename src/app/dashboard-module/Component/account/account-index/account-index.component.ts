@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
 import { MatDialog } from '@angular/material/dialog';
-import { lstSystemParameter, SystemParameter } from 'src/app/Model/SystemParameter';
-import { SystemParameterService } from 'src/app/Service/systemParameter.service';
+import { lstAccount, Account } from 'src/app/Model/Account';
+import { AccountService } from 'src/app/Service/account.service';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
-import { SpCreateComponent } from '../sp-create/sp-create.component';
-import { SpDeleteComponent } from '../sp-delete/sp-delete.component';
+import { AccountCreateComponent } from '../account-create/account-create.component';
+import { AccountDeleteComponent } from '../account-delete/account-delete.component';
 
 
 @Component({
-  selector: 'app-sp-index',
-  templateUrl: './sp-index.component.html',
+  selector: 'app-Account-index',
+  templateUrl: './account-index.component.html',
 })
-export class SpIndexComponent implements OnInit {
+export class AccountIndexComponent implements OnInit {
 
   isCreate : boolean = true;
   customerId : number = 0;
@@ -26,7 +26,7 @@ export class SpIndexComponent implements OnInit {
     totalPage : 0,
   }
 
-  lstdata : lstSystemParameter = {
+  lstdata : lstAccount = {
     currentPage : 0,
     pageSize : 0,
     totalRecord : 0,
@@ -40,7 +40,7 @@ export class SpIndexComponent implements OnInit {
     pageSize : 10
   }
   
-  constructor(private SystemParameterService : SystemParameterService,
+  constructor(private AccountService : AccountService,
     public dialog: MatDialog,
     private toastr : ToastrcustomService,
     public convertHelper: convertHelper) { }
@@ -51,7 +51,7 @@ export class SpIndexComponent implements OnInit {
 
   Pagingdata(PageInfo : any)  {
     this.loadding = true;
-     this.SystemParameterService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+     this.AccountService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
       this.loadding = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
@@ -81,7 +81,7 @@ export class SpIndexComponent implements OnInit {
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
-    const dialogRef = this.dialog.open(SpCreateComponent);
+    const dialogRef = this.dialog.open(AccountCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -100,7 +100,7 @@ export class SpIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(SpCreateComponent);
+    const dialogRef = this.dialog.open(AccountCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
         if(result){
           if(result.succeeded === true){
@@ -119,7 +119,7 @@ export class SpIndexComponent implements OnInit {
 
   openDelete(id: number){
     this.customerId = id;
-    const dialogRef = this.dialog.open(SpDeleteComponent);
+    const dialogRef = this.dialog.open(AccountDeleteComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe(result => {
       if(result){

@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Pagination } from '../../../../Model/Table';
 import { MatDialog } from '@angular/material/dialog';
-import { lstSystemParameter, SystemParameter } from 'src/app/Model/SystemParameter';
-import { SystemParameterService } from 'src/app/Service/systemParameter.service';
+import { lstAccountGroup, AccountGroup } from 'src/app/Model/AccountGroup';
+import { AccountGroupService } from 'src/app/Service/accountGroup.service';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { ToastrcustomService } from '../../../../Interceptor/toastrcustom';
-import { SpCreateComponent } from '../sp-create/sp-create.component';
-import { SpDeleteComponent } from '../sp-delete/sp-delete.component';
-
+import { AccountGroupCreateComponent } from '../group-create/group-create.component';
+import { AccountGroupDeleteComponent } from '../group-delete/group-delete.component';
 
 @Component({
-  selector: 'app-sp-index',
-  templateUrl: './sp-index.component.html',
+  selector: 'app-group-index',
+  templateUrl: './group-index.component.html',
 })
-export class SpIndexComponent implements OnInit {
-
+export class AccountGroupIndexComponent implements OnInit {
   isCreate : boolean = true;
   customerId : number = 0;
-  loadding: boolean = false;
+  loading: boolean = false;
 
   Pagination: Pagination = {
     currentPage : 0,
@@ -26,7 +24,7 @@ export class SpIndexComponent implements OnInit {
     totalPage : 0,
   }
 
-  lstdata : lstSystemParameter = {
+  lstdata : lstAccountGroup = {
     currentPage : 0,
     pageSize : 0,
     totalRecord : 0,
@@ -39,8 +37,8 @@ export class SpIndexComponent implements OnInit {
     Keyword : '',
     pageSize : 10
   }
-  
-  constructor(private SystemParameterService : SystemParameterService,
+
+  constructor(private AccountGroupService : AccountGroupService,
     public dialog: MatDialog,
     private toastr : ToastrcustomService,
     public convertHelper: convertHelper) { }
@@ -50,9 +48,9 @@ export class SpIndexComponent implements OnInit {
   }
 
   Pagingdata(PageInfo : any)  {
-    this.loadding = true;
-     this.SystemParameterService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
-      this.loadding = false;
+    this.loading = true;
+     this.AccountGroupService.Paging(this.PageInfo.page,this.PageInfo.Keyword,this.PageInfo.pageSize).subscribe(data => {
+      this.loading = false;
       this.lstdata = data;
       this.Pagination.currentPage = data.currentPage,
       this.Pagination.pageSize = data.pageSize,
@@ -77,11 +75,11 @@ export class SpIndexComponent implements OnInit {
 
 
   //Create
-  
+
   openEdit(id: number){
     this.isCreate = false;
     this.customerId = id;
-    const dialogRef = this.dialog.open(SpCreateComponent);
+    const dialogRef = this.dialog.open(AccountGroupCreateComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.componentInstance.isCreate = this.isCreate;
     dialogRef.afterClosed().subscribe(result => {
@@ -100,7 +98,7 @@ export class SpIndexComponent implements OnInit {
   }
 
   openCreate() {
-    const dialogRef = this.dialog.open(SpCreateComponent);
+    const dialogRef = this.dialog.open(AccountGroupCreateComponent);
     dialogRef.afterClosed().subscribe(result => {
         if(result){
           if(result.succeeded === true){
@@ -119,7 +117,7 @@ export class SpIndexComponent implements OnInit {
 
   openDelete(id: number){
     this.customerId = id;
-    const dialogRef = this.dialog.open(SpDeleteComponent);
+    const dialogRef = this.dialog.open(AccountGroupDeleteComponent);
     dialogRef.componentInstance.customerId = this.customerId;
     dialogRef.afterClosed().subscribe(result => {
       if(result){

@@ -3,7 +3,7 @@ import  { RequestService } from  './request.service';
 import { UserLogin,UserReponse } from '../Model/User'
 import { map, Observable } from 'rxjs';
 import {Item} from '../Model/multidropdown'
-import { Account, lstAccount, AccountEdit, AccountCreate } from 'src/app/Model/Account';
+import { Account, lstAccount } from 'src/app/Model/Account';
 
 @Injectable({
   providedIn: 'root'
@@ -73,49 +73,40 @@ export class AccountService {
     return this.httpService.postRequest('Account/RefreshToken',data)
   }
 
+  //--------------------
 
-
-  Paging(page:number, searchText:string,numberDis:number) {
-    return this.httpService.getRequest('admin/ManageAccount' +'?page='+ page + '&Keyword='+ searchText + '&pageSize='+ numberDis)
-      .pipe(map((data : lstAccount) => {
-          return data;
+  Paging(page: number, searchText: string, numberDis: number) {
+    return this.httpService.getRequest(`account?page=${page}&Keyword=${searchText}&pageSize=${numberDis}`)
+      .pipe(map((data: lstAccount) => {
+        return data;
       }))
   }
 
-  Insert(AccountCreate: AccountCreate) {
-    return this.httpService.postRequest('admin/ManageAccount',AccountCreate)
+  GetDetail(id: number) {
+    return this.httpService.getRequest(`account/${id}`)
+      .pipe(map((data: Account) => {
+        return data;
+      }))
+  }
+
+  Update(data: any) {
+    return this.httpService.putRequest('account', data)
       .pipe(map((data: any) => {
         return data;
       }))
   }
 
-  GetDetail(id: any) {
-    return this.httpService.getRequest('admin/ManageAccount/'+id)
-      .pipe(map((data:Account ) => {
-          return data;
-      }))
-  }
-
-  Update(AccountEdit : AccountEdit)
-  {
-    return this.httpService.putRequest('admin/ManageAccount',AccountEdit)
+  Insert(data: any) {
+    return this.httpService.postRequest('account', data)
       .pipe(map((data: any) => {
         return data;
       }))
   }
 
-  Delete(id: any) {
-    return this.httpService.deleteRequest('admin/ManageAccount/'+id)
-      .pipe(map((data:any ) => {
-          return data;
+  Delete(id: number) {
+    return this.httpService.deleteRequest(`account/${id}`)
+      .pipe(map((data: Account) => {
+        return data;
       }))
-  }
-
-  GetClaimUser(UserId: string){
-    return this.httpService.getRequest('admin/ManageAccount/' + UserId + '/Claims');
-  }
-
-  GetAllClaim(Id: string){
-    return this.httpService.getRequest('Account/GetClaimUserById/' + Id);
   }
 }

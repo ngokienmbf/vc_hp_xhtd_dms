@@ -7,7 +7,6 @@ import { SystemParameterService } from 'src/app/Service/systemParameter.service'
 @Component({
   selector: 'app-sp-create',
   templateUrl: './sp-create.component.html',
-  styleUrls: ['./sp-create.component.css']
 })
 export class SpCreateComponent implements OnInit {
 

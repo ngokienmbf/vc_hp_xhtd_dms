@@ -81,21 +81,16 @@ export const ROUTE_DATA: TypeRoute[] = [
         url: 'rfid',
         roles: ["Admin", "ds"]
       },
-        {
-            name: 'Đơn hàng',
-            url: 'don-hang',
-            roles: ["Admin", "ds"]
-        },
-        {
-            name :'Danh mục thiết bị',
-            url:'ds-thiet-bi',
-            roles: ["Admin"],
-        },
-        {
-            name :'Danh mục khác',
-            url:'404-not-found',
-            roles: ["Admin"],
-        },
+      {
+          name :'Danh mục thiết bị',
+          url:'ds-thiet-bi',
+          roles: ["Admin"],
+      },
+      {
+          name :'Danh mục khác',
+          url:'danh-muc-khac',
+          roles: ["Admin"],
+      },
     ]
     },
     {
@@ -109,7 +104,7 @@ export const ROUTE_DATA: TypeRoute[] = [
             },
             {
                 name :'Phân quyền hệ thống',
-                url:'quan-ly-he-thong',
+                url:'phan-quyen',
                 roles: ["Admin"],
             },
             {
