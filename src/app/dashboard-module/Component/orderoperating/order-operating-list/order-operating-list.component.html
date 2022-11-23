@@ -38,24 +38,26 @@
   </div>
   <div class="row">
     <div class="table-responsive">
+      <!-- menu điều hành đơn hàng  -->
       <table *ngIf="showType === 'DHD'" class="table table-striped table-hover">
         <thead>
           <tr>
             <th style="text-align: center;">STT</th>
             <th>Ngày đặt hàng</th>
             <th>MSGH</th>
-            <th>Vehicle</th>
+            <th>Biển số xe</th>
             <th>Tên lái xe</th>
             <th>Tên nhà phân phối</th>
             <th>Hàng hóa</th>
             <th>KL đặt hàng</th>
             <th>STT đặt hàng</th>
             <th>Trạng thái</th>
-            <th style="text-align: center;">Hành động</th>
+            <th style="text-align: center;">Chi tiết</th>
           </tr>
         </thead>
         <tbody style="border-top: none;">
-          <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
+          <tr [ngClass]="{'activeClass': itemSelected == item}" *ngFor="let item of lstdata.data; index as i"
+            class="align-middle" (click)="itemSelected = item" role="button">
             <td style="text-align: center;">{{i + 1}}</td>
             <td>{{item.orderDate | date:'dd/mm/YYYY hh:ss' }}</td>
             <td>{{item.deliveryCode}}</td>
@@ -67,13 +69,13 @@
             <td>{{item.indexOrder}}</td>
             <td>{{convertHelper.showStep(item.step)}}</td>
             <td style="text-align: center;">
-              <i [ngClass]="{'bi bi-volume-up-fill' : volumeStatus === 'ON', 'bi bi-volume-off-fill': volumeStatus === 'OFF'}" style="font-size:15px;cursor: pointer; padding-right: 10px;" (click)="openMedia(item.vehicle)"></i>
-              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
-                (click)="openEdit(item.id)"></i></td>
+              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i>
+            </td>
           </tr>
         </tbody>
       </table>
-      <table *ngIf="showType === 'QLVR' || showType === 'QLTC'" class="table table-striped table-hover">
+      <!-- menu quản lý vào ra -->
+      <table *ngIf="showType === 'QLVR'" class="table table-striped table-hover">
         <thead>
           <tr>
             <th style="text-align: center;">STT</th>
@@ -90,11 +92,12 @@
             <th>KL đặt hàng</th>
             <th>Trạng thái đơn hàng</th>
             <th>Cảnh báo cân</th>
-            <th style="text-align: center;">Hành động</th>
+            <th style="text-align: center;">Chi tiết</th>
           </tr>
         </thead>
         <tbody style="border-top: none;">
-          <tr *ngFor="let item of lstdata.data; index as i" class="align-middle">
+          <tr [ngClass]="{'activeClass': itemSelected == item}" *ngFor="let item of lstdata.data; index as i"
+            class="align-middle" (click)="itemSelected = item" role="button">
             <td style="text-align: center;">{{i + 1}}</td>
             <td>{{item.orderDate | date:'dd/mm/YYYY hh:ss'}}</td>
             <td>{{item.deliveryCode}}</td>
@@ -110,8 +113,86 @@
             <td>{{convertHelper.showStep(item.step)}}</td>
             <td>{{item.warningNotCall}}</td>
             <td style="text-align: center;">
-              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;"
-                (click)="openEdit(item.id)"></i></td>
+              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- menu quản lý trạm cân 951, clinker -->
+      <table *ngIf="showType === 'QLTC' || showType === 'CLINKER'" class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th style="text-align: center;">STT</th>
+            <th>Ngày đặt hàng</th>
+            <th>MSGH</th>
+            <th>Biến số xe</th>
+            <th>Mã thẻ RFID</th>
+            <th>Giờ nhận đơn</th>
+            <th>Giờ vào cổng</th>
+            <th>Họ tên lái xe</th>
+            <th>Nhà phân phối/khách hàng</th>
+            <th>Hàng hóa</th>
+            <th>KL đặt hàng</th>
+            <th>Trạng thái đơn hàng</th>
+            <th style="text-align: center;">Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody style="border-top: none;">
+          <tr [ngClass]="{'activeClass': itemSelected == item}" *ngFor="let item of lstdata.data; index as i"
+            class="align-middle" (click)="itemSelected = item" role="button">
+            <td style="text-align: center;">{{i + 1}}</td>
+            <td>{{item.orderDate | date:'dd/mm/YYYY hh:ss'}}</td>
+            <td>{{item.deliveryCode}}</td>
+            <td>{{item.vehicle}}</td>
+            <td>{{item.cardNo}}</td>
+            <td>{{item.timeConfirm4}}</td>
+            <td>{{item.timeConfirm2}}</td>
+            <td>{{item.driverName}}</td>
+            <td>{{item.nameDistributor}}</td>
+            <td>{{item.nameProduct}}</td>
+            <td>{{item.sumNumber}}</td>
+            <td>{{convertHelper.showStep(item.step)}}</td>
+            <td style="text-align: center;">
+              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- menu quản lý hàng máng xuất xi bao -->
+      <table *ngIf="showType === 'MXXB' || showType === 'MXXR'" class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th style="text-align: center;">STT</th>
+            <th>Ngày đặt hàng</th>
+            <th>MSGH</th>
+            <th>Biến số xe</th>
+            <th>Họ tên lái xe</th>
+            <th>Nhà phân phối/khách hàng</th>
+            <th>Hàng hóa</th>
+            <th>KL đặt</th>
+            <th>KL xuất</th>
+            <th>Máng</th>
+            <th>Trạng thái đơn hàng</th>
+            <th style="text-align: center;">Chi tiết</th>
+          </tr>
+        </thead>
+        <tbody style="border-top: none;">
+          <tr [ngClass]="{'activeClass': itemSelected == item}" *ngFor="let item of lstdata.data; index as i"
+            class="align-middle" (click)="itemSelected = item" role="button">
+            <td style="text-align: center;">{{i + 1}}</td>
+            <td>{{item.orderDate | date:'dd/mm/YYYY hh:ss'}}</td>
+            <td>{{item.deliveryCode}}</td>
+            <td>{{item.vehicle}}</td>
+            <td>{{item.driverName}}</td>
+            <td>{{item.nameDistributor}}</td>
+            <td>{{item.nameProduct}}</td>
+            <td>{{item.sumNumber}}</td>
+            <td>{{item.weightOut}}</td>
+            <td>{{item.trough}}</td>
+            <td>{{convertHelper.showStep(item.step)}}</td>
+            <td style="text-align: center;">
+              <i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -120,4 +201,53 @@
       <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
     </div>
   </div>
+</div>
+
+<!-- chức năng menu điều hành đơn -->
+<div *ngIf="showType === 'DHD'" class="btn-function">
+  <div>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}"
+      (click)="openMediaEnter(itemSelected.vehicle)"><i class="bi bi-volume-up-fill"></i>Mời xe vào lấy
+      hàng</button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}"
+      (click)="openMediaOut(itemSelected.vehicle)"><i class="bi bi-volume-up-fill"></i>Mời xe ra khỏi
+      bàn</button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      Nhận đơn
+    </button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      Huỷ nhận đơn
+    </button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      Hủy số thứ tự lấy hàng đã cấp
+    </button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      Thay đổi số thứ tự đã cấp
+    </button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      Gửi thông tin vào máng xuất
+    </button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      Kết thúc đơn hàng
+    </button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      In phiếu xuất kho
+    </button>
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+      In phiếu cân
+    </button>
+  </div>
+</div>
+
+<!-- chức năng menu quản lý máng xuất xi bao, máng xuất xi rời  -->
+<div *ngIf="showType === 'MXXB' || showType === 'MXXR'" class="btn-function">
+  <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+    Thay đổi máng xuất của đơn hàng
+  </button>
+  <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+    Gọi xe vào máng lấy hàng
+  </button>
+  <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+    Cập nhật trạng thái máng xuất
+  </button>
 </div>

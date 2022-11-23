@@ -82,7 +82,9 @@ import { DeviceControlComponent } from './Component/device/device-control/device
 import { OrderOperatingListComponent } from './Component/orderoperating/order-operating-list/order-operating-list.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { WeightStationIndexComponent } from './Component/weight-station/weight-station-index/weight-station-index.component';
-1
+import { ClinkerIndexComponent } from './Component/clinker/clinker-index/clinker-index.component';
+import { MxxbIndexComponent } from './Component/mang-xuat-xi-bao/mxxb-index/mxxb-index.component';
+import { MxxrIndexComponent } from './Component/mang-xuat-xi-roi/mxxr-index/mxxr-index.component';
 
 @NgModule({
   declarations: [
@@ -139,8 +141,9 @@ import { WeightStationIndexComponent } from './Component/weight-station/weight-s
     DeviceControlComponent,
     OrderOperatingIndexComponent,
     WeightStationIndexComponent,
-
-
+    ClinkerIndexComponent,
+    MxxbIndexComponent,
+    MxxrIndexComponent,
   ],
   imports: [
     CommonModule,
