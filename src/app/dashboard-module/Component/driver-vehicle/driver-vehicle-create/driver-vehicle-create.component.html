@@ -13,7 +13,7 @@
             <div class="col-lg-6">
                 <div class="mb-2">
                     <label for="exampleFormControlInput1" class="form-label">Tài khoản</label>
-                    <input type="text" class="form-control" formControlName="userName" hidden="true"> 
+                    <input type="text" class="form-control" formControlName="userName" hidden="true" [disabled]="true" > 
                     <app-multidropdown 
                         [items]="userNameList"
                         [showSearch]=true

@@ -36,7 +36,7 @@ import { NotfoundComponent } from './Component/notfound/notfound.component';
 //Component
 import { HomeComponent } from './Component/home/home.component';
 import { SidebarComponent } from './Component/sidebar/sidebar.component';
-import { TaikhoanComponent } from './Component/taikhoan/taikhoan.component';
+import { TaikhoanComponent } from './Component/taikhoancanhan/taikhoan.component';
 
 // Quan ly
 import { DriverCreateComponent } from './Component/driver/driver-create/driver-create.component';
@@ -57,12 +57,18 @@ import { CategoryDeleteComponent } from './Component/device/category-delete/cate
 import { CategoryIndexComponent } from './Component/device/category-index/category-index.component';
 
 // Quan ly he thong
-import { QLTaiKhoanCreateComponent } from './Component/quan-ly-tai-khoan/tai-khoan-create/tai-khoan-create.component';
-import { QLTaiKhoanDeleteComponent } from './Component/quan-ly-tai-khoan/tai-khoan-delete/tai-khoan-delete.component';
-import { QLTaiKhoanIndexComponent } from './Component/quan-ly-tai-khoan/tai-khoan-index/tai-khoan-index.component';
-import { UserAuthorizationComponent } from './Component/quan-ly-tai-khoan/user-authorization/user-authorization.component';
-import { QuanTriHeThongComponent } from './Component/quan-tri-he-thong/quan-tri-he-thong.component';
-import { RolePermissionComponent } from './Component/quan-tri-he-thong/role-permission/role-permission.component';
+import { AccountCreateComponent } from './Component/account/account-create/account-create.component';
+import { AccountDeleteComponent } from './Component/account/account-delete/account-delete.component';
+import { AccountIndexComponent } from './Component/account/account-index/account-index.component';
+import { AccountGroupTabsComponent } from './Component/account-group/group-tabs.component';
+import { AccountGroupCreateComponent } from './Component/account-group/group-create/group-create.component';
+import { AccountGroupDeleteComponent } from './Component/account-group/group-delete/group-delete.component';
+import { AccountGroupIndexComponent } from './Component/account-group/group-index/group-index.component';
+import { AccGrFuncCreateComponent } from './Component/account-group/group-function-create/group-function-create.component';
+import { AccGrFuncDeleteComponent } from './Component/account-group/group-function-delete/group-function-delete.component';
+import { AccGrFuncIndexComponent } from './Component/account-group/group-function-index/group-function-index.component';
+
+
 import { SettingIndexComponent } from './Component/setting/setting-index/setting-index.component';
 import { RfidIndexComponent } from './Component/RFID/rfid-index/rfid-index.component';
 import { RfidCreateComponent } from './Component/RFID/rfid-create/rfid-create.component';
@@ -81,6 +87,9 @@ import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/
 import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
 import { OrderOperatingListComponent } from './Component/orderoperating/order-operating-list/order-operating-list.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
+import { SpIndexComponent } from './Component/system-parameter/sp-index/sp-index.component';
+import { SpCreateComponent } from './Component/system-parameter/sp-create/sp-create.component';
+import { SpDeleteComponent } from './Component/system-parameter/sp-delete/sp-delete.component';
 import { WeightStationIndexComponent } from './Component/weight-station/weight-station-index/weight-station-index.component';
 import { ClinkerIndexComponent } from './Component/clinker/clinker-index/clinker-index.component';
 import { MxxbIndexComponent } from './Component/mang-xuat-xi-bao/mxxb-index/mxxb-index.component';
@@ -117,12 +126,17 @@ import { MxxrIndexComponent } from './Component/mang-xuat-xi-roi/mxxr-index/mxxr
 
     SettingIndexComponent,
 
-    UserAuthorizationComponent,
-    QLTaiKhoanCreateComponent,
-    QLTaiKhoanDeleteComponent,
-    QLTaiKhoanIndexComponent,
-    QuanTriHeThongComponent,
-    RolePermissionComponent,
+    AccountCreateComponent,
+    AccountDeleteComponent,
+    AccountIndexComponent,
+    AccountGroupCreateComponent,
+    AccountGroupDeleteComponent,
+    AccountGroupIndexComponent,
+    AccGrFuncCreateComponent,
+    AccGrFuncDeleteComponent,
+    AccGrFuncIndexComponent,
+    AccountGroupTabsComponent,
+
     TaikhoanComponent,
     OrderOperatingListComponent,
     RfidIndexComponent,
@@ -140,6 +154,9 @@ import { MxxrIndexComponent } from './Component/mang-xuat-xi-roi/mxxr-index/mxxr
     EnterExitIndexComponent,
     DeviceControlComponent,
     OrderOperatingIndexComponent,
+    SpIndexComponent,
+    SpCreateComponent,
+    SpDeleteComponent,
     WeightStationIndexComponent,
     ClinkerIndexComponent,
     MxxbIndexComponent,

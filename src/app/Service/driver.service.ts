@@ -30,7 +30,7 @@ export class DriverService {
       }))
   }
   
-  GetAllFull() { // for dropdowns only
+  GetFull() { // for dropdowns only
     return this.httpService.getRequest(`Driver/GetFull`)
     .pipe(map((data : any) => {
       return data.map((i : any) => ({

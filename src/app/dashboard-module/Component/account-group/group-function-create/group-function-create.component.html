@@ -1,0 +1,105 @@
+<div class="container-lg">
+    <form [formGroup]="CreateEditForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div  *ngIf="isCreate; else elseBlock" class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Thêm mới quyền
+            </div >
+            <ng-template #elseBlock  style="font-size: large; font-weight: 500; border-bottom: 1px solid #9d9d9d;">
+                <div class="title_modal" style="padding-right: 0px; margin-bottom: 20px;">
+                    Thông tin quyền
+                </div>
+            </ng-template>        
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Mã nhóm</label>
+                    <input type="number" class="form-control" formControlName="groupId" [readonly]="(customerId&&!isCreate)">
+                </div> -->
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Nhóm người dùng</label>
+                    <input type="text" class="form-control" formControlName="groupId" hidden="true" [disabled]="true"> 
+                    <app-multidropdown 
+                        [items]="groupList"
+                        [showSearch]=true
+                        [showAll]=false
+                        [showStatus]=true
+                        [showError]=false
+                        [name]="groupSelected"
+                        placeholder="Chọn nhóm" 
+                        (itemChange)="onDropDownChange($event)">
+                    </app-multidropdown>
+                </div>
+                <div *ngIf="submited && groupId?.errors?.['required']">
+                    <span *ngIf="groupId?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Mã chức năng</label>
+                    <input type="number" class="form-control" formControlName="functionId">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Thêm mới</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event,0)" formControlName="f_Add" >
+                          <mat-radio-button [checked]='_add' [value]=true>Cho phép</mat-radio-button>
+                          <mat-radio-button [checked]='!_add' [value]=false>Chặn</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Sửa</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event,1)" formControlName="f_Edit" >
+                          <mat-radio-button [checked]='_edit' [value]=true> Cho phép</mat-radio-button>
+                          <mat-radio-button [checked]='!_edit' [value]=false>Chặn</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Xóa</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event,2)" formControlName="f_Del" >
+                          <mat-radio-button [checked]='_del' [value]=true> Cho phép</mat-radio-button>
+                          <mat-radio-button [checked]='!_del' [value]=false>Chặn</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Xem</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event,3)" formControlName="f_View" >
+                          <mat-radio-button [checked]='_view' [value]=true> Cho phép</mat-radio-button>
+                          <mat-radio-button [checked]='!_view' [value]=false>Chặn</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">In</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event,4)" formControlName="f_Print" >
+                          <mat-radio-button [checked]='_print' [value]=true> Cho phép</mat-radio-button>
+                          <mat-radio-button [checked]='!_print' [value]=false>Chặn</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-2">
+                    <label for="exampleFormControlInput1" class="form-label">Khác</label>
+                      <mat-radio-group class="form-control no-border" (change)="radioChange($event,5)" formControlName="f_Other" >
+                          <mat-radio-button [checked]='_other' [value]=true> Cho phép</mat-radio-button>
+                          <mat-radio-button [checked]='!_other' [value]=false>Chặn</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-success" type="submit">Lưu</button>
+            <button type="button" class="btn btn-secondary" style="margin-left: 10px;" mat-button mat-dialog-close>Đóng</button>
+        </div>    
+    </form>
+</div>

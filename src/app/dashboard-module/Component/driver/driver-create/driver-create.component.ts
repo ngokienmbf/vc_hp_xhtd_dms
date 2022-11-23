@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 import { MatDialogRef } from '@angular/material/dialog';
 import { DriverService } from 'src/app/Service/driver.service';
-
 import {MatRadioChange, MatRadioModule} from '@angular/material/radio';
 
 @Component({
@@ -14,7 +12,6 @@ export class DriverCreateComponent implements OnInit {
 
   CreateEditForm!: FormGroup
   submited: boolean = false;
-  stateChecked: boolean = true;
 
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
@@ -80,6 +77,8 @@ export class DriverCreateComponent implements OnInit {
       })
     }
   }
+
+  stateChecked: boolean = true;
 
   radioChange(event: MatRadioChange) {
     this.CreateEditForm.get('state')?.setValue(event.value);
