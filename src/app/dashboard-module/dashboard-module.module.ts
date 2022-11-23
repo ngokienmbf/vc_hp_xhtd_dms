@@ -91,7 +91,9 @@ import { SpIndexComponent } from './Component/system-parameter/sp-index/sp-index
 import { SpCreateComponent } from './Component/system-parameter/sp-create/sp-create.component';
 import { SpDeleteComponent } from './Component/system-parameter/sp-delete/sp-delete.component';
 import { WeightStationIndexComponent } from './Component/weight-station/weight-station-index/weight-station-index.component';
-1
+import { ClinkerIndexComponent } from './Component/clinker/clinker-index/clinker-index.component';
+import { MxxbIndexComponent } from './Component/mang-xuat-xi-bao/mxxb-index/mxxb-index.component';
+import { MxxrIndexComponent } from './Component/mang-xuat-xi-roi/mxxr-index/mxxr-index.component';
 
 @NgModule({
   declarations: [
@@ -156,8 +158,9 @@ import { WeightStationIndexComponent } from './Component/weight-station/weight-s
     SpCreateComponent,
     SpDeleteComponent,
     WeightStationIndexComponent,
-
-
+    ClinkerIndexComponent,
+    MxxbIndexComponent,
+    MxxrIndexComponent,
   ],
   imports: [
     CommonModule,

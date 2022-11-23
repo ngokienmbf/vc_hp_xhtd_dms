@@ -1,3 +1,4 @@
+import { ClinkerIndexComponent } from './Component/clinker/clinker-index/clinker-index.component';
 import { WeightStationIndexComponent } from './Component/weight-station/weight-station-index/weight-station-index.component';
 import { OrderOperatingIndexComponent } from './Component/orderoperating/order-operating-index/order-operating-index.component';
 import { EnterExitIndexComponent } from './Component/enterExit/enter-exit-index/enter-exit-index.component';
@@ -24,6 +25,7 @@ import { NotfoundComponent } from './Component/notfound/notfound.component';
 import { DeviceBoardComponent } from './Component/device/device-board/device-board.component';
 import { DeviceControlComponent } from './Component/device/device-control/device-control.component';
 import { OrderOperatingListComponent } from './Component/orderoperating/order-operating-list/order-operating-list.component';
+import { MxxbIndexComponent } from './Component/mang-xuat-xi-bao/mxxb-index/mxxb-index.component';
 
 import { AccountIndexComponent } from './Component/account/account-index/account-index.component';
 import { AccountGroupTabsComponent } from './Component/account-group/group-tabs.component';
@@ -37,7 +39,7 @@ const routes: Routes = [
     children: [
       // quan ly
       { path: 'lai-xe', component: DriverIndexComponent },
-      { path: 'phuong-tien', component: VehicleIndexComponent },     
+      { path: 'phuong-tien', component: VehicleIndexComponent },
       { path: 'lai-xe-phuong-tien', component: DriverVehicleIndexComponent },
       { path: 'dieu-hanh-don', component: OrderOperatingIndexComponent},
       { path: 'quan-ly-vao-ra', component: EnterExitIndexComponent},
@@ -67,6 +69,13 @@ const routes: Routes = [
           { path: 'hang-muc', component: CategoryIndexComponent },
         ]
       },
+      { path: 'dieu-hanh-don', component: OrderOperatingIndexComponent},
+      { path: 'rfid', component: RfidIndexComponent},
+      { path: 'mang-xuat', component: TroughIndexComponent},
+      { path: 'quan-ly-vao-ra', component: EnterExitIndexComponent},
+      { path: 'quan-ly-tram-can', component: WeightStationIndexComponent},
+      { path: 'quan-ly-clinker', component: ClinkerIndexComponent},
+      { path: 'quan-ly-mxxb', component: MxxbIndexComponent},
 
       // khac/he thong
       { path: '404-not-found', component: NotfoundComponent },

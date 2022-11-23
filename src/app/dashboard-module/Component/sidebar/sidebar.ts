@@ -65,6 +65,21 @@ export const ROUTE_DATA: TypeRoute[] = [
         url: 'quan-ly-tram-can',
         roles: ["Admin", "ds"]
       },
+      {
+        name: 'Quản lý clinker',
+        url: 'quan-ly-clinker',
+        roles: ["Admin", "ds"]
+      },
+      {
+        name: 'Quản lý máng xuất xi bao',
+        url: 'quan-ly-mxxb',
+        roles: ["Admin", "ds"]
+      },
+      {
+        name: 'Quản lý máng xuất xi rời',
+        url: 'quan-ly-mxxr',
+        roles: ["Admin", "ds"]
+      }
     ]
   },
   {

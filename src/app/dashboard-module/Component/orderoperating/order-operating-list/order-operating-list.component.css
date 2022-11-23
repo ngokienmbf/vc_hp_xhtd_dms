@@ -1,6 +1,28 @@
 .mr-10 {
   margin-right: 10px;
 }
+.mt-20 {
+  margin-top: 20px;
+}
 .text-nowrap {
   white-space: nowrap ;
 }
+
+.activeClass {
+  background-color: #bfbfbf;
+}
+
+.disableClick {
+  pointer-events: none;
+  cursor: default;
+  color: rgb(156, 156, 156);
+}
+
+.dropdown-item i {
+  margin-right: 8px;
+}
+
+.btn-function button {
+  margin-top: 20px;
+}
+
