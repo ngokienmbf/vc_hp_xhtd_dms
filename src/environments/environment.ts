@@ -7,7 +7,7 @@ export const environment = {
   // urlApi : 'https://45.124.94.191:8019/api/',
   // urlApi : 'https://seaportwebapi.phanmem.one/api/',
   // urlApi : 'https://localhost:5001/api/',
-  urlApi : 'https://localhost:8019/api/',
+  urlApi : 'https://10.38.196.211:8019/api/',
 };
 
 /*
