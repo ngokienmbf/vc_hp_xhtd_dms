@@ -21,6 +21,7 @@ export class OrderOperatingListComponent implements OnInit {
   options = lstStep;
   idDetail: number = 0;
   volumeStatus: string = 'OFF';
+  itemSelected: any = null;
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -158,15 +159,36 @@ export class OrderOperatingListComponent implements OnInit {
       .subscribe((result: Blob) => {
         const blob = new Blob([result], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }); // you can change the type
         const url = window.URL.createObjectURL(blob);
-        window.open(url);
-        console.log("Success");
+        var anchor = document.createElement("a");
+
+        anchor.download = "bao-cao-don-hang.xlsx";
+        anchor.href = url;
+        anchor.click();
       });
   }
 
-  async openMedia(vehicle: string) {
+  openMediaEnter(vehicle: string) {
     this.volumeStatus = 'ON';
-    var lstVoice = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U', 'V', 'W', 'R', 'W', 'X', 'W', 'Z']
     this.playAudio('../../../../../assets/AudioNormal/audio_generer/moixe.wav');
+    this.callLicensePlate(vehicle);
+    setTimeout(() => {
+      this.playAudio('../../../../../assets/AudioNormal/audio_generer/vaonhanhang.wav');
+    }, 4800)
+    this.volumeStatus = 'OFF';
+  }
+
+  openMediaOut(vehicle: string) {
+    this.volumeStatus = 'ON';
+    this.playAudio('../../../../../assets/AudioNormal/audio_generer/moixe.wav');
+    this.callLicensePlate(vehicle);
+    setTimeout(() => {
+      this.playAudio('../../../../../assets/AudioNormal/audio_generer/roikhoiban.wav');
+    }, 4800)
+    this.volumeStatus = 'OFF';
+  }
+
+  callLicensePlate(vehicle: string) {
+    var lstVoice = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'S', 'T', 'U', 'V', 'W', 'R', 'W', 'X', 'W', 'Z']
     setTimeout(() => {
       for (let j = 0; j < lstVoice.length; j++) {
         const element = lstVoice[j];
@@ -179,10 +201,6 @@ export class OrderOperatingListComponent implements OnInit {
         }
       }
     }, 800);
-    setTimeout(() => {
-      this.playAudio('../../../../../assets/AudioNormal/audio_generer/vaonhanhang.wav');
-    }, 4800)
-    this.volumeStatus = 'OFF';
   }
 
   playAudio(url: string) {

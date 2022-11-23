@@ -10,5 +10,3 @@ export const lstStep = [
   { value: 8, name: 'Đã hoàn thành' },
   { value: 9, name: 'Đã giao hàng' },
 ]
-
-
