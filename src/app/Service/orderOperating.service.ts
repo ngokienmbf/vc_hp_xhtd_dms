@@ -40,5 +40,12 @@ export class OrderOperatingService {
     return this.httpService.getRequest(`OrderOperating/getOrderByCode?code=${deliveryCode}`)
   }
 
+  acceptOrder(data: any) {
+    return this.httpService.postRequest(`acceptOrder`, data)
+  }
+
+  cancelOrder(data: any) {
+    return this.httpService.postRequest(`cancelOrder`, data)
+  }
 
 }
