@@ -109,4 +109,19 @@ export class AccountService {
         return data;
       }))
   }
+
+  getTokenMb() {
+    const token =  JSON.parse(localStorage.getItem('token') || 'null');
+    return token;
+  }
+
+  Login2(User: UserLogin) {
+    return this.httpService.postRequestFromMb('token', User)
+    .pipe(map((data : any) => {
+        if(data) {
+          localStorage.setItem('token', JSON.stringify(data.access_token));
+        }
+        return data;
+    }))
+  };
 }

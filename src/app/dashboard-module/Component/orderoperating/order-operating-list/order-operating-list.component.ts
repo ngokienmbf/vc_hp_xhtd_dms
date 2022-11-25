@@ -1,3 +1,4 @@
+import { DriverDialogComponent } from './../../driver/driver-dialog/driver-dialog.component';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { SignalrService } from '../../../../Service/signalr.service';
 import { OrderOperatingService } from '../../../../Service/orderOperating.service';
@@ -206,5 +207,26 @@ export class OrderOperatingListComponent implements OnInit {
   playAudio(url: string) {
     var audio = new Audio(url);
     audio.play();
+  }
+
+  showListDriver() {
+    const dialogRef = this.dialog.open(DriverDialogComponent);
+    dialogRef.componentInstance.orderSelected = this.itemSelected;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result,'result')
+      if (result) {
+        if (result.code === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    })
+  }
+
+  acceptOrder() {
+    this.orderOperatingService.acceptOrder({id: this.itemSelected.id, driverUserName: this.itemSelected})
   }
 }
