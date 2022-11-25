@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   onLogin(UserInfo : UserLogin) {
     this.loading = true;
     this.AccountService.Login(UserInfo).subscribe(response => {
-      console.log(response)
       this.loading = false;
         // if(response.errorCode == "00"){
         if(response.errorCode == "200"){
@@ -36,5 +35,6 @@ export class LoginComponent implements OnInit {
           this.toatr.showError(response.message)
         }
     })
+    this.AccountService.Login2(UserInfo).subscribe(res => this.loading = false);
   }
 }

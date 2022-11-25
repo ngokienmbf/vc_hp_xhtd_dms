@@ -94,6 +94,7 @@ import { WeightStationIndexComponent } from './Component/weight-station/weight-s
 import { ClinkerIndexComponent } from './Component/clinker/clinker-index/clinker-index.component';
 import { MxxbIndexComponent } from './Component/mang-xuat-xi-bao/mxxb-index/mxxb-index.component';
 import { MxxrIndexComponent } from './Component/mang-xuat-xi-roi/mxxr-index/mxxr-index.component';
+import { DriverDialogComponent } from './Component/driver/driver-dialog/driver-dialog.component';
 
 @NgModule({
   declarations: [
@@ -161,6 +162,7 @@ import { MxxrIndexComponent } from './Component/mang-xuat-xi-roi/mxxr-index/mxxr
     ClinkerIndexComponent,
     MxxbIndexComponent,
     MxxrIndexComponent,
+    DriverDialogComponent,
   ],
   imports: [
     CommonModule,
