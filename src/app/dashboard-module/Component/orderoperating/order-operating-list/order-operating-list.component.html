@@ -212,7 +212,7 @@
     <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}"
       (click)="openMediaOut(itemSelected.vehicle)"><i class="bi bi-volume-up-fill"></i>Mời xe ra khỏi
       bàn</button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}" (click)="showListDriver()">
       Nhận đơn
     </button>
     <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">

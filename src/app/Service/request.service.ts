@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class RequestService {
 
   _urlApi: string = environment.urlApi ;
+  _urlApi2: string = environment.urlApi2;
 
   constructor(
     private http: HttpClient
@@ -59,4 +60,13 @@ export class RequestService {
   postRequestMobile(url: string, data: any) : Observable<any>{
     return this.http.post(this._urlApi + url,data);
   }
+
+  postRequestFromMb(url: string, data: any) : Observable<any> {
+    return this.http.post(this._urlApi2 + url, data);
+  }
+
+  postWithTokenMb(url: string, data: any) : Observable<any> {
+    return this.http.post(this._urlApi2 + url, data);
+  }
+
 }

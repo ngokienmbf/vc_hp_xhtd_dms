@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { lstOrderOperating, OrderOperating } from './../Model/OrderOperating';
 import { Injectable } from '@angular/core';
 import { RequestService } from './request.service';
@@ -41,11 +42,7 @@ export class OrderOperatingService {
   }
 
   acceptOrder(data: any) {
-    return this.httpService.postRequest(`acceptOrder`, data)
-  }
-
-  cancelOrder(data: any) {
-    return this.httpService.postRequest(`cancelOrder`, data)
+    return this.httpService.postWithTokenMb(`api/acceptOrder`, data)
   }
 
 }
