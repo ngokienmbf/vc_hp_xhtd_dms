@@ -49,4 +49,8 @@ export class OrderOperatingService {
     return this.httpService.postWithTokenMb(`api/cancelOrder`, data)
   }
 
+  finishOrder(data: any) {
+    return this.httpService.postWithTokenMb(`api/finishOrder`, data)
+  }
+
 }

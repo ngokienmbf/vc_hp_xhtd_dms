@@ -255,4 +255,30 @@ export class OrderOperatingListComponent implements OnInit {
       }
     })
   }
+
+  finishOrder() {
+    if (!this.itemSelected.driverUserName) {
+      const dialogRef = this.dialog.open(PopupComponent);
+      dialogRef.componentInstance.title = `Đơn hàng này chưa có người nhận !`;
+      return;
+    }
+    const dialogRef = this.dialog.open(PopupComponent);
+    dialogRef.componentInstance.title = "Bạn có chắc chắn muốn kết thúc đơn hàng?";
+    dialogRef.componentInstance.btnSubmit = true;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'submit') {
+        this.orderOperatingService.finishOrder({ id: this.itemSelected.id, driverUserName: this.itemSelected.driverUserName, noteFinish: "đã kết thúc đơn hàng" }).subscribe(res => {
+          if (res) {
+            if (res.code === 200) {
+              this.toastr.showSuccess(res.message);
+              this.Pagingdata(this.PageInfo);
+            }
+            else {
+              this.toastr.showError(res.message);
+            }
+          }
+        })
+      }
+    })
+  }
 }
