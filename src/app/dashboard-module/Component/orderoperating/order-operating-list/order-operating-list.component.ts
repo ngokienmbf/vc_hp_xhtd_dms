@@ -1,3 +1,4 @@
+import { PopupComponent } from './../../../../View/popup/popup.component';
 import { DriverDialogComponent } from './../../driver/driver-dialog/driver-dialog.component';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { SignalrService } from '../../../../Service/signalr.service';
@@ -213,7 +214,6 @@ export class OrderOperatingListComponent implements OnInit {
     const dialogRef = this.dialog.open(DriverDialogComponent);
     dialogRef.componentInstance.orderSelected = this.itemSelected;
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result,'result')
       if (result) {
         if (result.code === 200) {
           this.toastr.showSuccess(result.message);
@@ -227,6 +227,32 @@ export class OrderOperatingListComponent implements OnInit {
   }
 
   acceptOrder() {
-    this.orderOperatingService.acceptOrder({id: this.itemSelected.id, driverUserName: this.itemSelected})
+    this.orderOperatingService.acceptOrder({ id: this.itemSelected.id, driverUserName: this.itemSelected })
+  }
+
+  cancelOrder() {
+    if (!this.itemSelected.driverUserName) {
+      const dialogRef = this.dialog.open(PopupComponent);
+      dialogRef.componentInstance.title = `Đơn hàng này chưa có người nhận !`;
+      return;
+    }
+    const dialogRef = this.dialog.open(PopupComponent);
+    dialogRef.componentInstance.title = "Bạn có chắc chắn muốn huỷ đơn không?";
+    dialogRef.componentInstance.btnSubmit = true;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'submit') {
+        this.orderOperatingService.cancelOrder({ id: this.itemSelected.id, driverUserName: this.itemSelected.driverUserName }).subscribe(res => {
+          if (res) {
+            if (res.code === 200) {
+              this.toastr.showSuccess(res.message);
+              this.Pagingdata(this.PageInfo);
+            }
+            else {
+              this.toastr.showError(res.message);
+            }
+          }
+        })
+      }
+    })
   }
 }
