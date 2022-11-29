@@ -79,7 +79,7 @@ export class OrderOperatingListComponent implements OnInit {
       if (!hubMessage) {
         return;
       }
-      if (hubMessage.FromService === 'SYNC_ORDER') {
+      if (hubMessage.type === 'SYNC_ORDER') {
         this.Pagingdata(this.PageInfo)
       }
     }, 300)

@@ -31,6 +31,8 @@ export class EnterExitIndexComponent implements OnInit {
   direction: number = 0;
   doorEnter: string = "";
   doorExit: string = "";
+  status: number = 0;
+  content: string = "";
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -80,10 +82,11 @@ export class EnterExitIndexComponent implements OnInit {
       }
       if (hubMessage.type == 'CBV') {
         this.direction = hubMessage.direction;
+        this.status = hubMessage.status;
+        this.content = hubMessage.content;
         this.orderOperatingService.getOrderByRfid(hubMessage.data.rfid).subscribe(res => {
           if (res.statusCode == 200) {
-            this.dataRealtime = res.data
-            this.lstdata.data = res.data.concat(this.lstdata.data);
+            this.dataRealtime = res.data;
             if (hubMessage.direction === 1) {
               this.doorEnter = res.data[0]?.vehicle;
             }
