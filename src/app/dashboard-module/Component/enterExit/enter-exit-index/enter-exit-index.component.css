@@ -1,5 +1,6 @@
 .order-info table,th, td {
   border: 1px solid black;
+  padding: 10px;
 }
 .order-info td {
   padding: 10px;
