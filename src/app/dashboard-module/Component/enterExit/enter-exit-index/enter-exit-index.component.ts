@@ -29,8 +29,8 @@ export class EnterExitIndexComponent implements OnInit {
   };
   dataRealtime: any = [];
   direction: number = 0;
-  doorEnter: string = "Cổng vào";
-  doorExit: string = "Cổng ra";
+  doorEnter: string = "";
+  doorExit: string = "";
 
   Pagination: Pagination = {
     currentPage: 0,
