@@ -79,7 +79,6 @@ export class OrderOperatingListComponent implements OnInit {
       if (!hubMessage) {
         return;
       }
-      hubMessage = JSON.parse(hubMessage);
       if (hubMessage.FromService === 'SYNC_ORDER') {
         this.Pagingdata(this.PageInfo)
       }

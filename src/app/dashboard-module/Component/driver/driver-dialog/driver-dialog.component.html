@@ -9,15 +9,13 @@
         <tr>
           <th scope="col">STT</th>
           <th scope="col">Tài khoản lái xe</th>
-          <th scope="col">Số điện thoại</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.fullName}" *ngFor="let item of lstdata.data; index as i"
+        <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.userName}" *ngFor="let item of lstdata.data; index as i"
           (click)="hanldeClickItem(item.userName)">
           <th scope="row">{{i+1}}</th>
           <td>{{item.userName}}</td>
-          <td>{{item.phone}}</td>
         </tr>
       </tbody>
     </table>

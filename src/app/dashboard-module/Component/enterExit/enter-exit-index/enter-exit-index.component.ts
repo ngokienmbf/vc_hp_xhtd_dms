@@ -27,6 +27,10 @@ export class EnterExitIndexComponent implements OnInit {
     totalPage: 0,
     data: []
   };
+  dataRealtime: any = [];
+  direction: number = 0;
+  doorEnter: string = "Cổng vào";
+  doorExit: string = "Cổng ra";
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -40,7 +44,6 @@ export class EnterExitIndexComponent implements OnInit {
     Keyword: '',
     pageSize: 10,
     deliveryCode: '',
-    step: '2'
   }
 
   constructor(private orderOperatingService: OrderOperatingService,
@@ -59,7 +62,8 @@ export class EnterExitIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.loading = true;
-    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.step).subscribe(data => {
+    this.orderOperatingService.getOrderEnterExit(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode)
+    .subscribe(data => {
       this.lstdata = data;
       this.loading = false;
       this.Pagination.currentPage = data.currentPage,
@@ -74,12 +78,18 @@ export class EnterExitIndexComponent implements OnInit {
       if (!hubMessage) {
         return;
       }
-      hubMessage = JSON.parse(hubMessage);
-      if (hubMessage.FromService === 'CV') {
-        this.orderOperatingService.GetOrderByCode(hubMessage.DeliveryCode).subscribe(res => {
+      if (hubMessage.type == 'CBV') {
+        this.direction = hubMessage.direction;
+        this.orderOperatingService.getOrderByRfid(hubMessage.data.rfid).subscribe(res => {
           if (res.statusCode == 200) {
-            this.lstdata.data.pop();
-            this.lstdata.data.unshift(res.data);
+            this.dataRealtime = res.data
+            this.lstdata.data = res.data.concat(this.lstdata.data);
+            if (hubMessage.direction === 1) {
+              this.doorEnter = res.data[0]?.vehicle;
+            }
+            if (hubMessage.direction === 2) {
+              this.doorExit = res.data[0]?.vehicle;
+            }
           } else {
             this.toastr.showError(res.error);
           }
@@ -95,7 +105,6 @@ export class EnterExitIndexComponent implements OnInit {
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     pageOfItems.deliveryCode = this.PageInfo.deliveryCode;
-    pageOfItems.step = this.PageInfo.step;
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
   }
