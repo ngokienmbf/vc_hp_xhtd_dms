@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class SignalrService {
   URL_SIGNALR = 'http://45.124.94.191:8789/xhtdmsg';
-  EVENT_MESSAGE = 'SendOffersToUser';
+  EVENT_MESSAGE = 'SendMsgToUser';
   hubUrl: string = '';
   connection: any;
   hubMessage: BehaviorSubject<string>;
@@ -37,7 +37,6 @@ export class SignalrService {
 
   private setSignalrClientMethods(): void {
     this.connection.on(this.EVENT_MESSAGE, (message: string) => {
-      message = message.replace(/'/g, `"`);
       this.hubMessage.next(message);
     });
   }
