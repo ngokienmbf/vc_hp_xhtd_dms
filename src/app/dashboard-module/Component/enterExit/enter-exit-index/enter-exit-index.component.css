@@ -5,24 +5,6 @@
 .order-info td {
   padding: 10px;
 }
-.order-info-detail {
-  width: 500px;
-}
-.order-info-name {
-  font-weight: bold;
-}
-.text-center {
-  text-align: center;
-}
-
-.mat-tab-body-content {
-  overflow: hidden !important;
-}
-
-.order-info table {
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
 
 .bg-gray {
   background-color: #cecece;
@@ -36,4 +18,13 @@
 }
 .w-100 {
   width: 100%;
+}
+
+.vehicle-realtime {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vehicle-realtime h2 {
+  font-size: 30px;
 }

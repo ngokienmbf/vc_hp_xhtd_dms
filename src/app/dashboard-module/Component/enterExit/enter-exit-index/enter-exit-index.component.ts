@@ -60,14 +60,13 @@ export class EnterExitIndexComponent implements OnInit {
     this.signalrService.hubMessage.subscribe((hubMessage: string) => {
       this.getVehicle(hubMessage);
     });
+    setInterval(() => this.Pagingdata(this.PageInfo), 30000);
   }
 
   Pagingdata(PageInfo: any) {
-    this.loading = true;
     this.orderOperatingService.getOrderEnterExit(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode)
     .subscribe(data => {
       this.lstdata = data;
-      this.loading = false;
       this.Pagination.currentPage = data.currentPage,
         this.Pagination.pageSize = data.pageSize,
         this.Pagination.totalPage = data.totalPage,
