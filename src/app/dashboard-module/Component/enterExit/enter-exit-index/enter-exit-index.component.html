@@ -8,8 +8,8 @@
         <div class="vehicle-realtime">
           <div class="vehicle-left w-100">
             <h2 class="bg-gray text-center">
-              Cổng vào: <span *ngIf="doorEnter && status == 1">{{doorEnter}}</span> <span
-                *ngIf="status == 0 && direction == 1">{{content}}</span>
+              Cổng vào: <span *ngIf="doorEnter && status == 1">{{doorEnter}}</span>
+              <span *ngIf="status == 0 && direction == 1" class="text-error">{{content}}</span>
             </h2>
             <h3>Thông tin đơn hàng</h3>
             <div *ngIf="!doorEnter" class="col-lg-12 order-info">
@@ -67,8 +67,9 @@
           </div>
           <div class="vehicle-right w-100">
             <h2 class="bg-gray text-center">
-              Cổng ra: <span *ngIf="doorExit && status == 1">{{doorExit}}</span> <span
-                *ngIf="status == 0 && direction == 2">{{content}}</span>
+              Cổng ra:
+              <span *ngIf="doorExit && status == 1">{{doorExit}}</span>
+              <span *ngIf="status == 0 && direction == 2" class="text-error">{{content}}</span>
             </h2>
             <h3>Thông tin đơn hàng</h3>
             <div *ngIf="!doorExit" class="col-lg-12 order-info">
@@ -103,7 +104,7 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="dataRealtime.length > 0 && direction === 2"  class="col-lg-12 order-info">
+            <div *ngIf="dataRealtime.length > 0 && direction === 2" class="col-lg-12 order-info">
               <div class="row">
                 <div class="table-responsive">
                   <div class="table table-striped table-hover">
