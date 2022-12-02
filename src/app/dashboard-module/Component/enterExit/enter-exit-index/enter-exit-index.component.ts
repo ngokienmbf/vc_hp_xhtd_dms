@@ -41,7 +41,7 @@ export class EnterExitIndexComponent implements OnInit {
     totalPage: 0,
   }
 
-    PageInfo = {
+  PageInfo = {
     page: 1,
     Keyword: '',
     pageSize: 10,
@@ -65,13 +65,13 @@ export class EnterExitIndexComponent implements OnInit {
 
   Pagingdata(PageInfo: any) {
     this.orderOperatingService.getOrderEnterExit(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode)
-    .subscribe(data => {
-      this.lstdata = data;
-      this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
-    })
+      .subscribe(data => {
+        this.lstdata = data;
+        this.Pagination.currentPage = data.currentPage,
+          this.Pagination.pageSize = data.pageSize,
+          this.Pagination.totalPage = data.totalPage,
+          this.Pagination.totalRecord = data.totalRecord
+      })
   }
 
   getVehicle(hubMessage: any) {
@@ -87,11 +87,12 @@ export class EnterExitIndexComponent implements OnInit {
           if (res.statusCode == 200) {
             this.dataRealtime = res.data;
             if (hubMessage.direction === 1) {
-              this.doorEnter = res.data[0]?.vehicle;
+              this.doorEnter = res.vehicle;
             }
             if (hubMessage.direction === 2) {
-              this.doorExit = res.data[0]?.vehicle;
+              this.doorExit = res.vehicle;
             }
+            this.clearDataRealtime();
           } else {
             this.toastr.showError(res.error);
           }
@@ -109,6 +110,17 @@ export class EnterExitIndexComponent implements OnInit {
     pageOfItems.deliveryCode = this.PageInfo.deliveryCode;
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
+  }
+
+  clearDataRealtime() {
+    setTimeout(() => {
+      this.dataRealtime = [];
+      this.direction = 0;
+      this.doorEnter = "";
+      this.doorExit = "";
+      this.status = 0;
+      this.content = "";
+    }, 30 * 1000)
   }
 
 }
