@@ -92,11 +92,11 @@ export class EnterExitIndexComponent implements OnInit {
             if (hubMessage.direction === 2) {
               this.doorExit = res.vehicle;
             }
-            this.clearDataRealtime();
           } else {
             this.toastr.showError(res.error);
           }
         })
+        this.clearDataRealtime();
       }
     }, 300)
   }
@@ -120,7 +120,7 @@ export class EnterExitIndexComponent implements OnInit {
       this.doorExit = "";
       this.status = 0;
       this.content = "";
-    }, 30 * 1000)
+    }, 30000);
   }
 
 }
