@@ -49,4 +49,22 @@ export class OrderOperatingService {
     return this.httpService.postWithTokenMb(`api/cancelOrder`, data)
   }
 
+  finishOrder(data: any) {
+    return this.httpService.postWithTokenMb(`api/finishOrder`, data)
+  }
+
+  getOrderEnterExit(page: number, searchText: string, numberDis: number, deliveryCode: string) {
+    return this.httpService.getRequest(`OrderOperating/getOrderEnterExit?page=${page}&Keyword=${searchText}&pageSize=${numberDis}&deliveryCode=${deliveryCode}`)
+      .pipe(map((data: lstOrderOperating) => {
+        return data;
+      }))
+  }
+
+  getOrderByRfid(rfid: string) {
+    return this.httpService.getRequest(`OrderOperating/getOrderByRfid/${rfid}`)
+      .pipe(map((data: any) => {
+        return data;
+      }))
+  }
+
 }

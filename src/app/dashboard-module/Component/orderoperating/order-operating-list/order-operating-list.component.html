@@ -231,7 +231,7 @@
     <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
       Gửi thông tin vào máng xuất
     </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}" (click)="finishOrder()">
       Kết thúc đơn hàng
     </button>
     <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">

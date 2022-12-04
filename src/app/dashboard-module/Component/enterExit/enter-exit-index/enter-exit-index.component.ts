@@ -27,6 +27,12 @@ export class EnterExitIndexComponent implements OnInit {
     totalPage: 0,
     data: []
   };
+  dataRealtime: any = [];
+  direction: number = 0;
+  doorEnter: string = "";
+  doorExit: string = "";
+  status: number = 0;
+  content: string = "";
 
   Pagination: Pagination = {
     currentPage: 0,
@@ -35,12 +41,11 @@ export class EnterExitIndexComponent implements OnInit {
     totalPage: 0,
   }
 
-    PageInfo = {
+  PageInfo = {
     page: 1,
     Keyword: '',
     pageSize: 10,
     deliveryCode: '',
-    step: '2'
   }
 
   constructor(private orderOperatingService: OrderOperatingService,
@@ -55,18 +60,18 @@ export class EnterExitIndexComponent implements OnInit {
     this.signalrService.hubMessage.subscribe((hubMessage: string) => {
       this.getVehicle(hubMessage);
     });
+    setInterval(() => this.Pagingdata(this.PageInfo), 30000);
   }
 
   Pagingdata(PageInfo: any) {
-    this.loading = true;
-    this.orderOperatingService.Paging(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode, this.PageInfo.step).subscribe(data => {
-      this.lstdata = data;
-      this.loading = false;
-      this.Pagination.currentPage = data.currentPage,
-        this.Pagination.pageSize = data.pageSize,
-        this.Pagination.totalPage = data.totalPage,
-        this.Pagination.totalRecord = data.totalRecord
-    })
+    this.orderOperatingService.getOrderEnterExit(this.PageInfo.page, this.PageInfo.Keyword, this.PageInfo.pageSize, this.PageInfo.deliveryCode)
+      .subscribe(data => {
+        this.lstdata = data;
+        this.Pagination.currentPage = data.currentPage,
+          this.Pagination.pageSize = data.pageSize,
+          this.Pagination.totalPage = data.totalPage,
+          this.Pagination.totalRecord = data.totalRecord
+      })
   }
 
   getVehicle(hubMessage: any) {
@@ -74,16 +79,24 @@ export class EnterExitIndexComponent implements OnInit {
       if (!hubMessage) {
         return;
       }
-      hubMessage = JSON.parse(hubMessage);
-      if (hubMessage.FromService === 'CV') {
-        this.orderOperatingService.GetOrderByCode(hubMessage.DeliveryCode).subscribe(res => {
+      if (hubMessage.type == 'CBV') {
+        this.direction = hubMessage.direction;
+        this.status = hubMessage.status;
+        this.content = hubMessage.content;
+        this.orderOperatingService.getOrderByRfid(hubMessage.data.rfid).subscribe(res => {
           if (res.statusCode == 200) {
-            this.lstdata.data.pop();
-            this.lstdata.data.unshift(res.data);
+            this.dataRealtime = res.data;
+            if (hubMessage.direction === 1) {
+              this.doorEnter = res.vehicle;
+            }
+            if (hubMessage.direction === 2) {
+              this.doorExit = res.vehicle;
+            }
           } else {
             this.toastr.showError(res.error);
           }
         })
+        this.clearDataRealtime();
       }
     }, 300)
   }
@@ -95,9 +108,19 @@ export class EnterExitIndexComponent implements OnInit {
   onChangePage(pageOfItems: any) {
     pageOfItems.Keyword = this.PageInfo.Keyword;
     pageOfItems.deliveryCode = this.PageInfo.deliveryCode;
-    pageOfItems.step = this.PageInfo.step;
     this.PageInfo = pageOfItems
     this.Pagingdata(pageOfItems)
+  }
+
+  clearDataRealtime() {
+    setTimeout(() => {
+      this.dataRealtime = [];
+      this.direction = 0;
+      this.doorEnter = "";
+      this.doorExit = "";
+      this.status = 0;
+      this.content = "";
+    }, 30000);
   }
 
 }

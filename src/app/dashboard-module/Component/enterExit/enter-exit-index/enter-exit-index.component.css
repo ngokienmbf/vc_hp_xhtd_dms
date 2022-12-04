@@ -1,0 +1,30 @@
+.order-info table,th, td {
+  border: 1px solid black;
+  padding: 10px;
+}
+.order-info td {
+  padding: 10px;
+}
+
+.bg-gray {
+  background-color: #cecece;
+  margin: 5px
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.w-100 {
+  width: 100%;
+}
+
+.vehicle-realtime {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vehicle-realtime h2 {
+  font-size: 30px;
+}
