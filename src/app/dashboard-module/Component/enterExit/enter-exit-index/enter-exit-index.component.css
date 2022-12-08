@@ -2,13 +2,17 @@
   border: 1px solid black;
   padding: 10px;
 }
+.order-info table {
+  width: 100%;
+}
 .order-info td {
   padding: 10px;
 }
 
-.bg-gray {
-  background-color: #cecece;
-  margin: 5px
+.bg-orange {
+  background-color: #9e7b4c;
+  margin: 5px;
+  color: #ffffff;
 }
 
 .title {
@@ -27,4 +31,34 @@
 
 .vehicle-realtime h2 {
   font-size: 30px;
+  margin-bottom: 0;
 }
+
+.enterExit-list thead {
+  background-color: #9e7b4c;
+  color: #ffffff;
+}
+
+.enter-title, .exit-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px 5px 20px;
+}
+
+.btn-border {
+  border: 1px solid #ffffff;
+}
+
+.btn-border i {
+  color: #ffffff;
+}
+
+.enter-driver, .exit-driver {
+  color: #9e7b4c;
+}
+
+.vehicle-left {
+  margin-right: 10px;
+}
+
