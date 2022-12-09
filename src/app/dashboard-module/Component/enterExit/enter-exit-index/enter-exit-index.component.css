@@ -4,6 +4,7 @@
 }
 .order-info table {
   width: 100%;
+  text-align: center;
 }
 .order-info td {
   padding: 10px;
@@ -11,7 +12,7 @@
 
 .bg-orange {
   background-color: #9e7b4c;
-  margin: 5px;
+  margin-top: 5px;
   color: #ffffff;
 }
 
@@ -61,4 +62,3 @@
 .vehicle-left {
   margin-right: 10px;
 }
-
