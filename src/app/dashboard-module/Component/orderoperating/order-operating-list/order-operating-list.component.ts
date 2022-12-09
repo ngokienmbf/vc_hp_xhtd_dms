@@ -1,3 +1,5 @@
+import { PopupComponent } from './../../../../View/popup/popup.component';
+import { DriverDialogComponent } from './../../driver/driver-dialog/driver-dialog.component';
 import { convertHelper } from 'src/app/utils/helper/convertHelper';
 import { SignalrService } from '../../../../Service/signalr.service';
 import { OrderOperatingService } from '../../../../Service/orderOperating.service';
@@ -77,8 +79,7 @@ export class OrderOperatingListComponent implements OnInit {
       if (!hubMessage) {
         return;
       }
-      hubMessage = JSON.parse(hubMessage);
-      if (hubMessage.FromService === 'SYNC_ORDER') {
+      if (hubMessage.type === 'SYNC_ORDER') {
         this.Pagingdata(this.PageInfo)
       }
     }, 300)
@@ -206,5 +207,77 @@ export class OrderOperatingListComponent implements OnInit {
   playAudio(url: string) {
     var audio = new Audio(url);
     audio.play();
+  }
+
+  showListDriver() {
+    const dialogRef = this.dialog.open(DriverDialogComponent);
+    dialogRef.componentInstance.orderSelected = this.itemSelected;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (result.code === 200) {
+          this.toastr.showSuccess(result.message);
+          this.Pagingdata(this.PageInfo);
+        }
+        else {
+          this.toastr.showError(result.message);
+        }
+      }
+    })
+  }
+
+  acceptOrder() {
+    this.orderOperatingService.acceptOrder({ id: this.itemSelected.id, driverUserName: this.itemSelected })
+  }
+
+  cancelOrder() {
+    if (!this.itemSelected.driverUserName) {
+      const dialogRef = this.dialog.open(PopupComponent);
+      dialogRef.componentInstance.title = `Đơn hàng này chưa có người nhận !`;
+      return;
+    }
+    const dialogRef = this.dialog.open(PopupComponent);
+    dialogRef.componentInstance.title = "Bạn có chắc chắn muốn huỷ đơn không?";
+    dialogRef.componentInstance.btnSubmit = true;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'submit') {
+        this.orderOperatingService.cancelOrder({ id: this.itemSelected.id, driverUserName: this.itemSelected.driverUserName }).subscribe(res => {
+          if (res) {
+            if (res.code === 200) {
+              this.toastr.showSuccess(res.message);
+              this.Pagingdata(this.PageInfo);
+            }
+            else {
+              this.toastr.showError(res.message);
+            }
+          }
+        })
+      }
+    })
+  }
+
+  finishOrder() {
+    if (!this.itemSelected.driverUserName) {
+      const dialogRef = this.dialog.open(PopupComponent);
+      dialogRef.componentInstance.title = `Đơn hàng này chưa có người nhận !`;
+      return;
+    }
+    const dialogRef = this.dialog.open(PopupComponent);
+    dialogRef.componentInstance.title = "Bạn có chắc chắn muốn kết thúc đơn hàng?";
+    dialogRef.componentInstance.btnSubmit = true;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'submit') {
+        this.orderOperatingService.finishOrder({ id: this.itemSelected.id, driverUserName: this.itemSelected.driverUserName, noteFinish: "đã kết thúc đơn hàng" }).subscribe(res => {
+          if (res) {
+            if (res.code === 200) {
+              this.toastr.showSuccess(res.message);
+              this.Pagingdata(this.PageInfo);
+            }
+            else {
+              this.toastr.showError(res.message);
+            }
+          }
+        })
+      }
+    })
   }
 }

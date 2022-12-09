@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.AccountService.Login(UserInfo).subscribe(response => {
       //console.log(response);
+
+      //TODO: this for test allow function
       console.log(this.AccountService.checkAllowFunction(2));
       
       this.loading = false;
@@ -39,5 +41,6 @@ export class LoginComponent implements OnInit {
         }
     });
     
+    this.AccountService.Login2(UserInfo).subscribe(res => this.loading = false);
   }
 }

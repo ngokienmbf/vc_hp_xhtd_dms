@@ -13,6 +13,7 @@ import { FormsModule  } from '@angular/forms';
 import { AdminService } from './Service/admin.service';
 import { ConfigService } from './Service/config.service';
 import { OAuthLogger, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
+import { PopupComponent } from './View/popup/popup.component';
 // import { ContInfoComponent } from './cont-info/cont-info.component';
 // import { ContHistoryComponent } from './container/container-detail/cont-history/cont-history.component';
 // import { ContImgsComponent } from './container/container-detail/cont-imgs/cont-imgs.component';
@@ -20,6 +21,7 @@ import { OAuthLogger, OAuthService, UrlHelperService } from 'angular-oauth2-oidc
 @NgModule({
   declarations: [
     AppComponent,
+    PopupComponent,
     // ContInfoComponent,
     // ContHistoryComponent,
     // ContImgsComponent,

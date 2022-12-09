@@ -1,0 +1,32 @@
+<h2 class="text-center">Chọn phương tiện</h2>
+<div class="list-container">
+  <div>
+    <h3>MSGG <b>{{orderSelected?.deliveryCode}}</b> - Tên lái xe: <b>{{itemSelected}}</b></h3>
+    <input type="text" class="form-control" placeholder="Tìm kiếm" aria-label="Recipient's customer"
+      aria-describedby="button-addon2" [(ngModel)]="PageInfo.Keyword" (ngModelChange)="onSearch($event)">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Tài khoản lái xe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="item-cont" [ngClass]="{'activate' : itemSelected === item.userName}" *ngFor="let item of lstdata.data; index as i"
+          (click)="hanldeClickItem(item.userName)">
+          <th scope="row">{{i+1}}</th>
+          <td>{{item.userName}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <app-pagination [Pagination]="Pagination" (changePage)="onChangePage($event)"></app-pagination>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-secondary" style="margin-right: 10px;" (click)="closeDialog()">Đóng</button>
+      <button class="btn btn-success" (click)="handleSubmit()" [disabled]="this.itemSelected === ''">Xác nhận</button>
+    </div>
+  </div>
+</div>
+
