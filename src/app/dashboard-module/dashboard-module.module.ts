@@ -60,6 +60,7 @@ import { CategoryIndexComponent } from './Component/device/category-index/catego
 import { AccountCreateComponent } from './Component/account/account-create/account-create.component';
 import { AccountDeleteComponent } from './Component/account/account-delete/account-delete.component';
 import { AccountIndexComponent } from './Component/account/account-index/account-index.component';
+import { AccountResetPassComponent } from './Component/account/account-resetpass/account-resetpass.component';
 import { AccountGroupTabsComponent } from './Component/account-group/group-tabs.component';
 import { AccountGroupCreateComponent } from './Component/account-group/group-create/group-create.component';
 import { AccountGroupDeleteComponent } from './Component/account-group/group-delete/group-delete.component';
@@ -129,6 +130,7 @@ import { MxxrIndexComponent } from './Component/mang-xuat-xi-roi/mxxr-index/mxxr
     AccountCreateComponent,
     AccountDeleteComponent,
     AccountIndexComponent,
+    AccountResetPassComponent,
     AccountGroupCreateComponent,
     AccountGroupDeleteComponent,
     AccountGroupIndexComponent,

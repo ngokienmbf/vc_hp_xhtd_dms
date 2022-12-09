@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import  { RequestService } from  './request.service';
 import { map, Observable } from 'rxjs';
 import { AccGrFunc, lstAccGrFunc } from 'src/app/Model/AccGrFunc';
+import { Item } from '../Model/multidropdown';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,16 @@ export class AccGrFuncService {
       }))
   }
 
+  
+  GetFullFunctions() { // for dropdowns only
+    return this.httpService.getRequest(`accountGroupFunction/GetFullFunctions`)
+    .pipe(map((data : any) => {
+      return data.map((i : any) => ({
+        id: i.id,
+        name:  i.id.toString(),
+        title: i.name
+      } as Item)) as Item[];
+    }));
+  }
 
 }
