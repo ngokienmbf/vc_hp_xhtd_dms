@@ -98,12 +98,21 @@ export class AccGrFuncCreateComponent implements OnInit {
           updateDay: new FormControl(response.updateDay),
           updateBy: new FormControl(response.updateBy),
         })
+
+        this.AccGrFuncService.GetFullFunctions().subscribe((data) => {
+          this.functionList = data;
+        });
+
         this.AccountGroupService.GetFull().subscribe((data) => {
           this.groupList = data;
         });
       })
 
     } else {
+      this.AccGrFuncService.GetFullFunctions().subscribe((data) => {
+        this.functionList = data;
+      });
+
       this.AccountGroupService.GetFull().subscribe((data) => {
         this.groupList = data;
       });
@@ -144,6 +153,23 @@ export class AccGrFuncCreateComponent implements OnInit {
     {
       this.groupSelected = item.name;
       this.CreateEditForm.get('groupId')?.setValue(+item.name);
+    }
+  }
+
+  get functionId() { return this.CreateEditForm.get('functionId') }
+
+  functionSelected: string = "";
+  functionList: Item[] = [];
+
+  onDropDownChange2(item: Item): void {
+    if(!item.checked){
+      this.functionSelected = '';
+      this.CreateEditForm.get('functionId')?.setValue(0);
+    }
+    else
+    {
+      this.functionSelected = item.name;
+      this.CreateEditForm.get('functionId')?.setValue(+item.name);
     }
   }
 }

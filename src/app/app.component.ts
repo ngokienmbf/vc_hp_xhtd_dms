@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
     this.signalrService.initiateSignalrConnection();
     let userInfo = JSON.parse(localStorage.getItem('UserInfo') || '')
     if (userInfo.accessToken) {
-      console.log('aaaaaaaaaa')
+      console.log('ok user')
     }
     // localStorage.getItem('UserInfo')
   }

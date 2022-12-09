@@ -34,10 +34,24 @@
                     <span *ngIf="groupId?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                 </div>
             </div>
+
             <div class="col-lg-6">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Mã chức năng</label>
-                    <input type="number" class="form-control" formControlName="functionId">
+                    <label for="exampleFormControlInput1" class="form-label">Chức năng</label>
+                    <input type="text" class="form-control" formControlName="functionId" hidden="true" [disabled]="true"> 
+                    <app-multidropdown 
+                        [items]="functionList"
+                        [showSearch]=true
+                        [showAll]=false
+                        [showStatus]=true
+                        [showError]=false
+                        [name]="groupSelected"
+                        placeholder="Chọn chức năng" 
+                        (itemChange)="onDropDownChange2($event)">
+                    </app-multidropdown>
+                </div>
+                <div *ngIf="submited && functionId?.errors?.['required']">
+                    <span *ngIf="functionId?.errors?.['required']" style="color: red;">Trường bắt buộc nhập</span>
                 </div>
             </div>
 

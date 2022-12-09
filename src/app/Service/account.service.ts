@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import  { RequestService } from  './request.service';
+import { RequestService } from  './request.service';
 import { UserLogin,UserReponse } from '../Model/User'
 import { map, Observable } from 'rxjs';
 import {Item} from '../Model/multidropdown'
@@ -45,6 +45,17 @@ export class AccountService {
   getUserInfo() {
     const UserInfo =  JSON.parse(localStorage.getItem('UserInfo') || 'null');
     return UserInfo;
+  }
+
+
+  // hàm check quyền
+  checkAllowFunction(functionId: number) {
+    var UserInfo =  JSON.parse(localStorage.getItem('UserInfo') || 'null');
+    var groupFunctions = UserInfo.groupFunctions || [];
+    //console.log(groupFunctions);
+    
+    return groupFunctions.filter((el:any) => { return el.functionId == functionId;
+    });
   }
 
   updateUser(data : any) {
@@ -110,6 +121,12 @@ export class AccountService {
       }))
   }
 
+  ResetPassword(id: number) {
+    return this.httpService.putRequest('account/ResetPassword', id)
+      .pipe(map((data: Account) => {
+        return data;
+      }))
+  }
   getTokenMb() {
     const token =  JSON.parse(localStorage.getItem('token') || 'null');
     return token;

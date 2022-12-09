@@ -4,6 +4,7 @@ import { CategoryService } from 'src/app/Service/category.service';
 import { Category } from 'src/app/Model/Category';
 import { Device } from 'src/app/Model/Device';
 import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
+import { SignalrService } from './../../../../Service/signalr.service';
 
 @Component({
   selector: 'app-device-control',
@@ -13,7 +14,8 @@ import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 
 export class DeviceControlComponent implements OnInit {
   loadding: boolean = false;
-  constructor(private toastr : ToastrcustomService,private DeviceService: DeviceService,private CategoryService: CategoryService) { }
+  constructor(private toastr : ToastrcustomService,private DeviceService: DeviceService,private CategoryService: CategoryService,
+    private signalrService: SignalrService) { }
   
   //categoryList: Category[] = [];
   countCategoryList: Category[] = [];
@@ -29,6 +31,7 @@ export class DeviceControlComponent implements OnInit {
     this.countActiveDev  = 0;
     this.countDeactiveDev = 0;
     this.countCategoryList = [];
+    
     this.CategoryService.GetFullForList().subscribe((data) => {
       //this.categoryList = data;
       
@@ -55,6 +58,11 @@ export class DeviceControlComponent implements OnInit {
         })
       })
       console.log(this.countCategoryList);
+    });
+
+    // get Message
+    this.signalrService.hubMessage.subscribe((hubMessage: string) => {
+      this.getPingChange(hubMessage);
     });
   }
 
@@ -105,5 +113,17 @@ export class DeviceControlComponent implements OnInit {
 
   prevStep() {
     this.step--;
+  }
+
+  getPingChange(hubMessage: any) {
+    setTimeout(() => {
+      if (!hubMessage) {
+        return;
+      }
+      hubMessage = JSON.parse(hubMessage);
+      if (hubMessage.FromService === 'XXX?') {
+        //
+      }
+    }, 300)
   }
 }

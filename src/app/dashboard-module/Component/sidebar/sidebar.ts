@@ -34,103 +34,104 @@ export const ROUTE_DATA: TypeRoute[] = [
   },
   {
     name: 'Quản lý',
-    roles: ["Admin"],
+    roles: ["2"],   // roles theo groupId trong bảng Account, AccountGroup
     children: [
       {
         name: 'Lái xe',
         url: 'lai-xe',
+        roles: ["2", ],
       },
       {
         name: 'Phương tiện',
         url: 'phuong-tien',
-        roles: ["Admin", "ds"],
+        roles: ["2", ],
       },
       {
         name: 'Lái xe - Phương tiện',
         url: 'lai-xe-phuong-tien',
-        roles: ["Admin", "ds"],
+        roles: ["2", ],
       },
       {
         name: 'Quản lý điều hành đơn',
         url: 'dieu-hanh-don',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       },
       {
         name: 'Quản lý vào ra',
         url: 'quan-ly-vao-ra',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       },
       {
         name: 'Quản lý trạm cân 951',
         url: 'quan-ly-tram-can',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       },
       {
         name: 'Quản lý clinker',
         url: 'quan-ly-clinker',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       },
       {
         name: 'Quản lý máng xuất xi bao',
         url: 'quan-ly-mxxb',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       },
       {
         name: 'Quản lý máng xuất xi rời',
         url: 'quan-ly-mxxr',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       }
     ]
   },
   {
     name: 'Danh mục',
-    roles: ["ds"],
+    roles: ["2"],
     children: [
       {
         name: 'Danh mục máng xuất',
         url: 'mang-xuat',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       },
       {
         name: 'Danh mục RFID',
         url: 'rfid',
-        roles: ["Admin", "ds"]
+        roles: ["2", ]
       },
       {
           name :'Danh mục thiết bị',
           url:'ds-thiet-bi',
-          roles: ["Admin"],
+          roles: ["2"],
       },
       {
           name :'Danh mục khác',
           url:'danh-muc-khac',
-          roles: ["Admin"],
+          roles: ["2"],
       },
     ]
     },
     {
         name :'Quản trị hệ thống',
-        roles: ["Admin"],
+        roles: ["2"],
         children : [
             {
                 name :'Quản lý tài khoản',
                 url:'quan-ly-tai-khoan',
-                roles: ["Admin"],
+                roles: ["2"],
             },
             {
                 name :'Phân quyền hệ thống',
                 url:'phan-quyen',
-                roles: ["Admin"],
+                roles: ["2"],
             },
             {
                 name :'Cấu hình thiết bị',
                 url:'thiet-bi',
-                roles: ["Admin"],
+                roles: ["2"],
             },
             {
                 name :'Cấu hình chung hệ thống',
                 url:'cau-hinh-chung',
-                roles: ["Admin"],
+                roles: ["2"],
             },
         ]
     },
