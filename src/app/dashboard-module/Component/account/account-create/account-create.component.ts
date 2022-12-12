@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
+import { ToastrcustomService } from 'src/app/Interceptor/toastrcustom';
 import { Item } from 'src/app/Model/multidropdown';
 import { AccountService } from 'src/app/Service/account.service';
 import { AccountGroupService } from 'src/app/Service/accountGroup.service';
+import { AccountResetPassComponent } from '../account-resetpass/account-resetpass.component';
 
 @Component({
   selector: 'app-account-create',
@@ -19,7 +21,10 @@ export class AccountCreateComponent implements OnInit {
   @Input() customerId: number = 0;
   @Input() isCreate: boolean = true;
 
-  constructor(private AccountService: AccountService, private AccountGroupService: AccountGroupService, public dialogRef: MatDialogRef<AccountCreateComponent>) {
+  constructor(private AccountService: AccountService, 
+    public dialog: MatDialog,
+    private toastr : ToastrcustomService,
+    private AccountGroupService: AccountGroupService, public dialogRef: MatDialogRef<AccountCreateComponent>) {
     this.CreateEditForm = new FormGroup({
       userName: new FormControl('', Validators.required),
       fullName: new FormControl(),
@@ -134,6 +139,23 @@ export class AccountCreateComponent implements OnInit {
       });
 
     }, 200);
+  }
+  
+  openResetPassword(id: number){
+    this.customerId = id;
+    const dialogRef = this.dialog.open(AccountResetPassComponent);
+    dialogRef.componentInstance.customerId = this.customerId;
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        if(result.succeeded === true){
+          this.toastr.showSuccess(result.message);
+        }
+        else
+        {
+          this.toastr.showError(result.message);
+        }
+      }
+    });
   }
 
 }

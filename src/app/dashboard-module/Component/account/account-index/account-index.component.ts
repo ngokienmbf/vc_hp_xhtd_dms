@@ -132,7 +132,7 @@ export class AccountIndexComponent implements OnInit {
           this.toastr.showError(result.message);
         }
       }
-  });
+    });
   }
 
 }

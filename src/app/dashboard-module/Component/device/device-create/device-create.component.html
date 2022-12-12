@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="mb-2">
-                    <label for="exampleFormControlInput1" class="form-label">Mã Hạng mục</label>
+                    <label for="exampleFormControlInput1" class="form-label">Hạng mục</label>
                     <input type="text" class="form-control" formControlName="catCode" hidden="true">
                     <app-multidropdown 
                     [items]="categoryList" 
@@ -57,7 +57,7 @@
                     [showStatus]=true
                     [showError]=false
                     [name]="catCodeSelected"
-                    placeholder="Chọn TB quản lý" 
+                    placeholder="Chọn Hạng mục" 
                     (itemChange)="onManCodeDropDownChange($event)">
                     </app-multidropdown>
                     <div *ngIf="submited && catCode?.errors?.['required']">

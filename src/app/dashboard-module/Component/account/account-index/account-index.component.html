@@ -38,7 +38,10 @@
                         <i *ngIf="item.state" class="bi bi-check-circle-fill" style="color: green;"></i>
                         <i *ngIf="!item.state" class="bi bi-dash-circle-fill" style="color: red;"></i>
                       </td>
-                      <td style="text-align: center;"><i class="bi bi-pencil-square" style="font-size:15px;cursor: pointer;" (click)="openEdit(item.id)"></i><i class="bi bi-trash3" (click)="openDelete(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i></td>
+                      <td style="text-align: center;">
+                        <i class="bi bi-pencil-square" (click)="openEdit(item.id)" style="font-size:15px;cursor: pointer;" ></i>
+                        <i class="bi bi-trash3" (click)="openDelete(item.id)" style="font-size:15px;padding-left: 5px;cursor: pointer;"></i>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
