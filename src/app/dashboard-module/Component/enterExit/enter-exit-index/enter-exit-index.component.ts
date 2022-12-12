@@ -27,7 +27,8 @@ export class EnterExitIndexComponent implements OnInit {
         totalPage: 0,
         data: []
     };
-    dataRealtime: any = [];
+    dataRealtimeEnter: any = [1,2,3];
+    dataRealtimeExit: any = [1,2,3];
     direction: number = 0;
     doorEnter: any = null;
     doorExit: any = null;
@@ -85,15 +86,14 @@ export class EnterExitIndexComponent implements OnInit {
             this.orderOperatingService.getOrderByRfid(hubMessage.data.rfid).subscribe(res => {
                 if (res.statusCode == 200) {
                     clearTimeout(this.clearDataRealtime())
-                    this.dataRealtime = res.data;
                     if (hubMessage.direction === 1) {
                         this.doorEnter = res.driverVehicle;
+                        this.dataRealtimeEnter = res.data.length == 0 ? [1,2,3] : res.data;
                     }
                     if (hubMessage.direction === 2) {
                         this.doorExit = res.driverVehicle;
-                        console.log(this.doorExit, 'exit')
+                        this.dataRealtimeExit = res.data.length == 0 ? [1,2,3] : res.data;
                     }
-                    console.log(this.clearDataRealtime(), 'timeout')
                     this.clearDataRealtime();
                 } else {
                     this.toastr.showError(res.error);
@@ -115,7 +115,8 @@ export class EnterExitIndexComponent implements OnInit {
 
     clearDataRealtime() {
         return setTimeout(() => {
-            this.dataRealtime = [];
+            this.dataRealtimeEnter = [1,2,3]
+            this.dataRealtimeExit = [1,2,3]
             this.direction = 0;
             this.doorEnter = null;
             this.doorExit = null;

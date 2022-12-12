@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit {
   dataSource = new MatTreeNestedDataSource<TypeRoute>();
   activeNode: any;
   // dataMenu:any;
-  constructor(private router: Router, private AccountService: AccountService) { 
+  constructor(private router: Router, private AccountService: AccountService) {
   }
 
   ngOnInit(): void {
@@ -46,12 +46,12 @@ export class SidebarComponent implements OnInit {
     var userInfo = this.AccountService.getUserInfo();
     var listRole = userInfo.listRole || [];
     var menu: any = [];
-    
+
       for (let j = 0; j < ROUTE_DATA.length; j++) {
         if (!ROUTE_DATA[j]['roles'] ||this.intersectArray(ROUTE_DATA[j]['roles'], listRole)> -1)  {
             var item: any = {};
             item['name'] = ROUTE_DATA[j]['name'];
-            
+
             if (ROUTE_DATA[j]['children']) {
               item['children'] = this.categoryChild(listRole, ROUTE_DATA[j]['children']);
             } else {
@@ -60,7 +60,7 @@ export class SidebarComponent implements OnInit {
             menu.push(item)
         }
     }
-    
+
     this.dataSource.data = menu;
   }
 
@@ -88,7 +88,7 @@ export class SidebarComponent implements OnInit {
         }
     }
     return -1;
-  };  
+  };
 
   LoadSideBar() // hàm sau để load sibar theo role;
   {
