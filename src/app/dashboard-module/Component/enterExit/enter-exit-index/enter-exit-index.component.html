@@ -2,7 +2,7 @@
   <mat-spinner *ngIf="loading == true"></mat-spinner>
 </div>
 <div style="background-color: white; padding: 20px 23px; border: 1px solid rgba(0,0,0,.125);">
-  <mat-tab-group animationDuration="0ms" (selectedIndexChange)="myTabSelectedIndexChange($event)">
+  <mat-tab-group dynamicHeight animationDuration="0ms" (selectedIndexChange)="myTabSelectedIndexChange($event)">
     <mat-tab label="Danh sách xe vào/ra">
       <div class="vehicle-realtime">
         <div class="vehicle-left w-100">
