@@ -6,10 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mxxb-index.component.css']
 })
 export class MxxbIndexComponent implements OnInit {
+  loading: boolean = false;
+  selected: number = 0;
+  lstdata: any[] = [] ;
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }
 
+  myTabSelectedIndexChange(index: number) {
+    this.selected = index;
+  }
+
 }
+
+
+
