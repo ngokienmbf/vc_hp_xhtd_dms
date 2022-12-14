@@ -219,49 +219,87 @@
 <!-- chức năng menu điều hành đơn -->
 <div *ngIf="showType === 'DHD'" class="btn-function">
   <div>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}"
-      (click)="openMediaEnter(itemSelected.vehicle)"><i class="bi bi-volume-up-fill"></i>Mời xe vào lấy
-      hàng</button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}"
-      (click)="openMediaOut(itemSelected.vehicle)"><i class="bi bi-volume-up-fill"></i>Mời xe ra khỏi
-      bàn</button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}"
-      (click)="showListDriver()">
-      Nhận đơn
+    <button class="btn-function-title btn-orange" disabled>
+      Lịch sử đơn hàng
     </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}" (click)="cancelOrder()">
-      Huỷ nhận đơn
-    </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
-      Hủy số thứ tự lấy hàng đã cấp
-    </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
-      Thay đổi số thứ tự đã cấp
-    </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
-      Gửi thông tin vào máng xuất
-    </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}" (click)="finishOrder()">
-      Kết thúc đơn hàng
-    </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
-      In phiếu xuất kho
-    </button>
-    <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
-      In phiếu cân
-    </button>
+    <div class="order-history">
+      <div class="row">
+        <div class="col-sm-3 d-flex justify-content-center align-items-center order-history-item">
+          <label for="">Đặt hàng:</label>
+          <input type="text" class="order-history-input">
+        </div>
+        <div class="col-sm-3 d-flex justify-content-center align-items-center order-history-item">
+          <label for="">Nhận đơn:</label>
+          <input type="text" class="order-history-input">
+        </div>
+        <div class="col-sm-3 d-flex justify-content-center align-items-center order-history-item">
+          <label for="">Cân vào:</label>
+          <input type="text" class="order-history-input">
+        </div>
+        <div class="col-sm-3 d-flex justify-content-center align-items-center order-history-item">
+          <label for="">Lấy hàng:</label>
+          <input type="text" class="order-history-input">
+        </div>
+        <div class="col-sm-3 d-flex justify-content-center align-items-center order-history-item">
+          <label for="">Cân ra:</label>
+          <input type="text" class="order-history-input">
+        </div>
+        <div class="col-sm-3 d-flex justify-content-center align-items-center order-history-item">
+          <label for="">Ra cổng:</label>
+          <input type="text" class="order-history-input">
+        </div>
+        <div class="col-sm-12 order-history-item">
+            <textarea name="" id="" cols="30" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}" (click)="showListDriver()">
+        Nhận đơn
+      </button>
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}" (click)="cancelOrder()">
+        Huỷ nhận đơn
+      </button>
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}">
+        Xếp sô tt
+      </button>
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}">
+        Huỷ số tt
+      </button>
+      <!-- <button class="btn btn-orange mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+        Gửi thông tin vào máng xuất
+      </button> -->
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}" (click)="finishOrder()">
+        Kết thúc đơn hàng
+      </button>
+    </div>
+    <div class="col-sm-6">
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}">
+        In phiếu cân
+      </button>
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}">
+        In phiếu xuất kho
+      </button>
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}"
+        (click)="openMediaEnter(itemSelected.vehicle)"><i class="bi bi-volume-up-fill"></i>Mời xe vào lấy
+        hàng</button>
+      <button class="btn btn-orange mr-4" [ngClass]="{'disableClick': itemSelected == null}"
+        (click)="openMediaOut(itemSelected.vehicle)"><i class="bi bi-volume-up-fill"></i>Mời xe rời cân</button>
+    </div>
   </div>
 </div>
 
 <!-- chức năng menu quản lý máng xuất xi bao, máng xuất xi rời  -->
 <div *ngIf="showType === 'MXXB' || showType === 'MXXR'" class="btn-function">
-  <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+  <button class="btn btn-orange mr-10" [ngClass]="{'disableClick': itemSelected == null}">
     Thay đổi máng xuất của đơn hàng
   </button>
-  <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+  <button class="btn btn-orange mr-10" [ngClass]="{'disableClick': itemSelected == null}">
     Gọi xe vào máng lấy hàng
   </button>
-  <button class="btn btn-secondary mr-10" [ngClass]="{'disableClick': itemSelected == null}">
+  <button class="btn btn-orange mr-10" [ngClass]="{'disableClick': itemSelected == null}">
     Cập nhật trạng thái máng xuất
   </button>
 </div>

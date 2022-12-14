@@ -1,5 +1,5 @@
-.mr-10 {
-  margin-right: 10px;
+.mr-4 {
+  margin-right: 4px;
 }
 .mt-20 {
   margin-top: 20px;
@@ -24,5 +24,39 @@
 
 .btn-function button {
   margin-top: 20px;
+}
+
+.btn-orange {
+    background-color: #C49D6B;
+    color: #ffffff;
+}
+
+.btn-function {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.btn-function-title {
+    padding: 10px;
+}
+.order-history {
+    margin-top: 10px;
+}
+.order-history-item {
+    margin-bottom: 10px;
+}
+.order-history-input {
+    margin-left: 5px;
+    width: 100%;
+    padding: 5px;
+}
+.order-history-item label {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.order-history-item textarea {
+    width: 100%;
 }
 
