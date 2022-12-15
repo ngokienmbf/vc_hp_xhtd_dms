@@ -19,36 +19,36 @@
               20000
             </div>
           </div>
-          <div>
-            <table class="weight-table">
+          <div class="d-flex w-100">
+            <table class="w-100 weight-table">
               <thead>
-                <tr>
-                  <th></th>
-                  <th></th>
-                  <th>MSGH</th>
-                  <th>SL Đặt</th>
-                  <th>SL Đặt</th>
-                </tr>
+                <th></th>
+                <th></th>
               </thead>
               <tbody>
                 <tr>
-                  <td><b>Lái xe:</b></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>Lái xe: </td>
                   <td></td>
                 </tr>
                 <tr>
-                  <td><b>KL bì: </b></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>KL bì: </td>
                   <td></td>
                 </tr>
                 <tr>
-                  <td><b>KL hàng: </b></td>
+                  <label>KL hàng: </label>
                   <td></td>
-                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="w-100 weight-table">
+              <thead>
+                <th>MSGH</th>
+                <th>SL Đặt</th>
+                <th>SL Đặt</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of [1,2,3]">
+                  <td>{{item}}</td>
                   <td></td>
                   <td></td>
                 </tr>

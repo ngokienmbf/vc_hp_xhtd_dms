@@ -1,24 +1,14 @@
-.weight-info-item {
-    border: 2px solid #C49D6B;
-    padding: 20px;
-    margin-top: 20px;
-}
-.weight-tab > .mat-tab-body-content {
-    overflow: hidden !important;
+.w-100 {
+    width: 100%;
 }
 .weight-table {
-    width: 100%;
-    border: 1px solid #333;
 }
-
-.weight-table td, th, tr {
-    border: 1px solid #333;
+.weight-table th {
+    text-align: center;
 }
-
-.weight-table td {
-    width: 100px;
+.weight-table tbody, tr, td {
+    border: 1px solid;
 }
-
 .weight-info {
     border: 10px solid #C49D6B;
     padding: 20px;
